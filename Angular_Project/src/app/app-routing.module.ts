@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ResetComponent } from './Layouts/user/reset/reset.component';
 import { CloginComponent } from './Layouts/user/login/clogin.component';
+import { UserComponent } from './Layouts/users/user.component';
+import { IndexComponent } from './Layouts/home/index.component';
+import { BookingComponent } from './Layouts/bookings/booking.component';
+import { StockComponent } from './Layouts/inventory/stock.component';
+import { AssetComponent } from './Layouts/assets/asset.component';
 
 const routes: Routes = 
 [
@@ -12,28 +17,19 @@ const routes: Routes =
     path:'login', component: CloginComponent
   },
   {
-    path:'home',
-    loadChildren: () => import('./Layouts/home/home.module').then(m => m.HomeModule)
+    path:'home', component: IndexComponent
   },
   {
-    path:'users',
-    loadChildren: () => 
-    import('./Layouts/users/users.module').then(m => m.UsersModule)
+    path:'users', component:UserComponent
   },
   {
-    path:'meetings',
-    loadChildren:() => 
-    import('./Layouts/bookings/bookings.module').then(m => m.BookingsModule)
+    path:'meetings', component: BookingComponent
   },
   {
-    path:'inventory',
-    loadChildren: () => 
-    import('./Layouts/inventory/inventory.module').then(m => m.InventoryModule)
+    path:'inventory', component: StockComponent
   },
   {
-    path:'assets',
-    loadChildren: () => 
-    import('./Layouts/assets/assets.module').then(m => m.AssetsModule)
+    path:'assets', component: AssetComponent
   }
 ];
 
