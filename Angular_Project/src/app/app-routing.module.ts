@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ResetComponent } from './Layouts/user/reset/reset.component';
+import { CloginComponent } from './Layouts/user/login/clogin.component';
 
-const routes: Routes = [
+const routes: Routes = 
+[
+  {
+    path:"reset", component:ResetComponent
+  },
+  {
+    path:'login', component: CloginComponent
+  },
   {
     path:'home',
     loadChildren: () => import('./Layouts/home/home.module').then(m => m.HomeModule)
