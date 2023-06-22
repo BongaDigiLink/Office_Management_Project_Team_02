@@ -7,6 +7,7 @@ import { IndexComponent } from './Layouts/home/index.component';
 import { BookingComponent } from './Layouts/bookings/booking.component';
 import { StockComponent } from './Layouts/inventory/stock.component';
 import { AssetComponent } from './Layouts/assets/asset.component';
+import { UserDashboardComponent } from './Layouts/user/user-dashboard/user-dashboard.component';
 
 const routes: Routes = 
 [
@@ -30,6 +31,9 @@ const routes: Routes =
   },
   {
     path:'assets', component: AssetComponent
+  },
+  {
+    path:'user-dashboard', component: UserDashboardComponent
   }
 ];
 

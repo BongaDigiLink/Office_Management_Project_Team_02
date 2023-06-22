@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clogin',
@@ -10,7 +11,8 @@ export class CloginComponent
 {
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   )
   {}
 
@@ -32,6 +34,6 @@ export class CloginComponent
 
   public login()
   {
-
+    this.router.navigate(['/user-dashboard'])
   }
 }

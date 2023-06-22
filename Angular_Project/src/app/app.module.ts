@@ -18,7 +18,8 @@ import { CloginComponent } from './Layouts/user/login/clogin.component';
     ResetComponent,
     UserDashboardComponent,
     MainComponent,
-    CloginComponent
+    CloginComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,
