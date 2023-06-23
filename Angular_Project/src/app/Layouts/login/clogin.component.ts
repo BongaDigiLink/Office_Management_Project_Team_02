@@ -14,7 +14,7 @@ export class CloginComponent
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private service: AuthService
+    // private service: AuthService
   )
   {}
 
@@ -34,29 +34,29 @@ export class CloginComponent
 }
 
 result: any;
-  public login()
-  {
+  // public login()
+  // {
 
-    if (this.form.valid) {
-      this.service.GetUserbyCode(this.form.value.email).subscribe(item => {
-        this.result = item;
-        if (this.result.password === this.form.value.password) {
-          if (this.result.isactive) {
-            sessionStorage.setItem('username',this.result.id);
-            sessionStorage.setItem('role',this.result.role);
-            this.router.navigate(['']);
-          } else {
-            console.log('Please contact Admin', 'InActive User');
-          }
-        } else {
-          console.log('Invalid credentials');
-        }
-      });
-    } else {
-      console.log('Please enter valid data.')
-    }
-    this.router.navigateByUrl('/dashboard')
-  }
+  //   if (this.form.valid) {
+  //     this.service.GetUserbyCode(this.form.value.email).subscribe(item => {
+  //       this.result = item;
+  //       if (this.result.password === this.form.value.password) {
+  //         if (this.result.isactive) {
+  //           sessionStorage.setItem('username',this.result.id);
+  //           sessionStorage.setItem('role',this.result.role);
+  //           this.router.navigate(['']);
+  //         } else {
+  //           console.log('Please contact Admin', 'InActive User');
+  //         }
+  //       } else {
+  //         console.log('Invalid credentials');
+  //       }
+  //     });
+  //   } else {
+  //     console.log('Please enter valid data.')
+  //   }
+  //   this.router.navigateByUrl('/dashboard')
+  // }
 }
 
 /*
