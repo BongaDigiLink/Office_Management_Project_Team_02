@@ -55,7 +55,7 @@ result: any;
     } else {
       console.log('Please enter valid data.')
     }
-    this.router.navigate(['/user-dashboard'])
+    this.router.navigateByUrl('/dashboard')
   }
 }
 
