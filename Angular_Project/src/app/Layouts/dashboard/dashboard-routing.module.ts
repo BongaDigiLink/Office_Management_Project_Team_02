@@ -7,6 +7,9 @@ import { StockComponent } from './inventory/stock.component';
 import { AssetComponent } from './assets/asset.component';
 import { BookingComponent } from './bookings/booking.component';
 import { IndexComponent } from './home/index.component';
+import { DigitalregisterComponent } from './digitalregister/digitalregister.component';
+import { UserassetsComponent } from './userassets/userassets.component';
+import { MeetingsComponent } from './meetings/meetings.component';
 
 const routes: Routes = [
   {
@@ -18,7 +21,10 @@ const routes: Routes = [
       { path: 'inventory', component: StockComponent },
       { path: 'assets', component: AssetComponent },
       { path: 'meetings', component: BookingComponent },
-      { path: 'home', component: IndexComponent }
+      { path: 'home', component: IndexComponent },
+      { path: 'digitalregister', component: DigitalregisterComponent},
+      { path: 'userassets', component: UserassetsComponent},
+      { path: 'meeting', component: MeetingsComponent}
     ]
   }
 ];
