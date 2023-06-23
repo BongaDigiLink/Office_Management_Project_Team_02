@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CfooterComponent } from './Layouts/cfooter/cfooter.component';
-import { CheaderComponent } from './Layouts/cheader/cheader.component';
-import { UsersModule } from './Layouts/users/users.module';
+import { ResetComponent } from './Layouts/reset/reset.component';
+import { CloginComponent } from './Layouts/login/clogin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CfooterComponent,
-    CheaderComponent,
+    ResetComponent,
+    CloginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

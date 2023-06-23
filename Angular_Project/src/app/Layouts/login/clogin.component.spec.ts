@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CfooterComponent } from './cfooter.component';
+import { CloginComponent } from './clogin.component';
 
-describe('CfooterComponent', () => {
-  let component: CfooterComponent;
-  let fixture: ComponentFixture<CfooterComponent>;
+describe('CloginComponent', () => {
+  let component: CloginComponent;
+  let fixture: ComponentFixture<CloginComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CfooterComponent ]
+      declarations: [ CloginComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CfooterComponent);
+    fixture = TestBed.createComponent(CloginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
