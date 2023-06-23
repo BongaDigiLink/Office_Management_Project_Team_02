@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ResetComponent } from './Layouts/user/reset/reset.component';
-import { CloginComponent } from './Layouts/user/login/clogin.component';
-import { UserComponent } from './Layouts/users/user.component';
-import { IndexComponent } from './Layouts/home/index.component';
-import { BookingComponent } from './Layouts/bookings/booking.component';
-import { StockComponent } from './Layouts/inventory/stock.component';
-import { AssetComponent } from './Layouts/assets/asset.component';
-import { UserDashboardComponent } from './Layouts/user/user-dashboard/user-dashboard.component';
+import { ResetComponent } from './Layouts/reset/reset.component';
+import { CloginComponent } from './Layouts/login/clogin.component';
 
 const routes: Routes = 
 [
@@ -18,22 +12,32 @@ const routes: Routes =
     path:'login', component: CloginComponent
   },
   {
-    path:'home', component: IndexComponent
+    path:'', component:CloginComponent
   },
+  /**After logging in user is directed to dashboard path (dashboard module)
+   * The Dashboard Module has the following paths
+   * Admin:
+    *   localhost:4200/dashboard/bookings
+    *   localhost:4200/dashboard/assets
+    *   localhost:4200/dashboard/users
+    *   localhost:4200/dashboard/inventory
+    *   localhost:4200/dashboard/meetings
+    * 
+    * User/Candidate: Not Completed Yet
+    *   localhost:4200/dashboard        - default home, display summary of available functions (1,2,3)
+    *   localhost:4200/dashboard/---
+    *   localhost:4200/dashboard/---
+    *   localhost:4200/dashboard/---
+    *   localhost;4200/dashboard/profile
+    * 
+    *   To add other components and their routes
+    *   add the components on : declarations  (file: dashboard.module.ts)
+    *   Check the file: dashboard-routing.module.ts 
+    *   and edit.
+   * **/
   {
-    path:'users', component:UserComponent
-  },
-  {
-    path:'meetings', component: BookingComponent
-  },
-  {
-    path:'inventory', component: StockComponent
-  },
-  {
-    path:'assets', component: AssetComponent
-  },
-  {
-    path:'user-dashboard', component: UserDashboardComponent
+    path:'dashboard', loadChildren: () => 
+    import('./Layouts/dashboard/dashboard.module').then( m => m.DashboardModule)
   }
 ];
 
