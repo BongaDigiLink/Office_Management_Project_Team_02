@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Office Management System</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="/assets/css/font-awesome.css" rel="stylesheet" />
+     <!-- MORRIS CHART STYLES-->
+    <link href="/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="/assets/css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <div id="wrapper">
+          <!--Header selector-->
+          <app-cheader></app-cheader>
+           <!-- /. NAV TOP  -->
+            <nav class="navbar-default navbar-side" role="navigation">
+
+                    <!--View for the admin-->
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+				<li class="text-center">
+                    <img src="assets/img/find_user.png" class="user-image img-responsive"/>
+				</li>
+					
+                    <li>
+                        <a routerLink="home"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                    </li>
+                     <li>
+                        <a routerLink="users"><i class="fa fa-users fa-3x"></i> Users</a>
+                    </li>
+                    <li>
+                        <a routerLink="meetings"><i class="fa fa-calendar fa-3x"></i> Bookings</a>
+                    </li>
+					<li >
+                        <a routerLink="inventory"><i class="fa fa-plus-square fa-3x"></i> Inventory</a>
+                    </li>
+                    <li >
+                        <a routerLink="assets"><i class="fa fa-plus-square fa-3x"></i> Asset Manager</a>
+                    </li>
+                      	
+                </ul>
+            </div>
+
+            <!--View for User-->
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+				<li class="text-center">
+                    <img src="assets/img/find_user.png" class="user-image img-responsive"/>
+				</li>
+					
+                    <li>
+                        <a routerLink="home"><i class="fa fa-dashboard fa-3x"></i> Home</a>
+                    </li>
+                     <li>
+                        <a routerLink="my-meetings"><i class="fa fa-users fa-3x"></i> My Meetings</a>
+                    </li>
+                    <li>
+                        <a routerLink="candidate-register"><i class="fa fa-calendar fa-3x"></i> Asset Register</a>
+                    </li>
+					<li >
+                        <a routerLink="my-register"><i class="fa fa-plus-square fa-3x"></i> Digital Register</a>
+                    </li>
+                      	
+                </ul>
+            </div>
+            
+            
+        </nav>  
+        <!-- /. NAV SIDE  -->
+          <div id="page-wrapper" >
+              <div id="page-inner">
+                  <div class="row">
+                      <div class="col-md-12">
+                      <h2>Admin Dashboard</h2>   
+                          <h5>Welcome Jhon Deo , Love to see you back. </h5>
+                      </div>
+                  </div> 
+
+                  <div class="row">
+                    <div class="col-md-12">
+                    <h2>User Dashboard</h2>   
+                        <h5>Welcome Jhon Deo , Love to see you back. </h5>
+                    </div>
+                </div>
+                  
+                  <!--Main Content Comes here.-- Place router-outlet here for reusable module component-->
+                  <hr />
+                  <div class="row">
+                    <!--Load Reusable Modules-->
+                    <router-outlet>
+
+                    </router-outlet>
+                  </div>
+                  <!--End of Main Content here.-- End of module component here.-->
+        
+              </div>
+          </div>
+        </div>
+
+
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="/assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="/assets/js/jquery.metisMenu.js"></script>
+     <!-- MORRIS CHART SCRIPTS -->
+     <script src="/assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="/assets/js/morris/morris.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="/assets/js/custom.js"></script>
+    
+   
+</body>
+</html>
