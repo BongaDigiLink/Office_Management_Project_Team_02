@@ -13,16 +13,20 @@ public class UserService
     private UserRepository userRepository;
     /**
      * If user email not unique return null.
-     * @param newUser - new user object, add to datastore
+     * @param user - new user object, add to datastore
      * @return - the added user object
      */
-    public boolean addUser(SiteUser newUser) {
-        boolean isSaved = false;
-        int result = userRepository.saveUser(newUser);
-        if(result>0) {
-            isSaved = true;
-        }
-        return isSaved;
+//    public boolean addUser(SiteUser newUser) {
+//        boolean isSaved = false;
+//        int result = userRepository.saveUser(newUser);
+//        if(result>0) {
+//            isSaved = true;
+//        }
+//        return isSaved;
+//    }
+
+    public SiteUser addUser(SiteUser user){
+        return userRepository.save(user);
     }
 
 }

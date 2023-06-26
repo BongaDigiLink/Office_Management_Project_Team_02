@@ -1,6 +1,7 @@
 package za.co.team02.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import za.co.team02.model.SiteUser;
@@ -11,18 +12,18 @@ DB related operations and
 * */
 
 @Repository
-public class UserRepository {
-    private final JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    public UserRepository(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
-    public int saveUser(SiteUser user){
-        String sql = "INSERT INTO USERS(FIRST_NAME,LAST_NAME,USERNAME,PASSWORD,EMAIL,ROLE,USER_ADDRESS) " +
-                "VALUES (?,?,?,?,?,?,?)";
-        return jdbcTemplate.update(sql,user.getFirstName(),user.getLastName(),user.getUsername(),user.getPassword(),user.getEmail(),
-                user.getRole(),user.getAddress());
-    }
+public interface UserRepository extends JpaRepository<SiteUser, Integer> {
+//    private final JdbcTemplate jdbcTemplate;
+//
+//    @Autowired
+//    public UserRepository(JdbcTemplate jdbcTemplate) {
+//        this.jdbcTemplate = jdbcTemplate;
+//    }
+//
+//    public int saveUser(SiteUser user){
+//        String sql = "INSERT INTO USERS(FIRST_NAME,LAST_NAME,USERNAME,PASSWORD,EMAIL,ROLE,USER_ADDRESS) " +
+//                "VALUES (?,?,?,?,?,?,?)";
+//        return jdbcTemplate.update(sql,user.getFirstName(),user.getLastName(),user.getUsername(),user.getPassword(),user.getEmail(),
+//                user.getRole(),user.getAddress());
+//    }
 }
