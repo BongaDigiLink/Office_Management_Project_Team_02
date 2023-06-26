@@ -28,7 +28,6 @@ export class CloginComponent implements OnInit
 
   login(): void
   {
-    console.log(this.loginForm.value)
 
     if(!this.loginForm.valid)
     {
