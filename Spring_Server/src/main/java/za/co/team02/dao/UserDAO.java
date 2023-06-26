@@ -5,4 +5,7 @@ import za.co.team02.model.SiteUser;
 
 public interface UserDAO extends JpaRepository<SiteUser, Integer>
 {
+    boolean existsByEmail(String email);
+
+    SiteUser findByEmail(String email);
 }
