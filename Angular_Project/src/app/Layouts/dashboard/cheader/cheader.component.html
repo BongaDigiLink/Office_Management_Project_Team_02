@@ -12,7 +12,15 @@
         padding: 15px 50px 5px 50px;
         float: right;
         font-size: 16px;"> &nbsp; 
-        <a routerLink="/login" class="btn btn-danger square-btn-adjust">Logout</a>
-        <a routerLink="/login" class="btn btn-success square-btn-adjust">Login</a> 
+        <ng-container *ngIf="!headerView">
+            <a routerLink="/login" class="btn btn-danger square-btn-adjust">Logout</a>
+            <a routerLink="/login" class="btn btn-success square-btn-adjust">Login</a> 
+        </ng-container>
+
+        <ng-container *ngIf="headerView">
+            <a routerLink="/login" class="btn btn-danger square-btn-adjust">Logout</a>
+            <!-- <a routerLink="/login" class="btn btn-success square-btn-adjust">Login</a>  -->
+        </ng-container>
+         
     </div>
 </nav> 

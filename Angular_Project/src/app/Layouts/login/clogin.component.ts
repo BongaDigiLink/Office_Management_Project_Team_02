@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -22,9 +23,7 @@ export class CloginComponent implements OnInit
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   })
 
-  ngOnInit(): void {
-    //console.log(this.loginloginForm.value);
-  }
+  ngOnInit(): void {}
 
   login(): void
   {
@@ -34,8 +33,19 @@ export class CloginComponent implements OnInit
       return;
     }
 
-    this.authService.login(this.loginForm.value).subscribe( () => {
-      
+    this.authService.login(this.loginForm.value).subscribe( (data: User) => 
+    {
+      console.log(data)
+      if( data.role === "admin")
+      {
+        this.authService.userType$.next(1);
+        this.router.navigateByUrl('/dashboard')
+      }
+      else if(data.role === "user")
+      {
+        this.authService.userType$.next(2);
+        this.router.navigateByUrl('/dashboard')
+      }
     })
   }
 

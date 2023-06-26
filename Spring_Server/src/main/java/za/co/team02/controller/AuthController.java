@@ -21,6 +21,7 @@ public class AuthController
     @PostMapping("/login")
     public ResponseEntity<SiteUser> loginUser(@RequestBody LoginDetails loginDetails)
     {
+        //System.out.println("Test Login Post:"+loginDetails.getEmail() +" psswd:"+loginDetails.getPassword());
         if(this.authService.checkUser(loginDetails.getEmail()))
         {
             if(this.authService.getUserByEmail(loginDetails.getEmail()) != null
