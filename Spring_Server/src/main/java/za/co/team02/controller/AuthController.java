@@ -31,7 +31,6 @@ public class AuthController
                 return new ResponseEntity<>(this.authService.getUserByEmail(loginDetails.getEmail()),
                         HttpStatus.OK);
             }
-
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
