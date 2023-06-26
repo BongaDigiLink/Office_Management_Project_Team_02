@@ -6,6 +6,6 @@ export class User
     surname: string,
     imageUrl: string,
     userType: string,
-    department?: string)
+    role?: string)
     {}
 }
