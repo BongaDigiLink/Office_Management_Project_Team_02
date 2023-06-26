@@ -23,14 +23,14 @@
             <nav class="navbar-default navbar-side" role="navigation">
 
                     <!--View for the admin-->
-            <div class="sidebar-collapse">
+            <div class="sidebar-collapse" *ngIf="admin_interface">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
                     <img src="assets/img/find_user.png" class="user-image img-responsive"/>
 				</li>
 					
                     <li>
-                        <a routerLink="home"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a routerLink="/dashboard"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                      <li>
                         <a routerLink="users"><i class="fa fa-users fa-3x"></i> Users</a>
@@ -49,14 +49,14 @@
             </div>
 
             <!--View for User-->
-            <div class="sidebar-collapse">
+            <div class="sidebar-collapse" *ngIf="user_interface">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
                     <img src="assets/img/find_user.png" class="user-image img-responsive"/>
 				</li>
 					
                     <li>
-                        <a routerLink="home"><i class="fa fa-dashboard fa-3x"></i> Home</a>
+                        <a routerLink="/dashboard"><i class="fa fa-dashboard fa-3x"></i> Home</a>
                     </li>
                      <li>
                         <a routerLink="meeting"><i class="fa fa-users fa-3x"></i> My Meetings</a>
@@ -76,14 +76,14 @@
         <!-- /. NAV SIDE  -->
           <div id="page-wrapper" >
               <div id="page-inner">
-                  <div class="row">
+                  <div class="row" *ngIf="admin_interface">
                       <div class="col-md-12">
                       <h2>Admin Dashboard</h2>   
                           <h5>Welcome Jhon Deo , Love to see you back. </h5>
                       </div>
                   </div> 
 
-                  <div class="row">
+                  <div class="row" *ngIf="user_interface">
                     <div class="col-md-12">
                     <h2>User Dashboard</h2>   
                         <h5>Welcome Jhon Deo , Love to see you back. </h5>

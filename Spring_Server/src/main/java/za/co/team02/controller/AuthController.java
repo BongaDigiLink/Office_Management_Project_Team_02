@@ -21,6 +21,7 @@ public class AuthController
     @PostMapping("/login")
     public ResponseEntity<SiteUser> loginUser(@RequestBody LoginDetails loginDetails)
     {
+        //System.out.println("Test Login Post:"+loginDetails.getEmail() +" psswd:"+loginDetails.getPassword());
         if(this.authService.checkUser(loginDetails.getEmail()))
         {
             if(this.authService.getUserByEmail(loginDetails.getEmail()) != null
@@ -31,7 +32,6 @@ public class AuthController
                 return new ResponseEntity<>(this.authService.getUserByEmail(loginDetails.getEmail()),
                         HttpStatus.OK);
             }
-
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
