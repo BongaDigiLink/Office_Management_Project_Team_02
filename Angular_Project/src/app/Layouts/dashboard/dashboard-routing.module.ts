@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: 'inventory', component: StockComponent },
       { path: 'assets', component: AssetComponent },
       { path: 'meetings', component: BookingComponent },
-      { path: 'home', component: IndexComponent },
+      { path: '', component: IndexComponent },
       { path: 'digitalregister', component: DigitalregisterComponent},
       { path: 'userassets', component: UserassetsComponent},
       { path: 'meeting', component: MeetingsComponent}
