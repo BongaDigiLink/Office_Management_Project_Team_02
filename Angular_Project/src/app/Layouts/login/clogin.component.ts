@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 
@@ -8,83 +8,36 @@ import { AuthService } from 'src/app/service/auth.service';
   templateUrl: './clogin.component.html',
   styleUrls: ['./clogin.component.css']
 })
-export class CloginComponent
+export class CloginComponent implements OnInit
 {
 
-  constructor(
-    private fb: FormBuilder,
+  constructor
+  (
     private router: Router,
-    // private service: AuthService
-  )
-  {}
+    private authService: AuthService
+  ){}
 
-  form = this.fb.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required]
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
   })
 
-  initForm(): FormGroup
-  {
-    let form =  this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    })
-
-  return form
-}
-
-result: any;
-  // public login()
-  // {
-
-  //   if (this.form.valid) {
-  //     this.service.GetUserbyCode(this.form.value.email).subscribe(item => {
-  //       this.result = item;
-  //       if (this.result.password === this.form.value.password) {
-  //         if (this.result.isactive) {
-  //           sessionStorage.setItem('username',this.result.id);
-  //           sessionStorage.setItem('role',this.result.role);
-  //           this.router.navigate(['']);
-  //         } else {
-  //           console.log('Please contact Admin', 'InActive User');
-  //         }
-  //       } else {
-  //         console.log('Invalid credentials');
-  //       }
-  //     });
-  //   } else {
-  //     console.log('Please enter valid data.')
-  //   }
-  //   this.router.navigateByUrl('/dashboard')
-  // }
-}
-
-/*
-result: any;
-
-loginform = this.builder.group({
-  id: this.builder.control('', Validators.required),
-  password: this.builder.control('', Validators.required)
-});
-
-proceedlogin() {
-  if (this.loginform.valid) {
-    this.service.GetUserbyCode(this.loginform.value.id).subscribe(item => {
-      this.result = item;
-      if (this.result.password === this.loginform.value.password) {
-        if (this.result.isactive) {
-          sessionStorage.setItem('username',this.result.id);
-          sessionStorage.setItem('role',this.result.role);
-          this.router.navigate(['']);
-        } else {
-          this.toastr.error('Please contact Admin', 'InActive User');
-        }
-      } else {
-        this.toastr.error('Invalid credentials');
-      }
-    });
-  } else {
-    this.toastr.warning('Please enter valid data.')
+  ngOnInit(): void {
+    //console.log(this.loginloginForm.value);
   }
+
+  login(): void
+  {
+
+    if(!this.loginForm.valid)
+    {
+      return;
+    }
+
+    this.authService.login(this.loginForm.value).subscribe( () => {
+      
+    })
+  }
+
+
 }
-*/
