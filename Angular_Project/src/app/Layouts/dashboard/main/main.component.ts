@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-main',
@@ -37,6 +38,7 @@ export class MainComponent implements OnInit
     else
     {
       //do nothing.
+      this.user_interface = true;
     }
   }
 

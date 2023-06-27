@@ -1,4 +1,4 @@
-package za.co.team02.utils;
+package za.co.team02.dto;
 
 import lombok.Data;
 
