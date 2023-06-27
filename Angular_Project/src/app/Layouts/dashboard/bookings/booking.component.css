@@ -1,0 +1,8 @@
+#chart{
+    height: 300px;
+    width: 600px;
+}
+
+.row{
+    width: fit-content;
+}
