@@ -13,7 +13,7 @@ import java.util.List;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/v1")
 public class UserController
 {
     private UserService userService;
