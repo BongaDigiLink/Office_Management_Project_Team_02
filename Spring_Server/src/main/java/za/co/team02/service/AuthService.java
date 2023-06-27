@@ -1,16 +1,15 @@
 package za.co.team02.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
-import za.co.team02.dao.UserDAO;
+import za.co.team02.repository.AuthRepository;
 import za.co.team02.model.SiteUser;
 
 @Service
 public class AuthService
 {
     @Autowired
-    private UserDAO userDAO;
+    private AuthRepository userDAO;
 
     public SiteUser loginUser(String userEmail, String userPassword)
     {

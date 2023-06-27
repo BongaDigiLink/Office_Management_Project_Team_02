@@ -1,9 +1,9 @@
-package za.co.team02.dao;
+package za.co.team02.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import za.co.team02.model.SiteUser;
 
-public interface UserDAO extends JpaRepository<SiteUser, Integer>
+public interface AuthRepository extends JpaRepository<SiteUser, Integer>
 {
     boolean existsByEmail(String email);
 

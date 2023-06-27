@@ -1,8 +1,8 @@
 package za.co.team02.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import za.co.team02.dao.UserDAO;
 import za.co.team02.model.SiteUser;
+import za.co.team02.repository.AuthRepository;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 public class Utils
 {
     @Autowired
-    private UserDAO user;
+    private AuthRepository user;
     private static String hashPassword(String password)
     {
         try
