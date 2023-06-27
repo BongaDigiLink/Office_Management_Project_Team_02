@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import za.co.team02.model.SiteUser;
 import za.co.team02.service.AuthService;
-import za.co.team02.utils.LoginDetails;
+import za.co.team02.dto.LoginDetails;
 
 @RestController
 @RequestMapping(path = "/auth")
