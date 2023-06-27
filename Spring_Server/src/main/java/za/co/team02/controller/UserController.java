@@ -1,18 +1,16 @@
 package za.co.team02.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import za.co.team02.model.SiteUser;
+import org.springframework.web.bind.annotation.*;
+import za.co.team02.dto.UserDTO;
 import za.co.team02.service.UserService;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
-//@RequestMapping("/user") -- Removed temporarily
+@RequestMapping("/api/register")
 public class UserController
 {
     private UserService userService;
@@ -21,17 +19,20 @@ public class UserController
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
     /**
      * admin
      * controller - add user
      */
-    @RequestMapping(value = "/registerUser",method = POST)
-    public void addUser(@RequestBody SiteUser user) {
+//    @RequestMapping(value = "/registerUser",method = POST)
+    @PostMapping
+    public void addUser(@RequestBody UserDTO userDto) {
 //        if(errors.hasErrors()){
 //            log.error("Contact form validation failed due to : " + errors.toString());
 //            return "contact.html";
 //        }
-        this.userService.addUser(user);
+
+        this.userService.addUser(userDto);
 //        return "redirect:/contact";
     }
 

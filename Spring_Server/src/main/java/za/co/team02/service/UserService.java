@@ -2,31 +2,47 @@ package za.co.team02.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import za.co.team02.dao.UserDAO;
+import za.co.team02.dto.UserDTO;
 import za.co.team02.model.SiteUser;
 import za.co.team02.repository.UserRepository;
 
 @Service
 public class UserService
 {
-    @Autowired
     private UserRepository userRepository;
-    /**
-     * If user email not unique return null.
-     * @param user - new user object, add to datastore
-     * @return - the added user object
-     */
-//    public boolean addUser(SiteUser newUser) {
-//        boolean isSaved = false;
-//        int result = userRepository.saveUser(newUser);
-//        if(result>0) {
-//            isSaved = true;
-//        }
-//        return isSaved;
-//    }
 
-    public SiteUser addUser(SiteUser user){
-        return userRepository.save(user);
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
+    /**
+     * If user email not unique return null.
+     * @param userDto - new user transfer object, add to datastore
+     * @return - the added user transfer object
+     */
+    public UserDTO addUser(UserDTO userDto){
+        SiteUser siteUser = new SiteUser();
+
+        // convert DTO to entity
+        siteUser.setEmail(userDto.getEmail());
+        siteUser.setFirstName(userDto.getFirstName());
+        siteUser.setLastName(userDto.getLastName());
+        siteUser.setUsername(userDto.getUsername());
+        siteUser.setPassword(userDto.getPassword());
+        siteUser.setRole(userDto.getRole());
+        siteUser.setAddress(userDto.getAddress());
+
+        SiteUser newSiteUser = userRepository.save(siteUser);
+
+        //convert entity to DTO
+        UserDTO userResponse = new UserDTO();
+        userResponse.setAdminId(newSiteUser.getAdminId());
+        userResponse.setFirstName(newSiteUser.getFirstName());
+        userResponse.setLastName(newSiteUser.getLastName());
+        userResponse.setUsername(newSiteUser.getUsername());
+        userResponse.setPassword(newSiteUser.getPassword());
+        userResponse.setRole(newSiteUser.getRole());
+        userResponse.setAddress(newSiteUser.getAddress());
+        return userResponse;
+    }
 }
