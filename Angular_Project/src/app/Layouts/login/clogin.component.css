@@ -8,3 +8,11 @@
     -ms-transform: translateY(50%);
     transform: translateY(70%);
   }
+
+  .divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}

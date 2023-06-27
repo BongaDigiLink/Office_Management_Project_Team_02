@@ -14,7 +14,7 @@ export class UserService
 {
   constructor(private http: HttpClient) { }
 
-  apiURL = 'http://localhost:8080/user'
+  apiURL = 'http://localhost:8081/user'
 
   /**
    * User updates details.

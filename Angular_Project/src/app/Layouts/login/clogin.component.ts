@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-clogin',
@@ -33,21 +34,56 @@ export class CloginComponent implements OnInit
       return;
     }
 
-    this.authService.login(this.loginForm.value).subscribe( (data: User) => 
+/**
+ * submit inputs, if user exists : user object returned from the Server 
+ *       access user role (admin/user) and set Interface views by
+ *      emitting value (0, 1 or 2) from the auth behaviour subject observable
+ *      navigate user to the dashboard.
+ * 
+ * If user does not exist or password incorrect. Not handled yet. instead null is returned
+ *    and display error pop up
+ */
+  this.authService.login(this.loginForm.value).subscribe(
     {
-      console.log(data)
-      if( data.role === "admin")
+      next: (data) => 
       {
-        this.authService.userType$.next(1);
-        this.router.navigateByUrl('/dashboard')
-      }
-      else if(data.role === "user")
+        if( data.role === "admin")
+        {
+          this.authService.userType$.next(1);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'You are logged in.',
+            showConfirmButton: false,
+            timer: 1600
+          })
+          this.router.navigateByUrl('/dashboard')
+        }
+        else if(data.role === "user")
+        {
+          this.authService.userType$.next(2);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'You are logged in.',
+            showConfirmButton: false,
+            timer: 1600
+          })
+          this.router.navigateByUrl('/dashboard')
+        }
+      },
+      error: () => 
       {
-        this.authService.userType$.next(2);
-        this.router.navigateByUrl('/dashboard')
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Oops!',
+          showConfirmButton: false,
+          timer: 1600
+        })
       }
-    })
+
+    });
+
   }
-
-
 }

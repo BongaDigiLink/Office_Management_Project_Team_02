@@ -13,7 +13,7 @@ export class AdminService
 
   constructor(private http: HttpClient) { }
 
-  apiURL = 'http://localhost:8080/admin'
+  apiURL = 'http://localhost:8081/admin'
 
   /**
    * Admin Registering a user.

@@ -20,7 +20,7 @@ export class AuthService
   //0 - none, 1 - admin, 2 - Candidate/Staff
   userType$ = new BehaviorSubject(0);
 
-  apiURL = 'http://localhost:8080/auth'
+  apiURL = 'http://localhost:8081/auth'
 
   /**
    * @param loginDetails - from input form and post to Server
