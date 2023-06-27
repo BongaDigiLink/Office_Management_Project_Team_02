@@ -6,6 +6,8 @@ import za.co.team02.dto.UserDTO;
 import za.co.team02.model.SiteUser;
 import za.co.team02.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 public class UserService
 {
@@ -44,5 +46,10 @@ public class UserService
         userResponse.setRole(newSiteUser.getRole());
         userResponse.setAddress(newSiteUser.getAddress());
         return userResponse;
+    }
+
+    public List<SiteUser> getUsers()
+    {
+        return userRepository.findAll();
     }
 }
