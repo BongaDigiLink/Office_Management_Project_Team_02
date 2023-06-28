@@ -1,8 +1,9 @@
 export class User
 {
     email?: string;
-    name?: string;
-    surname?: string;
+    firstName?: string;
+    lastName?: string;
+    department?: string;
     imageUrl?: string;
     userType?: string;
     role?: string

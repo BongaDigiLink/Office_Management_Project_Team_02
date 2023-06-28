@@ -28,7 +28,7 @@ export class AdminService
    * Admin user management
    * Service for updating user by email
    */
-  updateUser(email:string, updateUser: User)
+  updateUser(email:string | null, updateUser: dtoUser)
   {
     return this.http.put<User>(`${this.apiURL}/update-user/${email}`, updateUser);
   }
