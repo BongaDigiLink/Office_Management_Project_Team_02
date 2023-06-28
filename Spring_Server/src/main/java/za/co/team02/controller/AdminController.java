@@ -34,7 +34,6 @@ public class AdminController {
     }
 
     @PostMapping("/add-asset")
-
     public Asset createAsset(@RequestBody Asset asset){
 
         try {

@@ -22,7 +22,7 @@ public class AdminService {
      * @param asset The customer object to create.
      * @return The created asset object.
      */
-    public Asset createAsset( Asset asset){
+    public Asset createAsset(Asset asset){
         return assetRepository.save(asset);
     }
 

@@ -20,7 +20,7 @@ public class Asset {
     private String equipmentName;
 
     @Column(name = "equipment_status")
-    private boolean equipmentStatus;
+    private String equipmentStatus;
 
     @Column(name = "equipment_condition")
     private String equipmentCondition;
