@@ -7,6 +7,7 @@ import za.co.team02.model.SiteUser;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 /*
 @Repository stereotype annotation is used to add a bean of this class
@@ -16,6 +17,8 @@ DB related operations and
 
 @Repository
 public interface UserRepository extends JpaRepository<SiteUser, Integer> {
+
+    Optional<SiteUser> findUserByEmail(String email);
 
     @Query("SELECT u FROM users u WHERE u.role = 'user' ")
     Collection<SiteUser> getSiteUsersByRole();
