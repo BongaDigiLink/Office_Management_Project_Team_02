@@ -61,6 +61,17 @@ export class AdminService
     return this.http.get<Asset[]>(`${this.apiURL}/all-assets`);
   }
 
+  acceptAssetLog(admin: number)
+  {
+    return this.http.put<any>(`${this.apiURL}/approve-log`, admin);
+  }
+
+  disapproveAssetLog(admin: number)
+  {
+    
+    return this.http.put<any>(`${this.apiURL}/disapprove-log`, admin);
+  }
+
 
   /**
    * Admin routes to edit meetings/bookings
