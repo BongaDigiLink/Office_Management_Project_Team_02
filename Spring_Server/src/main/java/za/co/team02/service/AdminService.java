@@ -1,10 +1,12 @@
 package za.co.team02.service;
 
+import org.springframework.stereotype.Service;
 import za.co.team02.model.Asset;
 import za.co.team02.repository.AssetRepository;
 
 import java.util.List;
 
+@Service
 public class AdminService {
 
     // Assets Service Implementation
