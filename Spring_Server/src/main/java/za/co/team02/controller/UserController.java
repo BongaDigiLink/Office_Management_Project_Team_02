@@ -23,12 +23,12 @@ public class UserController
         this.userService = userService;
     }
 
+
     /**
      * admin
      * controller - add user
      */
-//    @RequestMapping(value = "/registerUser",method = POST)
-    @PostMapping
+    @PostMapping("/add-user")
     public String addUser(@RequestBody UserDTO userDto,Errors errors) {
         if(errors.hasErrors()){
             System.out.println("Contact form validation failed due to : " + errors.toString());
@@ -39,29 +39,38 @@ public class UserController
         return "redirect:/contact";
     }
 
+
     /**
      * admin
      * controller - view all users
      */
-
     @GetMapping("/all-users")
-    public List<SiteUser> getStudents()
+    public List<SiteUser> getUsers()
     {
         return userService.getUsers();
     }
+
 
     /**
      * admin
      * controller - edit a user (CRUD)
      */
+    @GetMapping(path = "/user/{email}")
+    public SiteUser getSingleUser(@PathVariable String email)
+    {
+        return userService.getSingleUser(email);
+    }
 
-//    @PutMapping(path = "{studentId}")
-//    public void updateStudent(
-//            @PathVariable("studentId") Long studentId,
-//            @PathVariable(required = false) String name,
-//            @PathVariable(required = false) String email){
-//        userService.updateStudent(studentId,name,email);
-//    }
+
+    /**
+     * admin
+     * controller - edit a user (CRUD)
+     */
+    @PutMapping(path = "/update-user/{email}")
+    public void updateStudent(
+           @RequestBody SiteUser siteUser){
+        userService.updateUser(siteUser);
+    }
 
     /**
      * admin
