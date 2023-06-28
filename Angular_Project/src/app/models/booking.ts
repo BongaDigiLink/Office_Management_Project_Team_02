@@ -2,6 +2,7 @@ export class Booking
 {
     roomId?: number;
     roomName?: string;
+    roomCapacity?: string;
     bookingDate?: string;
     bookingTime?: string;
 }
