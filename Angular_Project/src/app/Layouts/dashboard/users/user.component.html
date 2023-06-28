@@ -1,8 +1,8 @@
     <!--Main Content Comes here.-- Place router-outlet here for reusable module component-->
               
     <div class="row" >
-      <div class="col-md-10 col-sm-12 col-xs-12">
-      <h3>Manage Users</h3>
+      <div class="col-md-8 col-sm-12 col-xs-12">
+      <h3>Manage Users</h3> 
       <div class="panel panel-default">
           <div class="panel-body">
               <table class="table table-borderless">
@@ -12,6 +12,7 @@
                         <th>Surname</th>
                         <th>Department</th>
                         <th>Position</th>
+                        <a class="btn btn-success square-btn-adjust" style="margin-left: 80px;"> Add User</a>
                       </tr>
                     </thead>
                     <tbody>
@@ -46,7 +47,8 @@
                         </td>
                         <td>
                           <br>
-                          <a routerLink="" class="btn btn-success square-btn-adjust">Edit User</a>
+                          <a routerLink="" class="btn btn-success square-btn-adjust" style="margin-right: 10px;">Edit User</a>
+                          <a routerLink="" class="btn btn-danger square-btn-adjust">Delete</a>
                         </td>
                       </tr>
                     </tbody>
