@@ -1,11 +1,15 @@
 package za.co.team02;
 
+import lombok.Builder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import za.co.team02.model.SiteUser;
+import za.co.team02.repository.UserRepository;
+
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -15,6 +19,10 @@ public class Team02Application
 	public static void main(String[] args)
 	{
 		SpringApplication.run(Team02Application.class, args);
+	}
+
+	public Team02Application(UserRepository userRepository) {
+
 	}
 
 	@Bean
