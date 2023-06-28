@@ -15,33 +15,33 @@
                         <a class="btn btn-success square-btn-adjust" style="margin-left: 80px;"> Add User</a>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody *ngFor="let user of all_users">
                       <tr>
                         <td>
                           <div class="d-flex align-items-center">
                             <div class="ms-3">
-                              <p class="fw-bold mb-1">Name</p>
+                              <p class="fw-bold mb-1">{{ user.firstName }}</p>
                             </div>
                           </div>
                         </td>
                         <td>
                           <div class="d-flex align-items-center">
                             <div class="ms-3">
-                              <p class="fw-bold mb-1">Name</p>
+                              <p class="fw-bold mb-1">{{ user.lastName }}</p>
                             </div>
                           </div>
                         </td>
                         <td>
                           <div class="d-flex align-items-center">
                             <div class="ms-3">
-                              <p class="fw-bold mb-1">Name</p>
+                              <p class="fw-bold mb-1">{{ user.department }}</p>
                             </div>
                           </div>
                         </td>
                         <td>
                           <div class="d-flex align-items-center">
                             <div class="ms-3">
-                              <p class="fw-bold mb-1">Name</p>
+                              <p class="fw-bold mb-1">{{ user.role }}</p>
                             </div>
                           </div>
                         </td>

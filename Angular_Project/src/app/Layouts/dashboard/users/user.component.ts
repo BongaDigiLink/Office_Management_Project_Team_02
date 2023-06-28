@@ -13,16 +13,17 @@ export class UserComponent implements OnInit{
   constructor(private service: AdminService)
   {}
 
-  all_users!: User[];
+  all_users?: User[];
 
   ngOnInit(): void {
-    this.service.getUsers().subscribe((all_users) => 
+    this.service.getUsers().subscribe(
+      (users) => 
     {
       //View a list of users:
-      console.log("All users")
-      console.log(all_users);
-      all_users = all_users;
-    } )
+      this.all_users = users;
+      console.log(this.all_users)
+    } 
+    )
   }
 
 }
