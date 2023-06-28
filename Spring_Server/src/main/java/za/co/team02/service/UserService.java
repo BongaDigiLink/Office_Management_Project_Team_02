@@ -1,11 +1,12 @@
 package za.co.team02.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.team02.dto.UserDTO;
 import za.co.team02.model.SiteUser;
 import za.co.team02.repository.UserRepository;
+
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -52,6 +53,23 @@ public class UserService
     //Get none admin users
     public List<SiteUser> getUsers()
     {
-        return userRepository.getSiteUsersByRole().stream().collect(Collectors.toList());
+        List<SiteUser> existingUsers = userRepository.getSiteUsersByRole().stream().collect(Collectors.toList());
+        return  existingUsers;
+    }
+
+    public SiteUser getSingleUser(String email)
+    {
+        SiteUser siteUser =userRepository.findByEmail(email).orElseThrow(() -> new IllegalStateException("user with email " + email + " does not exixst"));
+        return  siteUser;
+    }
+
+    public void updateUser(SiteUser updateUser) {
+        SiteUser siteUser = userRepository.findByEmail(updateUser.getEmail()).orElseThrow(()-> new IllegalStateException("user with email "+ updateUser.getEmail()+" does not exist"));
+//        SiteUser siteUser = getSingleUser(updateUser.getEmail());
+        siteUser.setFirstName(updateUser.getFirstName());
+        siteUser.setLastName(updateUser.getLastName());
+        siteUser.setRole(updateUser.getRole());
+        siteUser.setAddress(updateUser.getAddress());
+        userRepository.save(siteUser);
     }
 }

@@ -69,7 +69,7 @@ export class UserService
   /**
    * @returns list of my bookings
    */
-  getMyBookings(email: string): Observable<Booking[]>
+  getMyBookings(email: string | null): Observable<Booking[]>
   {
     return this.http.get<Booking[]>(`${this.apiURL}/my-bookings/${email}`);
   }

@@ -2,10 +2,12 @@ package za.co.team02.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "users")
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

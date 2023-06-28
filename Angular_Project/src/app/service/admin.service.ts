@@ -28,7 +28,7 @@ export class AdminService
    * Admin user management
    * Service for updating user by email
    */
-  updateUser(email:string, updateUser: User)
+  updateUser(email:string | null, updateUser: dtoUser)
   {
     return this.http.put<User>(`${this.apiURL}/update-user/${email}`, updateUser);
   }
@@ -59,6 +59,17 @@ export class AdminService
   getAssets(): Observable<Asset[]>
   {
     return this.http.get<Asset[]>(`${this.apiURL}/all-assets`);
+  }
+
+  acceptAssetLog(admin: number)
+  {
+    return this.http.put<any>(`${this.apiURL}/approve-log`, admin);
+  }
+
+  disapproveAssetLog(admin: number)
+  {
+    
+    return this.http.put<any>(`${this.apiURL}/disapprove-log`, admin);
   }
 
 
