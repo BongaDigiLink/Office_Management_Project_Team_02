@@ -6,6 +6,7 @@ import za.co.team02.model.SiteUser;
 import za.co.team02.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -56,8 +57,15 @@ public class UserService
         return  existingUsers;
     }
 
+    public SiteUser getSingleUser(String email)
+    {
+        SiteUser siteUser =userRepository.findByEmail(email).orElseThrow(() -> new IllegalStateException("user with email " + email + " does not exixst"));
+        return  siteUser;
+    }
+
     public void updateUser(SiteUser updateUser) {
-        SiteUser siteUser = userRepository.findUserByEmail(updateUser.getEmail()).orElseThrow(()-> new IllegalStateException("user with email "+ updateUser.getEmail()+" does not exixst"));
+        SiteUser siteUser = userRepository.findByEmail(updateUser.getEmail()).orElseThrow(()-> new IllegalStateException("user with email "+ updateUser.getEmail()+" does not exist"));
+//        SiteUser siteUser = getSingleUser(updateUser.getEmail());
         siteUser.setFirstName(updateUser.getFirstName());
         siteUser.setLastName(updateUser.getLastName());
         siteUser.setRole(updateUser.getRole());

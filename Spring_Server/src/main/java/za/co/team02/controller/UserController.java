@@ -55,7 +55,18 @@ public class UserController
      * admin
      * controller - edit a user (CRUD)
      */
-    @PutMapping(path = "/update-user/{userId}")
+    @GetMapping(path = "/user/{email}")
+    public SiteUser getSingleUser(@PathVariable String email)
+    {
+        return userService.getSingleUser(email);
+    }
+
+
+    /**
+     * admin
+     * controller - edit a user (CRUD)
+     */
+    @PutMapping(path = "/update-user/{email}")
     public void updateStudent(
            @RequestBody SiteUser siteUser){
         userService.updateUser(siteUser);

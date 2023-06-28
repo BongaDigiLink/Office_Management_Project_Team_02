@@ -18,7 +18,7 @@ DB related operations and
 @Repository
 public interface UserRepository extends JpaRepository<SiteUser, Integer> {
 
-    Optional<SiteUser> findUserByEmail(String email);
+    Optional<SiteUser> findByEmail(String email);
 
     @Query("SELECT u FROM users u WHERE u.role = 'user' ")
     Collection<SiteUser> getSiteUsersByRole();
