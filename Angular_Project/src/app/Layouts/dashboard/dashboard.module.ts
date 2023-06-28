@@ -12,13 +12,23 @@ import { IndexComponent } from './home/index.component';
 import { MeetingsComponent } from './meetings/meetings.component';
 import { UserassetsComponent } from './userassets/userassets.component';
 import { DigitalregisterComponent } from './digitalregister/digitalregister.component';
+import { DialogComponent } from './dialog/dialog.component';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
-  declarations: [MainComponent, UserComponent, AssetComponent, BookingComponent, StockComponent, CheaderComponent, IndexComponent, MeetingsComponent, UserassetsComponent, DigitalregisterComponent],
+  declarations: [MainComponent, UserComponent, AssetComponent, BookingComponent, StockComponent, CheaderComponent, IndexComponent, MeetingsComponent, UserassetsComponent, DigitalregisterComponent, DialogComponent],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule
   ]
 })
 export class DashboardModule { }
