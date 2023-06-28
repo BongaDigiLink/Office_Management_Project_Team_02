@@ -22,7 +22,26 @@ public class Team02Application
 	}
 
 	public Team02Application(UserRepository userRepository) {
+		SiteUser admin = SiteUser.builder()
+				.email("hloni@gmail.com")
+				.firstName("Hloni")
+				.lastName("Moloi")
+				.username("@hloni")
+				.password("hloni@gmail.com")
+				.role("admin")
+				.address("Ameshoff JHB").build();
+		userRepository.save(admin);
 
+		SiteUser user = SiteUser.builder()
+				.email("bonga@gmail.com")
+				.firstName("Bonga")
+				.lastName("Gougota")
+				.username("@Bongag")
+				.password("bonga@gmail.com")
+				.role("user")
+				.address("Ameshoff JHB").build();
+		userRepository.save(admin);
+		userRepository.save(user);
 	}
 
 	@Bean
