@@ -7,3 +7,14 @@ export class User
     userType?: string;
     role?: string
 }
+
+export class dtoUser
+{
+    constructor(
+        email: string,
+        name: string,
+        surname: string,
+        imageUrl: string,
+        role: string,
+    ){}
+}

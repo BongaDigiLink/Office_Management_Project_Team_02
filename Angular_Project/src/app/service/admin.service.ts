@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
+import { User, dtoUser } from '../models/user';
 import { Asset } from '../models/asset';
 import { Observable } from 'rxjs';
 import { Booking } from '../models/booking';
@@ -19,9 +19,9 @@ export class AdminService
    * Admin Registering a user.
    * Service for adding new User,Post request
    */
-  addUser(userDetails: User)
+  addUser(userDetails: dtoUser)
   {
-    return this.http.post<User>(`${this.apiURL}/add-user`, userDetails);
+    return this.http.post<dtoUser>(`${this.apiURL}/add-user`, userDetails);
   }
 
   /**

@@ -1,18 +1,11 @@
 package za.co.team02;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import za.co.team02.model.SiteUser;
-import za.co.team02.repository.DemoRepository;
-
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -40,21 +33,4 @@ public class Team02Application
 		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
 		return new CorsFilter(urlBasedCorsConfigurationSource);
 	}
-
-//	@Component
-//	private class DemoData {
-//
-//		@Autowired
-//		private final DemoRepository repo;
-//
-//		public DemoData(DemoRepository repo) {
-//			this.repo = repo;
-//		}
-//
-//		@EventListener
-//		public void appReady(ApplicationReadyEvent event) {
-//
-//			repo.save(new SiteUser());
-//		}
-//	}
 }
