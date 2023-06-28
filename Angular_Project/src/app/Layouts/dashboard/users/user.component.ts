@@ -34,8 +34,7 @@ export class UserComponent implements OnInit{
       //View a list of users:
       this.all_users = users;
       console.log(this.all_users)
-    } 
-    )
+    } )
   }
 
   updateUser(): void
