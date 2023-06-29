@@ -13,6 +13,7 @@ export class dtoBooking
         roomName: string,
         //Following data types should be Date, time.
         bookingDate: string,
-        bookingTime: string
+        start_time: string,
+        end_time: string
     ){}
 }

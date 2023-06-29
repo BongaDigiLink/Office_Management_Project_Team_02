@@ -1,12 +1,13 @@
 <h3 mat-dialog-title>Add User</h3>
 <div mat-dialog-content>
+
     <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Enter Name">
+        <input formControlName="firstName" matInput placeholder="Enter Name">
       </mat-form-field><br>
       <mat-form-field appearance="outline">
         <mat-label>Surname</mat-label>
-        <input matInput placeholder="Enter Surname">
+        <input formControlName="lastName" matInput placeholder="Enter Surname">
       </mat-form-field><br>
       <mat-form-field appearance="outline">
         <mat-label>Department</mat-label>
@@ -24,8 +25,10 @@
             <mat-option value="">Senior Developer</mat-option>
         </mat-select>
       </mat-form-field>
-</div>
-<div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="primary">Add</button>
-    <button style="margin-left: 8px;" mat-raised-button color="warn" mat-dialog-close>Close</button>
+      
+    <div mat-dialog-action [align]="'end'">
+      <button (click)="updateUser()" mat-raised-button color="primary">Add</button>
+      <button style="margin-left: 8px;" mat-raised-button color="warn" mat-dialog-close>Close</button>
+    </div>
+   
 </div>

@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { ResetComponent } from './Layouts/reset/reset.component';
 import { CloginComponent } from './Layouts/login/clogin.component';
 import { InputComponent } from './input/input.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControlDirective,
+  FormGroupDirective, } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

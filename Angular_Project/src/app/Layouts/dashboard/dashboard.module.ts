@@ -20,10 +20,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
+import { RegisterInputComponent } from './dialog/register-input/register-input.component';
+import { RoomBookingInputComponent } from './dialog/room-booking-input/room-booking-input.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [MainComponent, UserComponent, AssetComponent, BookingComponent, StockComponent, CheaderComponent, IndexComponent, MeetingsComponent, UserassetsComponent, DigitalregisterComponent, DialogComponent],
+  declarations: [MainComponent, UserComponent, AssetComponent, BookingComponent, StockComponent, CheaderComponent, IndexComponent, MeetingsComponent, UserassetsComponent, DigitalregisterComponent, DialogComponent, RegisterInputComponent, RoomBookingInputComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -32,7 +34,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }
