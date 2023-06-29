@@ -44,7 +44,7 @@ export class UserComponent implements OnInit{
       width: '50%',
       height: '',
       position: {
-        top: '-40vh',
+        top: '50vh',
         left: '30vw'
     }
     });
