@@ -26,7 +26,6 @@ public class AdminService {
         return assetRepository.save(asset);
     }
 
-
     /**
      * Retrieves all assets from the repository.
      * @return A list of all assets.
@@ -41,7 +40,6 @@ public class AdminService {
      * @param asset The updated asset object.
      * @return The updated asset object.
      */
-
 
     public Asset updateAsset(Asset asset){
 

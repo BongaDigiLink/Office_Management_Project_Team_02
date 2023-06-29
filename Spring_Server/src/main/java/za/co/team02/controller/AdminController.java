@@ -21,18 +21,8 @@ public class AdminController {
 
     //Assets
     //
-    @GetMapping("/all-assets")
-    public List<Asset> getAllAssets(){
-        try{
-            return adminServiceOBJ.findAllAsserts();
-        }
 
-        catch (Exception e) {
-            System.out.println(HttpStatus.NO_CONTENT);
-            return null;
-        }
-    }
-
+    // Create
     @PostMapping("/add-asset")
     public Asset createAsset(@RequestBody Asset asset){
 
@@ -48,6 +38,48 @@ public class AdminController {
         }
 
     }
+    //Read
+    @GetMapping("/all-assets")
+    public List<Asset> getAllAssets(){
+        try{
+            return adminServiceOBJ.findAllAsserts();
+        }
+
+        catch (Exception e) {
+            System.out.println(HttpStatus.NO_CONTENT);
+            return null;
+        }
+    }
+
+    //Update
+
+    @PutMapping("/update-asset")
+    public Asset updateAsset(@RequestBody Asset asset){
+        try{
+            return adminServiceOBJ.updateAsset(asset);
+
+        }
+
+        catch(Exception e){
+            System.out.println(HttpStatus.INTERNAL_SERVER_ERROR);
+            return null;
+        }
+    }
+
+    //Delete
+
+    @DeleteMapping("/delete-asset")
+    public void deleteAsset (@PathVariable("id") Integer id){
+
+        adminServiceOBJ.deleteAsset(id);
+        Asset assetOBJ = adminServiceOBJ.findAllAsserts().get(id);
+
+    }
+
+
+
+
+
 
 
 
