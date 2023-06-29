@@ -1,9 +1,25 @@
 <h3 mat-dialog-title>Add User</h3>
 <div mat-dialog-content>
     <mat-form-field appearance="outline">
-        <mat-label>Outline form field</mat-label>
-        <input matInput placeholder="Placeholder">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Enter Name">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
+      </mat-form-field><br>
+      <mat-form-field appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input matInput placeholder="Enter Surname">
+      </mat-form-field><br>
+      <mat-form-field appearance="outline">
+        <mat-label>Department</mat-label>
+        <input matInput placeholder="Select Department">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field><br>
+      <mat-form-field appearance="outline">
+        <mat-label>Positon</mat-label>
+        <mat-select placeholder="Select Positon">
+            <mat-option value="">Intern</mat-option>
+            <mat-option>Manager</mat-option>
+            <mat-option>Senior Developer</mat-option>
+        </mat-select>
       </mat-form-field>
 </div>
