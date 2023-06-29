@@ -3,7 +3,6 @@
     <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput placeholder="Enter Name">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       </mat-form-field><br>
       <mat-form-field appearance="outline">
         <mat-label>Surname</mat-label>
@@ -11,15 +10,22 @@
       </mat-form-field><br>
       <mat-form-field appearance="outline">
         <mat-label>Department</mat-label>
-        <input matInput placeholder="Select Department">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-select placeholder="Select Department">
+            <mat-option value="">Intern</mat-option>
+            <mat-option value="">Manager</mat-option>
+            <mat-option value="">Senior Developer</mat-option>
+        </mat-select>
       </mat-form-field><br>
       <mat-form-field appearance="outline">
         <mat-label>Positon</mat-label>
         <mat-select placeholder="Select Positon">
             <mat-option value="">Intern</mat-option>
-            <mat-option>Manager</mat-option>
-            <mat-option>Senior Developer</mat-option>
+            <mat-option value="">Manager</mat-option>
+            <mat-option value="">Senior Developer</mat-option>
         </mat-select>
       </mat-form-field>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="primary">Add</button>
+    <button style="margin-left: 8px;" mat-raised-button color="warn" mat-dialog-close>Close</button>
 </div>
