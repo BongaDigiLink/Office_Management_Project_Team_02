@@ -73,8 +73,10 @@ public class AdminController {
      * @param asset The updated customer object.
      * @return The updated customer object.
      */
-    @PutMapping("/update-asset")
+    @PutMapping("/update-asset/{id}")
     public Asset updateAsset(@PathVariable("id") Integer id, @RequestBody Asset asset){
+
+        asset.setCandidateId(id);
         try{
             return adminServiceOBJ.updateAsset(asset);
         }
