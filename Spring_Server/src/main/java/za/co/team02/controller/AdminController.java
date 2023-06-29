@@ -15,6 +15,11 @@ public class AdminController {
 
     private final AdminService adminServiceOBJ;
 
+    /**
+     * Constructor for the CustomerController class.
+     * @param adminServiceArg The service used to perform user-related operations.
+     */
+    // Service Constructor
     public AdminController(AdminService adminServiceArg){
         this.adminServiceOBJ = adminServiceArg;
     }
@@ -22,7 +27,12 @@ public class AdminController {
     //Assets
     //
 
-    // Create
+    // Create Operation
+    /**
+     * Endpoint for creating a new asset.
+     * @param asset The asset object to be created.
+     * @return The created asset object.
+     */
     @PostMapping("/add-asset")
     public Asset createAsset(@RequestBody Asset asset){
 
@@ -38,7 +48,12 @@ public class AdminController {
         }
 
     }
-    //Read
+
+    //Read Operation
+    /**
+     * Endpoint for retrieving all assets.
+     * @return A list of all assets.
+     */
     @GetMapping("/all-assets")
     public List<Asset> getAllAssets(){
         try{
@@ -51,13 +66,17 @@ public class AdminController {
         }
     }
 
-    //Update
-
+    //Update Operation
+    /**
+     * Endpoint for updating a customer.
+     * @param id The ID of the customer to update.
+     * @param asset The updated customer object.
+     * @return The updated customer object.
+     */
     @PutMapping("/update-asset")
-    public Asset updateAsset(@RequestBody Asset asset){
+    public Asset updateAsset(@PathVariable("id") Integer id, @RequestBody Asset asset){
         try{
             return adminServiceOBJ.updateAsset(asset);
-
         }
 
         catch(Exception e){
@@ -66,14 +85,19 @@ public class AdminController {
         }
     }
 
-    //Delete
-
+    //Delete Operation
+    /**
+     * Endpoint for deleting a asset.
+     * @param id The ID of the asset to delete.
+     */
     @DeleteMapping("/delete-asset")
     public void deleteAsset (@PathVariable("id") Integer id){
-
-        adminServiceOBJ.deleteAsset(id);
-        Asset assetOBJ = adminServiceOBJ.findAllAsserts().get(id);
-
+        try {
+            adminServiceOBJ.deleteAsset(id);
+        }
+        catch (Exception e ){
+            System.out.println(HttpStatus.NO_CONTENT);
+        }
     }
 
 
