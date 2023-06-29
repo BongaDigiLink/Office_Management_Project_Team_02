@@ -1,11 +1,12 @@
 package za.co.team02.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import za.co.team02.dto.EventDTO;
 import za.co.team02.dto.UserDTO;
 import za.co.team02.model.SiteUser;
+import za.co.team02.service.EventService;
 import za.co.team02.service.UserService;
 
 import java.util.List;
@@ -17,12 +18,13 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class UserController
 {
     private UserService userService;
+    private EventService eventService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService,EventService eventService) {
         this.userService = userService;
+        this.eventService = eventService;
     }
-
 
     /**
      * admin
@@ -97,10 +99,17 @@ public class UserController
      * controller - make  meeting booking
      */
 
+
     /**
      * user
      * controller -  complete a register
      */
+    @PostMapping("/sign-register")
+    public String completeRegister(@RequestBody EventDTO eventDTO) {
+        this.eventService.logEvent(eventDTO);
+        return "redirect:/event_register";
+    }
+
 
     /**
      * user

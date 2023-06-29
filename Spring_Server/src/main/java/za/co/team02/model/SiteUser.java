@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity(name = "users")
 @Builder
 @Data
@@ -13,9 +15,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SiteUser
 {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "admin_id")
     private int adminId;
 
     @Column(name = "first_name")
@@ -38,4 +41,7 @@ public class SiteUser
 
     @Column(name = "user_address")
     private String address;
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy="user",cascade = CascadeType.ALL)
+    private Set<Event> event;
 }

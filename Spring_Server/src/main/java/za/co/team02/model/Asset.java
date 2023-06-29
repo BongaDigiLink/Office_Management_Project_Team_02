@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity(name="assets")
+@Entity(name="asset")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Asset {
