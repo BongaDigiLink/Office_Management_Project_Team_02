@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Asset } from '../models/asset';
-import { Booking } from '../models/booking';
+import { Booking, dtoBooking } from '../models/booking';
 import { Observable } from 'rxjs';
-import { RegisterRecord } from '../models/register';
+import { RegisterRecord, dtoRegisterRecord } from '../models/register';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +51,12 @@ export class UserService
     return this.http.get<RegisterRecord[]>(`${this.apiURL}/my-register/${email}`)
   }
 
+  //User creates event// Register (in or out)
+  createEvent(event_type: string, registerRecord: dtoRegisterRecord)
+  {
+    return this.http.post<any>(`${this.apiURL}/record-register/`, registerRecord)
+  }
+
   requestFood(email: string)
   {
     this.http.get<any>(`${this.apiURL}/request-food/${email}`)
@@ -61,6 +67,11 @@ export class UserService
   /**
    * user routes, my meetings/bookings
    */
+  newBooking(newBooking: dtoBooking)
+  {
+    return this.http.post<any>(`${this.apiURL}/create-booking/`, newBooking);
+  }
+
   editBooking(id: number, editBooking: Booking)
   {
     return this.http.put<Booking>(`${this.apiURL}/edit-booking/${id}`, editBooking)

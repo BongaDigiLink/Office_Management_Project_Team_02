@@ -4,6 +4,7 @@ import { User, dtoUser } from '../models/user';
 import { Asset } from '../models/asset';
 import { Observable } from 'rxjs';
 import { Booking } from '../models/booking';
+import { RegisterRecord } from '../models/register';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,12 @@ export class AdminService
   addUser(userDetails: dtoUser)
   {
     return this.http.post<dtoUser>(`${this.apiURL}/add-user`, userDetails);
+  }
+
+  //Register of all users
+  usersRegistration()
+  {
+    this.http.get<RegisterRecord[]>(`${this.apiURL}/all-users-registration`);
   }
 
   /**
