@@ -1,16 +1,19 @@
 <h3 mat-dialog-title>Add User</h3>
 <div mat-dialog-content>
+  <form
+    [formGroup]="updateUser()">
+
     <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Enter Name">
+        <input formControlName="firstName" matInput placeholder="Enter Name">
       </mat-form-field><br>
       <mat-form-field appearance="outline">
         <mat-label>Surname</mat-label>
-        <input matInput placeholder="Enter Surname">
+        <input formControlName="lastName" matInput placeholder="Enter Surname">
       </mat-form-field><br>
       <mat-form-field appearance="outline">
         <mat-label>Department</mat-label>
-        <mat-select placeholder="Select Department">
+        <mat-select formControlName="department" placeholder="Select Department">
             <mat-option value="">Intern</mat-option>
             <mat-option value="">Manager</mat-option>
             <mat-option value="">Senior Developer</mat-option>
@@ -18,14 +21,16 @@
       </mat-form-field><br>
       <mat-form-field appearance="outline">
         <mat-label>Positon</mat-label>
-        <mat-select placeholder="Select Positon">
+        <mat-select formControlName="role" placeholder="Select Positon">
             <mat-option value="">Intern</mat-option>
             <mat-option value="">Manager</mat-option>
             <mat-option value="">Senior Developer</mat-option>
         </mat-select>
       </mat-form-field>
+
+    </form>
 </div>
 <div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="primary">Add</button>
+    <button (click)="updateUser()" mat-raised-button color="primary">Add</button>
     <button style="margin-left: 8px;" mat-raised-button color="warn" mat-dialog-close>Close</button>
 </div>

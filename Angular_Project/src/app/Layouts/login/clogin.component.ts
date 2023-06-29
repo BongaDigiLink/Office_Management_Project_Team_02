@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/service/auth.service';
@@ -16,19 +16,20 @@ export class CloginComponent implements OnInit
   constructor
   (
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private formBuilder: FormBuilder
   ){}
 
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+
+  loginForm = this.formBuilder.group({
+    email: this.formBuilder.control('', [Validators.email, Validators.required]),
+    password: this.formBuilder.control('', [Validators.required, Validators.minLength(6)]),
   })
 
   ngOnInit(): void {}
 
   login(): void
   {
-
     if(!this.loginForm.valid)
     {
       return;

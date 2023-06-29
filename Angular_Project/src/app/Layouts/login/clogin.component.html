@@ -17,12 +17,15 @@
                 <div class="form-container">
                     <form [formGroup]="loginForm">
                         <label for="">Email</label><br>
-                        <app-input [control]="loginForm.controls.email"></app-input>
+                        <input formControlName="email" />
                        
                         <label for="">Password</label><br>
-                        <app-input type="password" [control]="loginForm.controls.password"></app-input>
+                        <input type="password" formControlName="password" />
+                        <!-- <app-input formControlName="password" [control]="loginForm.controls.password"></app-input> -->
                         
-                        <button (click)="login()" type="submit"  class="btn btn-primary btn-block mb-4">Sign in</button>
+                        <button (click)="login()"
+                         type="submit"  
+                         class="btn btn-primary btn-block mb-4">Sign in</button>
                     </form>
                 </div>
             </div>
