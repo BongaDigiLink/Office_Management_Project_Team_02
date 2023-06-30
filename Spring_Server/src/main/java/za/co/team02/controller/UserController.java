@@ -1,17 +1,18 @@
 package za.co.team02.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import za.co.team02.dto.EventDTO;
 import za.co.team02.dto.UserDTO;
+import za.co.team02.model.Facility;
 import za.co.team02.model.SiteUser;
 import za.co.team02.service.EventService;
+import za.co.team02.service.FacilityService;
 import za.co.team02.service.UserService;
 
 import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping("/v1")
@@ -20,10 +21,13 @@ public class UserController
     private UserService userService;
     private EventService eventService;
 
+    private FacilityService facilityService;
+
     @Autowired
-    public UserController(UserService userService,EventService eventService) {
+    public UserController(UserService userService,EventService eventService, FacilityService facilityService) {
         this.userService = userService;
         this.eventService = eventService;
+        this.facilityService = facilityService;
     }
 
     /**
@@ -74,6 +78,24 @@ public class UserController
         userService.updateUser(siteUser);
     }
 
+
+    //Request Facility Post
+
+    @PostMapping("/create-facility-request")
+    public Facility createFacility(@RequestBody Facility facility){
+
+        try {
+            return  facilityService.createFacilityRequest(facility);
+        }
+
+        catch(Exception e){
+
+            System.out.println(HttpStatus.INTERNAL_SERVER_ERROR);
+            return null;
+
+        }
+
+    }
     /**
      * admin
      * controller - update food reserve
