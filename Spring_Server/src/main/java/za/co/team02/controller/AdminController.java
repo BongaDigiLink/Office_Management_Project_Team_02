@@ -1,11 +1,13 @@
 package za.co.team02.controller;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.co.team02.model.Asset;
-import za.co.team02.repository.AssetRepository;
+import za.co.team02.model.Facility;
+import za.co.team02.repository.FacilityRepository;
 import za.co.team02.service.AdminService;
+import za.co.team02.service.FacilityService;
 
 import java.util.List;
 
@@ -13,15 +15,20 @@ import java.util.List;
 @RequestMapping("admin")
 public class AdminController {
 
+    private final FacilityRepository facilityRepo;
     private final AdminService adminServiceOBJ;
-
+    private FacilityService facilityService;
     /**
      * Constructor for the CustomerController class.
+     *
+     * @param facilityRepo
      * @param adminServiceArg The service used to perform user-related operations.
      */
     // Service Constructor
-    public AdminController(AdminService adminServiceArg){
+    public AdminController(FacilityRepository facilityRepo, AdminService adminServiceArg, FacilityService facilityService){
+        this.facilityRepo = facilityRepo;
         this.adminServiceOBJ = adminServiceArg;
+        this.facilityService = facilityService;
     }
 
     //Assets
@@ -102,7 +109,19 @@ public class AdminController {
         }
     }
 
+    //
 
+    //@PatchMapping("/facility/{id}/{status}")
+    @PatchMapping("/update-facility-request/{id}/{status}")
+    public ResponseEntity<Facility> updateEmployeePartially(@PathVariable Integer id, @PathVariable String status) {
+        try {
+            Facility facility = facilityRepo.findById(id).get();
+            facility.setStatus(status);
+            return new ResponseEntity<Facility>(facilityRepo.save(facility), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
 

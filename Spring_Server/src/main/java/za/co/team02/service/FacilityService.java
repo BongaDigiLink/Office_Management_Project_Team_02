@@ -1,7 +1,6 @@
 package za.co.team02.service;
 
 import org.springframework.stereotype.Service;
-import za.co.team02.model.Asset;
 import za.co.team02.model.Facility;
 import za.co.team02.repository.FacilityRepository;
 
@@ -16,6 +15,7 @@ public class FacilityService {
 
     }
 
+    // Start Of User Functions
     /**
      * Role: User
      * Creates a new customer and saves it to the repository.
@@ -23,6 +23,10 @@ public class FacilityService {
      * @return The created asset object.
      */
     public Facility createFacilityRequest(Facility facility){
+        if(facility.getStatus() == null)
+        {
+            facility.setStatus("Pending");
+        }
         return facilityRepo.save(facility);
     }
 
@@ -32,9 +36,13 @@ public class FacilityService {
      * @return A list of all meeting room bookings.
      */
 
-    public List<Facility> findAllMeetingRooms(){
+    public List<Facility> findAllRequestedRooms(){
         return facilityRepo.findAll();
     }
 
+
+    //End Of User Functions
+
+    //Start of Admin Functions
 
 }
