@@ -1,2 +1,5 @@
-package za.co.team02.service;public class FoodService {
+package za.co.team02.service;
+
+public class FoodService {
+
 }
