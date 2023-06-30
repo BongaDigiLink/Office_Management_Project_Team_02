@@ -42,10 +42,3 @@ button{
   background-color: #f5f5f5;
 }
 
-.pass{
-  display: flex;
-  align-items: center;
-}
-.pass button{
-  background-color: lightgray;
-}
