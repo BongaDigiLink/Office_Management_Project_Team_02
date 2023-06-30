@@ -4,7 +4,6 @@ export class User
     firstName?: string;
     lastName?: string;
     department?: string;
-    imageUrl?: string;
     userType?: string;
     role?: string
 }

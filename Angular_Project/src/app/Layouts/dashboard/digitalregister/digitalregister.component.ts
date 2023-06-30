@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
 import { RoomBookingInputComponent } from '../dialog/update-user/update-user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-digitalregister',
@@ -27,8 +28,8 @@ export class DigitalregisterComponent implements OnInit{
 
     eventForm = new FormGroup({
       event_type: new FormControl('', [Validators.required]),
-      signInTime: new FormControl(''),
-      signOutTime: new FormControl(''),
+      signInTime: new FormControl(Date.now()),
+      signOutTime: new FormControl(Date.now()),
       event_message: new FormControl('')
     })
 
@@ -42,7 +43,7 @@ export class DigitalregisterComponent implements OnInit{
       }
       else if( value == 2)
       {
-        this.userService.myRegister("email@mail.com").subscribe(
+        this.userService.myRegister(this.authService.getEmail()).subscribe(
            (my_record) => {
           this.myEvents = my_record
         } )
@@ -50,10 +51,66 @@ export class DigitalregisterComponent implements OnInit{
     })
   }
 
-  signRegister()
+  signIn()
   {
+    this.eventForm.value.signInTime = Date.now();
     console.log("Register inputs")
     console.log(this.eventForm.value)
+
+    this.userService.createEvent(this.eventForm.value).subscribe( 
+      {
+        next: () => {
+          Swal.fire(
+            {
+            position: 'center',
+            icon: 'success',
+            title: 'Signed In',
+            showConfirmButton: false,
+            timer: 1600
+            }
+          )
+        },
+        error: () => {
+          Swal.fire(
+            {
+            position: 'center',
+            icon: 'error',
+            title: 'Not Signed-In',
+            showConfirmButton: false,
+            timer: 1600
+            }
+          )
+        }
+       })
+  }
+
+  signOut()
+  {
+
+    this.userService.createEvent(this.eventForm.value).subscribe( 
+      {
+        next: () => {
+          Swal.fire(
+            {
+            position: 'center',
+            icon: 'success',
+            title: 'Signed-Out',
+            showConfirmButton: false,
+            timer: 1600
+            }
+          )
+        },
+        error: () => {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Not Signed-Out',
+            showConfirmButton: false,
+            timer: 1600
+          })
+
+        }
+       })
   }
 
 

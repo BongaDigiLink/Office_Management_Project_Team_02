@@ -15,7 +15,7 @@ export class UserService
 {
   constructor(private http: HttpClient) { }
 
-  apiURL = 'http://localhost:8081/user'
+  apiURL = 'http://localhost:8081/v1'
 
   /**
    * User updates details.
@@ -47,15 +47,15 @@ export class UserService
    * @param email - user email
    * @returns - record of my register attendance
    */
-  myRegister(email: string): Observable<RegisterRecord[]>
+  myRegister(email: string | undefined): Observable<RegisterRecord[]>
   {
     return this.http.get<RegisterRecord[]>(`${this.apiURL}/my-register/${email}`)
   }
 
   //User creates event// Register (in or out)
-  createEvent(event_type: string, registerRecord: dtoRegisterRecord)
+  createEvent(registerRecord: dtoRegisterRecord)
   {
-    return this.http.post<any>(`${this.apiURL}/record-register/`, registerRecord)
+    return this.http.post<any>(`${this.apiURL}/sign-register`, registerRecord)
   }
 
   requestFood(email: string)
@@ -75,7 +75,7 @@ export class UserService
    */
   newBooking(newBooking: dtoBooking)
   {
-    return this.http.post<any>(`${this.apiURL}/create-booking/`, newBooking);
+    return this.http.post<any>(`${this.apiURL}/create-facility-request`, newBooking);
   }
 
   editBooking(id: number, editBooking: Booking)
