@@ -5,8 +5,8 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-room-booking-input',
-  templateUrl: './room-booking-input.component.html',
-  styleUrls: ['./room-booking-input.component.css']
+  templateUrl: './update-user.html',
+  styleUrls: ['./update-user.css']
 })
 export class RoomBookingInputComponent {
 

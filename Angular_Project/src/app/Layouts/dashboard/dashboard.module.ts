@@ -21,7 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { RegisterInputComponent } from './dialog/register-input/register-input.component';
-import { RoomBookingInputComponent } from './dialog/room-booking-input/room-booking-input.component';
+import { RoomBookingInputComponent } from './dialog/update-user/update-user';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

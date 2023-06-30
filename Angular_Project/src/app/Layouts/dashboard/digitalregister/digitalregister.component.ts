@@ -4,7 +4,7 @@ import { RegisterRecord } from 'src/app/models/register';
 import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
-import { RoomBookingInputComponent } from '../dialog/room-booking-input/room-booking-input.component';
+import { RoomBookingInputComponent } from '../dialog/update-user/update-user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({

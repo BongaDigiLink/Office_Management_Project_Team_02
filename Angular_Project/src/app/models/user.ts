@@ -12,10 +12,13 @@ export class User
 export class dtoUser
 {
     constructor(
-        email: string,
         name: string,
         surname: string,
-        imageUrl: string,
-        role: string,
+        email: string,
+        address: string,
+        password: string,
+        role : string,
     ){}
+
+
 }

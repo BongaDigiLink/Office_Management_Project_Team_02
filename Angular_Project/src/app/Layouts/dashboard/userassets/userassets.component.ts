@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LogAsset } from 'src/app/models/LogAsset';
 import { Asset } from 'src/app/models/asset';
 import { AdminService } from 'src/app/service/admin.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
 import Swal from 'sweetalert2';
 
@@ -13,14 +15,30 @@ import Swal from 'sweetalert2';
 export class UserassetsComponent implements OnInit{
 
   constructor(private adminService: AdminService,
-    private userService: UserService){}
+    private userService: UserService,
+    private authservice: AuthService){}
 
   allAssets?: Asset[];
 
+  //user past asset log request array
+  myRequests?: LogAsset[];
+
   ngOnInit(): void {
+
     this.adminService.getAssets().subscribe( (assets) => {
       this.allAssets = assets;
     })
+
+    //Get users log records
+    this.userService.getMyEvents(this.authservice.getEmail()).subscribe( 
+      {
+        next: (records) => {
+          this.myRequests = records;
+        },
+        error: () => {
+          console.log("an error occured.")
+        }
+      } )
   }
 
   logAssetForm = new FormGroup({
@@ -30,6 +48,7 @@ export class UserassetsComponent implements OnInit{
     message: new FormControl('', [Validators.required])
   })
 
+  //Requesting to take out an asset.
   logAssetLog()
   {
     console.log("Asset Log Form:")
@@ -57,7 +76,7 @@ export class UserassetsComponent implements OnInit{
   }
 
   /**
-   * methods decline/accept take in request id and create a put call
+   *ADMIN methods decline/accept take in request id and create a put call
    */
   declineAssetLog()
   {

@@ -24,16 +24,17 @@ export class DialogComponent {
     firstName: this.formBuilder.control('', [Validators.required]),
     lastName: this.formBuilder.control('', [Validators.required]),
     username: this.formBuilder.control('', [Validators.required]),
-    department: this.formBuilder.control('', [Validators.required]),
-    position: this.formBuilder.control('', [Validators.required])
+    address: this.formBuilder.control('', [Validators.required]),
+    password: this.formBuilder.control('welcome@123'),
+    role: this.formBuilder.control('user')
   })
 
   
 //you must know your types
+
+//Updating a user.
   updateUser(): any
   {
-    console.log(this.addUserForm.value);
-
     if(this.addUserForm.invalid)
     {
       return;
@@ -49,6 +50,28 @@ export class DialogComponent {
             timer: 1400
         })
     })
+  }
+
+  //Adding New User
+  addNewUser()
+  {
+    console.log(this.addUserForm.value);
+
+    if(this.addUserForm.invalid)
+    {
+      return;
+    }
+
+    this.service.addUser(this.addUserForm.value).subscribe(
+      () => {
+       Swal.fire({
+         position: 'center',
+           icon: 'success',
+           title: 'User Updated!',
+           showConfirmButton: false,
+           timer: 1400
+       })
+   })
   }
 
 }

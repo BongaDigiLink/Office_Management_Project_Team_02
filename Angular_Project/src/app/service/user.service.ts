@@ -5,7 +5,7 @@ import { Asset } from '../models/asset';
 import { Booking, dtoBooking } from '../models/booking';
 import { Observable } from 'rxjs';
 import { RegisterRecord, dtoRegisterRecord } from '../models/register';
-import { logdtoAsset } from '../models/LogAsset';
+import { LogAsset, logdtoAsset } from '../models/LogAsset';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +62,11 @@ export class UserService
   {
     this.http.get<any>(`${this.apiURL}/request-food/${email}`)
   }
+
+  getMyEvents(email: string | undefined): Observable<LogAsset[]>
+  {
+    return this.http.get<LogAsset[]>(`${this.apiURL}/get-my-asset-log/${email}`)
+  }
   
 
 
@@ -81,7 +86,7 @@ export class UserService
   /**
    * @returns list of my bookings
    */
-  getMyBookings(email: string | null): Observable<Booking[]>
+  getMyBookings(email: string | undefined): Observable<Booking[]>
   {
     return this.http.get<Booking[]>(`${this.apiURL}/my-bookings/${email}`);
   }
