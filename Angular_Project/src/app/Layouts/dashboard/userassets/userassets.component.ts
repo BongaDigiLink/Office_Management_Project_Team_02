@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Asset } from 'src/app/models/asset';
 import { AdminService } from 'src/app/service/admin.service';
+import { UserService } from 'src/app/service/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-userassets',
@@ -9,13 +12,47 @@ import { AdminService } from 'src/app/service/admin.service';
 })
 export class UserassetsComponent implements OnInit{
 
-  constructor(private adminService: AdminService){}
+  constructor(private adminService: AdminService,
+    private userService: UserService){}
 
   allAssets?: Asset[];
 
   ngOnInit(): void {
     this.adminService.getAssets().subscribe( (assets) => {
       this.allAssets = assets;
+    })
+  }
+
+  logAssetForm = new FormGroup({
+    assetName: new FormControl('', Validators.required),
+    takeOutDay: new FormControl('', Validators.required),
+    returnDate: new FormControl('', Validators.required),
+    message: new FormControl('', [Validators.required])
+  })
+
+  logAssetLog()
+  {
+    console.log("Asset Log Form:")
+    console.log(this.logAssetForm.value)
+
+    this.userService.assetRegister(this.logAssetForm.value).subscribe( 
+    {
+      next: () => {
+        Swal.fire({
+          title: 'Your asset log was sent',
+          icon:'success',
+          text: 'Your asset log will be processed soon.',
+          timer: 1500
+        })
+      },
+      error: () => {
+        Swal.fire({
+          title: 'Asset log was not created',
+          icon:'error',
+          text: 'please try again',
+          timer: 1500
+        })
+      }
     })
   }
 
