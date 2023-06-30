@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Asset } from 'src/app/models/asset';
+import { Booking } from 'src/app/models/booking';
+import { RegisterRecord } from 'src/app/models/register';
 import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
@@ -19,6 +22,12 @@ export class IndexComponent implements OnInit {
 
   admin_interface : boolean = false;
   user_interface : boolean = false;
+
+  //Admin and User arrays
+  userBookings!: Booking[];
+  userAssetLogs!: Asset[];
+  availRooms!: Booking[]; //Query select only unbooked
+  userRegister!: RegisterRecord[];
 
   ngOnInit(): void 
   {
