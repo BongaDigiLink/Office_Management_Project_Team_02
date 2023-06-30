@@ -16,3 +16,8 @@
 	display:block;
 	font-weight: bold;
 }
+.row{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
