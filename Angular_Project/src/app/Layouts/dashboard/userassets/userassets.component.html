@@ -5,27 +5,34 @@
         <h3>Asset Register</h3> 
         <div class="panel panel-default">
             <div class="panel-body">
-                <form>
+
+                <form [formGroup]="logAssetForm">
+
                     <ul class="form-style-1">
                         <li>
                             <label>Assets</label>
-                            <select name="field4" class="field-select">
+                            <select formControlName="assetName" name="field4" class="field-select">
                             <option value="Laptop">Laptop</option>
                             <option value="Headsets">Headsets</option>
                             <option value="Desktop">Desktop</option>
                             </select>
                         </li>                        
-                        <li><label>From <span class="required">*</span></label><input type="date" name="field1" class="field-divided" /></li>
-                        <li><label>To <span class="required">*</span></label><input type="date" name="field2" class="field-divided" /></li>
+                        <li><label>From <span class="required">*</span></label>
+                            <input formControlName="takeOutDate" type="date" name="field1" class="field-divided" /></li>
+
+                        <li><label>To <span class="required">*</span></label>
+                            <input formControlName="returnDate" type="date" name="field2" class="field-divided" /></li>
                         <li>
                             <label>Reason <span class="required">*</span></label>
-                            <input type="email" name="field3" class="field-long" />
+                            <input formControlName="message" type="email" name="field3" class="field-long" />
                         </li>
                         <li>
-                            <input type="submit" value="Create Log" />
+                            <button (click)="logAssetLog()" type="submit">Create Log</button>
                         </li>
                     </ul>
-                    </form>
+
+                </form>
+
             </div>
         </div>
         

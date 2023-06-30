@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Asset } from 'src/app/models/asset';
+import { Booking } from 'src/app/models/booking';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class AssetComponent implements OnInit{
   constructor(private adminService: AdminService){}
 
   allAssets!: Asset[]
+  allUserBookings?: Booking[];
 
   ngOnInit(): void {
     this.adminService.getAssets().subscribe( 
@@ -22,6 +24,11 @@ export class AssetComponent implements OnInit{
 
         this.allAssets = this.allAssets
       })
+
+      this.adminService.getBookings().subscribe(
+        (userBookings_) => {
+         this.allUserBookings = userBookings_
+        })
   }
 
 }

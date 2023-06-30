@@ -81,3 +81,8 @@ select{
 .form-style-1 .required{
 	color:red;
 }
+.row{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }

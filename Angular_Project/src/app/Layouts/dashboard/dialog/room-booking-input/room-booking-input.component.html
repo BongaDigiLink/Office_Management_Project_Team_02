@@ -1,1 +1,36 @@
-<p>room-booking-input works!</p>
+<h3 mat-dialog-title>Add User</h3>
+<div mat-dialog-content>
+  <form [formGroup]="roomBookingForm">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Room Name</mat-label>
+        <mat-select formControlName="room_name" placeholder="Select Department">
+            <mat-option value="">Blue Room</mat-option>
+            <mat-option value="">Green Room</mat-option>
+            <mat-option value="">Red Room</mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Date</mat-label>
+        <input type="date" formControlName="date_" matInput placeholder="Date">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Start Time</mat-label>
+        <input type="datetime" formControlName="start_time" matInput placeholder="Date">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>End Time</mat-label>
+        <input type="datetime" formControlName="end_time" matInput placeholder="Date">
+      </mat-form-field>
+      
+    <div mat-dialog-action [align]="'end'">
+      <button (click)="createRoomBooking()" mat-raised-button color="primary">Add</button>
+      <button style="margin-left: 8px;" mat-raised-button color="warn" mat-dialog-close>Close</button>
+    </div>
+
+  </form>
+   
+</div>
