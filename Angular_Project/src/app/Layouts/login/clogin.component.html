@@ -12,20 +12,26 @@
     <div class="container">
         <div class="sign-in">
             <div class="inner">
-                <h1>OMF Sign in</h1>
 
                 <div class="form-container">
                     <form [formGroup]="loginForm">
+                        
+                        <mat-form-field>    
+                        <h1>OMF Sign in</h1>
                         <label for="">Email</label><br>
-                        <input formControlName="email" />
-                       
-                        <label for="">Password</label><br>
-                        <input type="password" formControlName="password" />
+                        <input formControlName="email" /><br>
+                            <label for="">Password</label><br>
+                            <input type="password" formControlName="password" matInput [type]="hide ? 'password' : 'text'" />
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <button (click)="login()"
+                            type="submit"  
+                            class="btn btn-primary btn-block mb-4">Sign in</button>
+                        </mat-form-field>
+
                         <!-- <app-input formControlName="password" [control]="loginForm.controls.password"></app-input> -->
                         
-                        <button (click)="login()"
-                         type="submit"  
-                         class="btn btn-primary btn-block mb-4">Sign in</button>
                     </form>
                 </div>
             </div>
