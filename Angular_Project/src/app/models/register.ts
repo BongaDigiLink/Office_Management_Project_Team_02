@@ -5,6 +5,7 @@ export class RegisterRecord
     userRecord?: string;
     timeSignedIn?: Time;
     dateSignedIn?: Date;
+    eventType?: string
 }
 
 export class dtoRegisterRecord
@@ -14,5 +15,6 @@ export class dtoRegisterRecord
         //Data types should be Date/ Datetime
         timeSignedIn: string,
         dateSignedIn: string,
+        eventType: string,
     ){}
 }

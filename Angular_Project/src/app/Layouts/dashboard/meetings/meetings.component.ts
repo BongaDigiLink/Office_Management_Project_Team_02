@@ -42,14 +42,16 @@ export class MeetingsComponent implements OnInit{
     {
       date:new FormControl('', [Validators.required]),
       venue:new FormControl('', [Validators.required]),
-      time: new FormControl('', [Validators.required])
+      start_time: new FormControl('', [Validators.required]),
+      end_time: new FormControl('', Validators.required)
     }
   )
 
   //parse createMeetingForm details to this method
   createAMeeting()
   {
-
+    console.log("Form INputs")
+    console.log(this.createMeetingForm.value)
   }
 
   //When user clicks submit button on the Update pop form.
