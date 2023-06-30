@@ -1,5 +1,6 @@
 export class Booking
 {
+    bookingId?: number;
     roomId?: number;
     roomName?: string;
     roomCapacity?: string;
