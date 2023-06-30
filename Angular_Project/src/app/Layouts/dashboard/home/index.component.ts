@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-index',
@@ -8,7 +11,11 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class IndexComponent implements OnInit {
 
-  constructor(private service: AuthService){}
+  constructor(
+    private service: AuthService, 
+    private adminService: AdminService,
+    private userService: UserService,
+    private router: Router){}
 
   admin_interface : boolean = false;
   user_interface : boolean = false;
@@ -29,15 +36,20 @@ export class IndexComponent implements OnInit {
     if(value === 1)
     {
       this.admin_interface = true;
+      //Get a few records ( bookings, assets logs, user register etc. ) for admin Overview display.
+      //- this.adminService.
     }
     else if(value === 2)
     {
       this.user_interface = true;
+
+      //Get minimal records ( bookings, register etc. )  about this user for Overview display.
+      //- this.userService.
     }
     else
     {
       //do nothing.
-      this.user_interface = true;
+      this.router.navigateByUrl('login');
     }
   }
 }

@@ -14,12 +14,16 @@ export class MainComponent implements OnInit
   admin_interface : boolean = false;
   user_interface : boolean = false;
 
+  userName!: string | undefined;
+
   ngOnInit(): void 
   {
     this.service.userType$.subscribe( (value) => 
     {
       this.setInterfaces(value)
     })
+
+     this.userName = this.service.getName();
   }
 
   /**
