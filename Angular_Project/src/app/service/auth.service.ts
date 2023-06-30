@@ -20,6 +20,24 @@ export class AuthService
   //0 - none, 1 - admin, 2 - Candidate/Staff
   userType$ = new BehaviorSubject(0);
 
+  //User details of the current logged in user.
+  user_!: User;
+  getName(): string | undefined
+  {
+    return this.user_.firstName
+  }
+
+  getSurname(): string | undefined
+  {
+    return this.user_.lastName
+  }
+
+  getEmail(): string | undefined
+  {
+    return this.user_.email
+  }
+
+
   apiURL = 'http://localhost:8081/auth'
 
   /**
@@ -32,9 +50,10 @@ export class AuthService
   {
     return this.http.post<User>(`${this.apiURL}/login`, loginDetails)
     .pipe(
-      tap( () => 
+      tap( (user) => 
       {
         this.signedIn$.next(true)
+        this.user_ = user;
       } )
     )
   }

@@ -5,6 +5,7 @@ import { Asset } from '../models/asset';
 import { Booking, dtoBooking } from '../models/booking';
 import { Observable } from 'rxjs';
 import { RegisterRecord, dtoRegisterRecord } from '../models/register';
+import { logdtoAsset } from '../models/LogAsset';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +29,9 @@ export class UserService
   /**
    * Asset Register
    */
-  assetRegister(assetDetails: Asset)
+  assetRegister(logDetails: logdtoAsset)
   {
-    return this.http.post<Asset>(`${this.apiURL}/asset-register`, assetDetails);
+    return this.http.post<any>(`${this.apiURL}/asset-register`, logDetails);
   }
 
   /**
