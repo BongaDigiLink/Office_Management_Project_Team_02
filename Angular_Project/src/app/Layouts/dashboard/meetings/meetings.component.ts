@@ -55,7 +55,8 @@ export class MeetingsComponent implements OnInit{
   //When user clicks submit button on the Update pop form.
   updateExistingMeeting()
   {
-
+    console.log("Form Data")
+    console.log(this.createMeetingForm.value)
   }
 
   //Admin form for editing an existing booking.

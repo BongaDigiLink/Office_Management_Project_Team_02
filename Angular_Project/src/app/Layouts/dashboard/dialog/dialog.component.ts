@@ -23,19 +23,23 @@ export class DialogComponent {
     email: this.formBuilder.control('', [Validators.email, Validators.required]),
     firstName: this.formBuilder.control('', [Validators.required]),
     lastName: this.formBuilder.control('', [Validators.required]),
-    departmanet: this.formBuilder.control('', [Validators.required])
+    username: this.formBuilder.control('', [Validators.required]),
+    department: this.formBuilder.control('', [Validators.required]),
+    position: this.formBuilder.control('', [Validators.required])
   })
+
+  
 //you must know your types
   updateUser(): any
   {
-    console.log(this.updateUserForm.value);
+    console.log(this.addUserForm.value);
 
-    if(this.updateUserForm.invalid)
+    if(this.addUserForm.invalid)
     {
       return;
     }
 
-    this.service.addUser(this.updateUserForm.value).subscribe(
+    this.service.addUser(this.addUserForm.value).subscribe(
        () => {
         Swal.fire({
           position: 'center',

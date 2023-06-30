@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { RegisterRecord } from 'src/app/models/register';
 import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
+import { RoomBookingInputComponent } from '../dialog/room-booking-input/room-booking-input.component';
 
 @Component({
   selector: 'app-digitalregister',
@@ -21,6 +23,7 @@ export class DigitalregisterComponent implements OnInit{
 
     //All sign-in or out event
     allEvents!: RegisterRecord[]
+
 
   ngOnInit(): void {
     this.authService.userType$.subscribe( (value) => {

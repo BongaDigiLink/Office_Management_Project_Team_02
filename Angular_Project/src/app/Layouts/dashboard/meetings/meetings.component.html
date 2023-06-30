@@ -54,51 +54,34 @@
         </div>  
         </div>
 
-        <!-- Select Meeting Room -->
-        <div class="col-md-9 col-sm-12 col-xs-12">
-            <h3>Meeting Room Booking</h3> 
+        <div class="row" >
+          <div class="col-md-9 col-sm-12 col-xs-12">
+          <h3>Meeting Room Booking</h3> 
             <div class="panel panel-default">
+
                 <div class="panel-body">
-                    <table class="table table-borderless">
-                        <thead class="bg-light">
-                            <tr>
-                              <th>Venue</th>
-                              <th>Date</th>
-                              <th>Time</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <div class="ms-3"><br>
-                                    <select name="field4" class="field-select">
-                                        <option value="Laptop">Green Meeting Room</option>
-                                        <option value="Headsets">Yellow Meeting Room</option>
-                                        <option value="Desktop">Red Training Room</option>
-                                        </select>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                    <div class="ms-3"><br>
-                                    <input type="date" name="field1" class="field-divided" />
-                                    </div>
-                                  </div>
-                              </td>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                    <div class="ms-3"><br>
-                                        <input type="time" name="field1" class="field-divided" />
-                                    </div>
-                                  </div>
-                            </tr>
-                          </tbody>
-                    </table>
+                    <form [formGroup]="createMeetingForm">
+                        <ul class="form-style-1">
+                            <li>
+                                <label>Meeting Venues</label>
+                                <select formControlName="venue" name="field4" class="field-select">
+                                <option value="Laptop">Green Room</option>
+                                <option value="Headsets">Blue Room</option>
+                                <option value="Desktop">Red Room</option>
+                                </select>
+                            </li>                        
+                            <li><label>From <span class="required">*</span></label><input type="datetime" class="field-divided" /></li>
+                            <li><label>To <span class="required">*</span></label><input type="datetime" class="field-divided" /></li>
+                      
+                            <li>
+                                <button type="submit" (click)="createAMeeting()">Book Room</button>
+                            </li>
+                        </ul>
+                    </form>
                 </div>
             </div>
-            
-            </div>
+    
+          </div>
+      </div>
     </div>
     <!--End of Main Content here.-- End of module component here.-->
