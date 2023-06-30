@@ -79,9 +79,16 @@ public class UserController
     }
 
 
-    //Request Facility Post
+    //Start Of Facility End Points
+    //Start User Facility Functions
 
-    @PostMapping("/create-facility-request")
+    // Create Operation
+    /**
+     * Endpoint for creating a new asset.
+     * @param facility The asset object to be created.
+     * @return The created asset object.
+     */
+    @PostMapping("user/create-facility-request")
     public Facility createFacility(@RequestBody Facility facility){
 
         try {
@@ -96,6 +103,28 @@ public class UserController
         }
 
     }
+
+    //Read Operation
+    /**
+     * Endpoint for retrieving all Requested Meeting Rooms.
+     * @return A list of all assets.
+     */
+    @GetMapping("user/get-facility-request")
+    public List<Facility> getAllRequestedRooms(Facility facility){
+        try{
+
+            return facilityService.findAllRequestedRooms();
+        }
+
+        catch (Exception e) {
+            System.out.println(HttpStatus.NO_CONTENT);
+            return null;
+        }
+    }
+
+    //End User Facility Functions
+
+
     /**
      * admin
      * controller - update food reserve

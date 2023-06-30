@@ -17,18 +17,21 @@ public class Facility   {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "room_name")
+    @Column(name = "room_name", nullable = false)
     private String trainingRoomName;
 
     @Temporal(TemporalType.DATE)
     Date date;
 
-    @Column (name = "start-time")
+    @Column (name = "start-time", nullable = false)
     private String startTime;
 
-    @Column (name = "end-time")
+    @Column (name = "end-time",nullable = false)
     private String endTime;
 
+    // Nullable Awaiting Admin Approval
+    @Column(name = "status")
+    private String status;
 
 
 
@@ -71,7 +74,16 @@ public class Facility   {
     public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
-//    @Column(name = "room_type")
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    //    @Column(name = "room_type")
 //    private String trainingRoomType;
 //
 //    @Column(name = "availability")
