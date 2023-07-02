@@ -2,16 +2,22 @@ package za.co.team02.service;
 
 import org.springframework.stereotype.Service;
 import za.co.team02.model.Facility;
+import za.co.team02.model.SiteUser;
 import za.co.team02.repository.FacilityRepository;
+import za.co.team02.repository.UserRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
 public class FacilityService {
 
     private final FacilityRepository facilityRepo;
-    public FacilityService(FacilityRepository facilityRepoArg){
+    private final UserRepository userRepository;
+    public FacilityService(FacilityRepository facilityRepoArg, UserRepository user)
+    {
         this.facilityRepo = facilityRepoArg;
+        this.userRepository = user;
 
     }
 
@@ -22,12 +28,20 @@ public class FacilityService {
      * @param facility The facility object to create.
      * @return The created asset object.
      */
-    public Facility createFacilityRequest(Facility facility){
-        if(facility.getStatus() == null)
-        {
-            facility.setStatus("Pending");
-        }
-        return facilityRepo.save(facility);
+    public Facility createFacilityRequest(String userEmail, Facility facility)
+    {
+        SiteUser user = userRepository.findByEmail(userEmail).get();
+        //make checks to see whether this request doesn't conflict with existing meetings
+
+        //Save new booking
+        facility.setUserId(user.getAdminId());
+         return facilityRepo.save(facility);
+
+//        if(facility.getStatus() == null)
+//        {
+//            facility.setStatus("Pending");
+//        }
+//        return facilityRepo.save(facility);
     }
 
     /**
@@ -36,8 +50,20 @@ public class FacilityService {
      * @return A list of all meeting room bookings.
      */
 
-    public List<Facility> findAllRequestedRooms(){
+    public List<Facility> findAllRequestedRooms()
+    {
         return facilityRepo.findAll();
+    }
+
+    /**
+     * @param userEmail - the current user
+     * @return - list of all bookings of this user.
+     */
+    public List<Facility> findAllRequestedRoomsByUser(String userEmail)
+    {
+        SiteUser user = userRepository.findByEmail(userEmail).get();
+
+        return facilityRepo.findAllById(Collections.singleton(user.getAdminId()));
     }
 
 

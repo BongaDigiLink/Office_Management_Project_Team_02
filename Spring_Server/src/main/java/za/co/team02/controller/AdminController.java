@@ -18,6 +18,7 @@ public class AdminController {
     private final FacilityRepository facilityRepo;
     private final AdminService adminServiceOBJ;
     private FacilityService facilityService;
+
     /**
      * Constructor for the CustomerController class.
      *
@@ -25,7 +26,7 @@ public class AdminController {
      * @param adminServiceArg The service used to perform user-related operations.
      */
     // Service Constructor
-    public AdminController(FacilityRepository facilityRepo, AdminService adminServiceArg, FacilityService facilityService){
+    public AdminController(FacilityRepository facilityRepo, AdminService adminServiceArg, FacilityService facilityService) {
         this.facilityRepo = facilityRepo;
         this.adminServiceOBJ = adminServiceArg;
         this.facilityService = facilityService;
@@ -35,76 +36,73 @@ public class AdminController {
     //
 
     // Create Operation
+
     /**
      * Endpoint for creating a new asset.
+     *
      * @param asset The asset object to be created.
      * @return The created asset object.
      */
     @PostMapping("/add-asset")
-    public Asset createAsset(@RequestBody Asset asset){
-
+    public Asset createAsset(@RequestBody Asset asset) {
         try {
-            return  adminServiceOBJ.createAsset(asset);
-        }
-
-        catch(Exception e){
-
+            return adminServiceOBJ.createAsset(asset);
+        } catch (Exception e) {
             System.out.println(HttpStatus.INTERNAL_SERVER_ERROR);
             return null;
-
         }
-
     }
 
     //Read Operation
+
     /**
      * Endpoint for retrieving all assets.
+     *
      * @return A list of all assets.
      */
     @GetMapping("/all-assets")
-    public List<Asset> getAllAssets(){
-        try{
+    public List<Asset> getAllAssets() {
+        try {
             return adminServiceOBJ.findAllAsserts();
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(HttpStatus.NO_CONTENT);
             return null;
         }
     }
 
     //Update Operation
+
     /**
      * Endpoint for updating a customer.
-     * @param id The ID of the customer to update.
+     *
+     * @param id    The ID of the customer to update.
      * @param asset The updated customer object.
      * @return The updated customer object.
      */
     @PutMapping("/update-asset/{id}")
-    public Asset updateAsset(@PathVariable("id") Integer id, @RequestBody Asset asset){
+    public Asset updateAsset(@PathVariable("id") Integer id, @RequestBody Asset asset) {
 
         asset.setCandidateId(id);
-        try{
+        try {
             return adminServiceOBJ.updateAsset(asset);
-        }
-
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(HttpStatus.INTERNAL_SERVER_ERROR);
             return null;
         }
     }
 
     //Delete Operation
+
     /**
      * Endpoint for deleting a asset.
+     *
      * @param id The ID of the asset to delete.
      */
     @DeleteMapping("/delete-asset")
-    public void deleteAsset (@PathVariable("id") Integer id){
+    public void deleteAsset(@PathVariable("id") Integer id) {
         try {
             adminServiceOBJ.deleteAsset(id);
-        }
-        catch (Exception e ){
+        } catch (Exception e) {
             System.out.println(HttpStatus.NO_CONTENT);
         }
     }
@@ -123,13 +121,21 @@ public class AdminController {
         }
     }
 
+    //Read Operation
 
-
-
-
-
-
-
-
-
+    /**
+     * Endpoint for retrieving all Requested Meeting Rooms.
+     *
+     * @return A list of all assets.
+     */
+    @GetMapping("/user/get-facility-requests")
+    public List<Facility> getAllRequestedRooms(Facility facility)
+    {
+        try {
+            return facilityService.findAllRequestedRooms();
+        } catch (Exception e) {
+            System.out.println(HttpStatus.NO_CONTENT);
+            return null;
+        }
+    }
 }
