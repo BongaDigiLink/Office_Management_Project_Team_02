@@ -15,7 +15,7 @@ export class UserService
 {
   constructor(private http: HttpClient) { }
 
-  apiURL = 'http://localhost:8081/user'
+  apiURL = 'http://localhost:8081/v1'
 
   /**
    * User updates details.
@@ -68,9 +68,9 @@ export class UserService
   /**
    * user routes, my meetings/bookings
    */
-  newBooking(newBooking: dtoBooking)
+  newBooking(email: string | undefined, newBooking: dtoBooking)
   {
-    return this.http.post<any>(`${this.apiURL}/create-booking/`, newBooking);
+    return this.http.post<any>(`${this.apiURL}/user/create-facility-request/`, email, newBooking);
   }
 
   editBooking(id: number, editBooking: Booking)
@@ -81,9 +81,9 @@ export class UserService
   /**
    * @returns list of my bookings
    */
-  getMyBookings(email: string | null): Observable<Booking[]>
+  getMyBookings(email: string | undefined): Observable<Booking[]>
   {
-    return this.http.get<Booking[]>(`${this.apiURL}/my-bookings/${email}`);
+    return this.http.get<Booking[]>(`${this.apiURL}/user/user-facility-requests/${email}`);
   }
 
 

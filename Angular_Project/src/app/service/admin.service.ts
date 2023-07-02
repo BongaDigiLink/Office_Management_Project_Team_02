@@ -91,7 +91,7 @@ export class AdminService
 
   getBookings(): Observable<Booking[]>
   {
-    return this.http.get<Booking[]>(`${this.apiURL}/all-bookings`);
+    return this.http.get<Booking[]>(`${this.apiURL}/user/get-facility-requests`);
   }
 
 }
