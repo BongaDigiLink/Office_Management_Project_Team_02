@@ -88,17 +88,16 @@ public class UserController
      * @param facility The asset object to be created.
      * @return The created asset object.
      */
-    @PostMapping("/user/create-facility-request/")
-    public Facility createFacility(@RequestBody String email, @RequestBody Facility facility)
+    @PostMapping("/user/create-facility-request/{email}")
+    public Facility createFacility(@PathVariable("email") String email, @RequestBody Facility facility)
     {
-        System.out.println(facility);
         try
         {
-            return  facilityService.createFacilityRequest(email,facility);
+            return  facilityService.createFacilityRequest(email, facility);
         }
         catch(Exception e)
         {
-            System.out.println(HttpStatus.INTERNAL_SERVER_ERROR);
+            //System.out.println(HttpStatus.INTERNAL_SERVER_ERROR);
             return null;
         }
     }

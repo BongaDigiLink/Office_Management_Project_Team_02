@@ -26,7 +26,7 @@
                             <td>
                               <div class="d-flex align-items-center">
                                   <div class="ms-3">
-                                    <p class="fw-bold mb-1">{{ meeting.roomName }}</p>
+                                    <p class="fw-bold mb-1">{{ meeting.trainingRoomName }}</p>
                                   </div>
                                 </div>
                             </td>
@@ -40,7 +40,7 @@
                             <td>
                               <div class="d-flex align-items-center">
                                   <div class="ms-3">
-                                    <p class="fw-bold mb-1">{{ meeting.bookingTime }}</p>
+                                    <p class="fw-bold mb-1">{{ meeting.start_time }}</p>
                                   </div>
                                 </div>
                             <td>
@@ -64,7 +64,7 @@
                         <ul class="form-style-1">
                             <li>
                                 <label>Meeting Venues</label>
-                                  <select formControlName="venue" class="field-select">
+                                  <select formControlName="room_name" class="field-select">
                                   <option>Green Room</option>
                                   <option>Blue Room</option>
                                   <option>Red Room</option>

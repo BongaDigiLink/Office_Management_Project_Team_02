@@ -44,28 +44,39 @@ export class MeetingsComponent implements OnInit{
   createMeetingForm = new FormGroup(
     {
       date:new FormControl('', [Validators.required]),
-      venue:new FormControl('', [Validators.required]),
+      room_name:new FormControl('', [Validators.required]),
       start_time: new FormControl('', [Validators.required]),
       end_time: new FormControl('', Validators.required),
-      status_: new FormControl('pending'),
+      status: new FormControl('pending'),
     }
   )
 
   //parse createMeetingForm details to this method
   createAMeeting()
   {
+    console.log("Inputs")
     console.log(this.createMeetingForm.value)
     this.userService.newBooking(this.authService.getEmail(), this.createMeetingForm.value).subscribe( 
       {
         next: (return_status) => 
         {
+          console.log(return_status);
 
-          if(return_status === null)
+          if(return_status != null)
           {
               Swal.fire({
               title: 'Your booking was created',
               icon: 'success',
-              timer: 2000
+              timer: 1500
+            })
+          }
+          else if(return_status === null)
+          {
+              Swal.fire({
+              title: 'An error occured on the server.',
+              icon: 'error',
+              text: 'Please try again later',
+              timer: 1500
             })
           }
           else if(return_status === "reserved")

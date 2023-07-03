@@ -2,19 +2,24 @@ export class Booking
 {
     bookingId?: number;
     roomId?: number;
-    roomName?: string;
+    trainingRoomName?: string;
     roomCapacity?: string;
     bookingDate?: string;
-    bookingTime?: string;
+    start_time?: string;
+    end_time?: string;
+    status?: string;
+    user_id?: number
 }
 
 export class dtoBooking
 {
     constructor(
-        roomName: string,
+        trainingRoomName: string,
         //Following data types should be Date, time.
         bookingDate: string,
         start_time: string,
-        end_time: string
+        end_time: string,
+        status: string,
+        user_id: number
     ){}
 }

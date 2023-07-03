@@ -14,20 +14,20 @@ public class Facility
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "room_name", nullable = false)
-    private String trainingRoomName;
+    private String room_name;
 
     @Temporal(TemporalType.DATE)
     Date date;
 
     @Column (name = "start_time", nullable = false)
-    private String startTime;
+    private String start_time;
 
     @Column (name = "end_time",nullable = false)
-    private String endTime;
+    private String end_time;
 
     // Nullable Awaiting Admin Approval
     @Column(name = "status")

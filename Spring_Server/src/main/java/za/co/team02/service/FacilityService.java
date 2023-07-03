@@ -1,5 +1,6 @@
 package za.co.team02.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.team02.model.Facility;
 import za.co.team02.model.SiteUser;
@@ -12,8 +13,9 @@ import java.util.List;
 @Service
 public class FacilityService {
 
-    private final FacilityRepository facilityRepo;
-    private final UserRepository userRepository;
+    private FacilityRepository facilityRepo;
+    private UserRepository userRepository;
+
     public FacilityService(FacilityRepository facilityRepoArg, UserRepository user)
     {
         this.facilityRepo = facilityRepoArg;
@@ -35,6 +37,9 @@ public class FacilityService {
 
         //Save new booking
         facility.setUserId(user.getAdminId());
+        facility.setStatus("pending");
+        System.out.println(facility);
+
          return facilityRepo.save(facility);
 
 //        if(facility.getStatus() == null)
