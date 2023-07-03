@@ -1,15 +1,12 @@
 package za.co.team02.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.team02.model.Facility;
 import za.co.team02.model.SiteUser;
 import za.co.team02.repository.FacilityRepository;
 import za.co.team02.repository.UserRepository;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class FacilityService {
@@ -37,7 +34,7 @@ public class FacilityService {
         //make checks to see whether this request doesn't conflict with existing meetings
 
         //Save new booking
-        facility.setUser_id(user.getAdminId());
+        facility.setUser_id(user.getId());
         facility.setStatus("Pending");
         System.out.println(facility);
 
@@ -68,7 +65,7 @@ public class FacilityService {
     public List<Facility> findAllRequestedRoomsByUser(String userEmail)
     {
         SiteUser user = userRepository.findByEmail(userEmail).get();
-        return facilityRepo.getUserMeetings(user.getAdminId()).stream().toList();
+        return facilityRepo.getUserMeetings(user.getId()).stream().toList();
     }
 
 

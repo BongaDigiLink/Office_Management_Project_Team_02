@@ -2,6 +2,7 @@ package za.co.team02.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import za.co.team02.dto.EventDTO;
@@ -161,10 +162,11 @@ public class UserController
      * user
      * controller -  complete a register
      */
-    @PostMapping("/sign-register")
-    public String completeRegister(@RequestBody EventDTO eventDTO) {
-        this.eventService.logEvent(eventDTO);
-        return "redirect:/event_register";
+    @PostMapping("/sign-register/{email}")
+    public ResponseEntity<EventDTO> completeRegister(@PathVariable("email") String email, @RequestBody EventDTO eventDTO)
+    {
+        System.out.println(eventDTO);
+        return new ResponseEntity<>(this.eventService.logEvent(email, eventDTO), HttpStatus.OK);
     }
 
 

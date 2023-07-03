@@ -6,32 +6,46 @@ import za.co.team02.dto.UserDTO;
 import za.co.team02.model.Event;
 import za.co.team02.model.SiteUser;
 import za.co.team02.repository.EventRepository;
+import za.co.team02.repository.UserRepository;
 
 @Service
 public class EventService {
 
     private EventRepository eventRepository;
+    private UserRepository userRepository;
 
-    public EventService(EventRepository eventRepository) {
+    public EventService(EventRepository eventRepository, UserRepository userRepository)
+    {
         this.eventRepository = eventRepository;
+        this.userRepository = userRepository;
     }
 
-    public EventDTO logEvent(EventDTO eventDTO){
+    public EventDTO logEvent(String email, EventDTO eventDTO)
+    {
         Event event = new Event();
 
         // convert DTO to entity
-//        event.setCandidateLoginId(eventDTO.getCandidateLoginId());
-        event.setDateTime(eventDTO.getDateTime());
-//        event.setUser(eventDTO.getUser());
+        if(eventDTO.getSign_inTime() != null)
+        {
+            event.setSign_time(eventDTO.getSign_inTime());
+        }
+        else
+        {
+            event.setSign_time(eventDTO.getSign_outTime());
+        }
+
+        event.setUser_id(userRepository.findByEmail(email).get().getId());
+        event.setEvent_message(eventDTO.getEvent_message());
+        event.setEvent_type(eventDTO.getEvent_type());
 
         Event newEvent = eventRepository.save(event);
 
         //convert entity to DTO
         EventDTO eventResponse = new EventDTO();
-        eventResponse.setEventId(newEvent.getEventId());
+        eventResponse.setEventId(newEvent.getEvent_id());
 //        eventResponse.setCandidateLoginId(newEvent.getCandidateLoginId());
-        eventResponse.setDateTime(newEvent.getDateTime());
-        eventResponse.setUser(newEvent.getUser());
+        eventResponse.setSign_inTime(newEvent.getSign_time());
+        //.setUser_id(2);
 //        eventResponse.setUser(newEvent.getUser());
         return eventResponse;
     }

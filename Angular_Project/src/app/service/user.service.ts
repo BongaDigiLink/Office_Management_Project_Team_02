@@ -53,9 +53,9 @@ export class UserService
   }
 
   //User creates event// Register (in or out)
-  createEvent(registerRecord: dtoRegisterRecord)
+  createEvent(email: string | undefined, registerRecord: dtoRegisterRecord)
   {
-    return this.http.post<any>(`${this.apiURL}/sign-register`, registerRecord)
+    return this.http.post<any>(`${this.apiURL}/sign-register/${email}`, registerRecord)
   }
 
   requestFood(email: string)
