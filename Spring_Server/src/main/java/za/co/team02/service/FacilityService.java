@@ -37,7 +37,7 @@ public class FacilityService {
 
         //Save new booking
         facility.setUserId(user.getAdminId());
-        facility.setStatus("pending");
+        facility.setStatus("Pending");
         System.out.println(facility);
 
          return facilityRepo.save(facility);
