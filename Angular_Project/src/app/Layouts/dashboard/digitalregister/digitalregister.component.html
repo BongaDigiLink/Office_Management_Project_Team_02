@@ -8,42 +8,26 @@
                 <table class="table table-borderless">
                     <thead class="bg-light">
                         <tr>
-                          <th>Date</th>
-                          <th>Time In</th>
-                          <th>Time Out</th>
+                          <th>Event Type</th>
+                          <th>Time</th>
+                          <th>Message</th>
                         </tr>
                       </thead>
                       <tbody *ngFor="let record of myEvents">
 
                         <tr>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div class="ms-3">
-                                <p class="fw-bold mb-1">27/03/2023</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <p class="fw-normal mb-1">12:30</p>
-                          </td>
-                          <td>
-                            <p class="fw-normal mb-1">13:15</p>
-                          </td>
-                        </tr>
-
-                        <tr>
                             <td>
                               <div class="d-flex align-items-center">
                                 <div class="ms-3">
-                                  <p class="fw-bold mb-1">{{ record.dateSignedIn }}</p>
+                                  <p class="fw-bold mb-1">{{record.event_type }}</p>
                                 </div>
                               </div>
                             </td>
                             <td>
-                              <p class="fw-normal mb-1">{{ record.timeSignedIn }}</p>
+                              <p class="fw-normal mb-1">{{ record.sign_time }}</p>
                             </td>
                             <td>
-                              <p class="fw-normal mb-1">{{ record.eventType }}</p>
+                              <p class="fw-normal mb-1">{{ record.event_message }}</p>
                             </td>
                           </tr>
                       </tbody>

@@ -1,6 +1,7 @@
 package za.co.team02.service;
 
 import org.springframework.stereotype.Service;
+import za.co.team02.model.Event;
 import za.co.team02.model.Facility;
 import za.co.team02.model.SiteUser;
 import za.co.team02.repository.FacilityRepository;

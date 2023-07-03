@@ -158,7 +158,7 @@ public class UserController
     @GetMapping("/my-register/{email}")
     public List<Event> getMyRecordRegister(@PathVariable("email") String email)
     {
-        return null;
+        return eventService.getMyAttendance(email);
     }
 
 

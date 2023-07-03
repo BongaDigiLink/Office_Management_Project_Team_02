@@ -3,8 +3,11 @@ package za.co.team02.service;
 import org.springframework.stereotype.Service;
 import za.co.team02.dto.EventDTO;
 import za.co.team02.model.Event;
+import za.co.team02.model.SiteUser;
 import za.co.team02.repository.EventRepository;
 import za.co.team02.repository.UserRepository;
+
+import java.util.List;
 
 @Service
 public class EventService {
@@ -45,5 +48,11 @@ public class EventService {
         eventResponse.setSign_inTime(newEvent.getSign_time());
 
         return eventResponse;
+    }
+
+    public List<Event> getMyAttendance(String email)
+    {
+        SiteUser user = userRepository.findByEmail(email).get();
+        return eventRepository.getAttendance(user.getId()).stream().toList();
     }
 }
