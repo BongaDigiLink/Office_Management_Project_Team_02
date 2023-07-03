@@ -5,10 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import za.co.team02.dto.EventDTO;
+import za.co.team02.dto.EventTypeDTO;
 import za.co.team02.dto.UserDTO;
 import za.co.team02.model.Facility;
 import za.co.team02.model.SiteUser;
 import za.co.team02.service.EventService;
+import za.co.team02.service.EventTypeService;
 import za.co.team02.service.FacilityService;
 import za.co.team02.service.UserService;
 
@@ -20,14 +22,16 @@ public class UserController
 {
     private UserService userService;
     private EventService eventService;
+    private EventTypeService eventTypeService;
 
     private FacilityService facilityService;
 
     @Autowired
-    public UserController(UserService userService,EventService eventService, FacilityService facilityService) {
+    public UserController(UserService userService, EventService eventService, EventTypeService eventTypeService, FacilityService facilityService) {
         this.userService = userService;
         this.eventService = eventService;
         this.facilityService = facilityService;
+        this.eventTypeService = eventTypeService;
     }
 
     /**
@@ -162,6 +166,11 @@ public class UserController
         return "redirect:/event_register";
     }
 
+    @PostMapping("/sign-type")
+    public String completeRegister(@RequestBody EventTypeDTO eventTypeDTO) {
+        this.eventTypeService.logEvent(eventTypeDTO);
+        return "redirect:/event_register";
+    }
 
     /**
      * user

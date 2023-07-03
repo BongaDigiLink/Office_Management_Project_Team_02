@@ -27,7 +27,7 @@ public class Event {
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
     private LocalDateTime dateTime;
 
-    @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "admin_id")
-    private SiteUser user;
+//    @ManyToOne(cascade= CascadeType.ALL)
+//    @JoinColumn(name = "admin_id")
+//    private SiteUser user;
 }

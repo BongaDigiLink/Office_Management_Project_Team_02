@@ -42,6 +42,6 @@ public class SiteUser
     @Column(name = "user_address")
     private String address;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy="user",cascade = CascadeType.ALL)
-    private Set<Event> event;
+//    @OneToMany(fetch = FetchType.EAGER,mappedBy="user",cascade = CascadeType.ALL)
+//    private Set<Event> event;
 }
