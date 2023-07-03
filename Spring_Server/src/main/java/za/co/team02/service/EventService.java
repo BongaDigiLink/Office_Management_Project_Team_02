@@ -49,7 +49,6 @@ public class EventService {
 
         return eventResponse;
     }
-
     public List<Event> getMyAttendance(String email)
     {
         SiteUser user = userRepository.findByEmail(email).get();
