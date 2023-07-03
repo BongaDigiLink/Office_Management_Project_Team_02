@@ -9,6 +9,7 @@ import za.co.team02.repository.UserRepository;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FacilityService {
@@ -36,7 +37,7 @@ public class FacilityService {
         //make checks to see whether this request doesn't conflict with existing meetings
 
         //Save new booking
-        facility.setUserId(user.getAdminId());
+        facility.setUser_id(user.getAdminId());
         facility.setStatus("Pending");
         System.out.println(facility);
 
@@ -67,8 +68,7 @@ public class FacilityService {
     public List<Facility> findAllRequestedRoomsByUser(String userEmail)
     {
         SiteUser user = userRepository.findByEmail(userEmail).get();
-
-        return facilityRepo.findAllById(Collections.singleton(user.getAdminId()));
+        return facilityRepo.getUserMeetings(user.getAdminId()).stream().toList();
     }
 
 
