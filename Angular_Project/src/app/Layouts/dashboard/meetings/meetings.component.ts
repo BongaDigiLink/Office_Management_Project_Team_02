@@ -29,12 +29,15 @@ export class MeetingsComponent implements OnInit{
 
     this.adminService.getBookings().subscribe(
        (userBookings_) => {
+        console.log("User Bookings")
+        console.log(userBookings_)
         this.allUserBookings = userBookings_
        })
 
        //Store user email in session storage or something
     this.userService.getMyBookings(this.authService.getEmail()).subscribe(
-       (myBookings) => {
+       (myBookings) => 
+       {
       this.userMeetingBookings = myBookings;
     })
 
@@ -44,28 +47,35 @@ export class MeetingsComponent implements OnInit{
   createMeetingForm = new FormGroup(
     {
       date:new FormControl('', [Validators.required]),
-      venue:new FormControl('', [Validators.required]),
+      room_name:new FormControl('', [Validators.required]),
       start_time: new FormControl('', [Validators.required]),
       end_time: new FormControl('', Validators.required),
-      status_: new FormControl('pending'),
+      status: new FormControl('pending'),
     }
   )
 
   //parse createMeetingForm details to this method
   createAMeeting()
   {
-    console.log(this.createMeetingForm.value)
     this.userService.newBooking(this.authService.getEmail(), this.createMeetingForm.value).subscribe( 
       {
         next: (return_status) => 
         {
-
-          if(return_status === null)
+          if(return_status != null)
           {
               Swal.fire({
               title: 'Your booking was created',
               icon: 'success',
-              timer: 2000
+              timer: 1500
+            })
+          }
+          else if(return_status === null)
+          {
+              Swal.fire({
+              title: 'An error occured on the server.',
+              icon: 'error',
+              text: 'Please try again later',
+              timer: 5000
             })
           }
           else if(return_status === "reserved")
@@ -74,7 +84,7 @@ export class MeetingsComponent implements OnInit{
               title: 'this slot has been taken',
               icon:'error',
               text: 'Please choose a different time slot.',
-              timer: 1500
+              timer: 5000
             })
           }
         },
@@ -83,7 +93,7 @@ export class MeetingsComponent implements OnInit{
             title: 'We could not take your booking',
             icon:'error',
             text: 'Please try again later.',
-            timer: 1500
+            timer: 5000
           })
         }
       }

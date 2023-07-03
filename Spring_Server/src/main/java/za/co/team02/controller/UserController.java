@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import za.co.team02.dto.EventDTO;
 import za.co.team02.dto.EventTypeDTO;
 import za.co.team02.dto.UserDTO;
+import za.co.team02.model.Event;
 import za.co.team02.model.Facility;
 import za.co.team02.model.SiteUser;
 import za.co.team02.service.EventService;
@@ -92,17 +93,16 @@ public class UserController
      * @param facility The asset object to be created.
      * @return The created asset object.
      */
-    @PostMapping("/user/create-facility-request/")
-    public Facility createFacility(@RequestBody String email, @RequestBody Facility facility)
+    @PostMapping("/user/create-facility-request/{email}")
+    public Facility createFacility(@PathVariable("email") String email, @RequestBody Facility facility)
     {
-        System.out.println(facility);
         try
         {
-            return  facilityService.createFacilityRequest(email,facility);
+            return  facilityService.createFacilityRequest(email, facility);
         }
         catch(Exception e)
         {
-            System.out.println(HttpStatus.INTERNAL_SERVER_ERROR);
+            //System.out.println(HttpStatus.INTERNAL_SERVER_ERROR);
             return null;
         }
     }
@@ -152,8 +152,13 @@ public class UserController
 
     /**
      * user
-     * controller - make  meeting booking
+     * controller - get users record register
      */
+    @GetMapping("/my-register/{email}")
+    public List<Event> getMyRecordRegister(@PathVariable("email") String email)
+    {
+        return null;
+    }
 
 
     /**
