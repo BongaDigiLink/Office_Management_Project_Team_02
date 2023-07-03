@@ -7,6 +7,7 @@ import { UserService } from 'src/app/service/user.service';
 import { RoomBookingInputComponent } from '../dialog/update-user/update-user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-digitalregister',
@@ -28,8 +29,8 @@ export class DigitalregisterComponent implements OnInit{
 
     eventForm = new FormGroup({
       event_type: new FormControl('', [Validators.required]),
-      signInTime: new FormControl(Date.now()),
-      signOutTime: new FormControl(Date.now()),
+      sign_inTime: new FormControl(''),
+      sign_outTime: new FormControl(''),
       event_message: new FormControl('')
     })
 
@@ -53,11 +54,13 @@ export class DigitalregisterComponent implements OnInit{
 
   signIn()
   {
-    this.eventForm.value.signInTime = Date.now();
-    console.log("Register inputs")
-    console.log(this.eventForm.value)
+    this.eventForm.value.event_type = 'sign-in';
+    const sign_time = new Date();
 
-    this.userService.createEvent(this.eventForm.value).subscribe( 
+    this.eventForm.value.sign_inTime = sign_time.getHours()+":"+sign_time.getMinutes();
+  
+
+    this.userService.createEvent(this.authService.getEmail(), this.eventForm.value).subscribe( 
       {
         next: () => {
           Swal.fire(
@@ -86,8 +89,13 @@ export class DigitalregisterComponent implements OnInit{
 
   signOut()
   {
+    this.eventForm.value.event_type = 'sign-out';
 
-    this.userService.createEvent(this.eventForm.value).subscribe( 
+    const sign_time = new Date();
+
+    this.eventForm.value.sign_outTime = sign_time.getHours()+":"+sign_time.getMinutes();
+
+    this.userService.createEvent(this.authService.getEmail(), this.eventForm.value).subscribe( 
       {
         next: () => {
           Swal.fire(

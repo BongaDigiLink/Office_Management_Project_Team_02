@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.engine.internal.Cascade;
 
 import java.time.LocalDateTime;
 
@@ -17,16 +16,26 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "event_id")
-    private int eventId;
+    @Column(name = "id")
+    private int Id;
 
+    @Column(name = "event_id")
+    private int event_id;
 
     @Column(name = "date_time")
 //    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm")
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
-    private LocalDateTime dateTime;
+    //@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
+//    private LocalDateTime date_time;
+    private String sign_time;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @Column(name = "event_message")
+    private String event_message;
+
+    @Column(name = "event_type")
+    private String event_type;
+
+    //@ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private SiteUser user;
+    private Integer user_id;
+
 }
