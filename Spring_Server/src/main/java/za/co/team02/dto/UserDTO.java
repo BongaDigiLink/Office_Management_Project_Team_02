@@ -1,6 +1,9 @@
 package za.co.team02.dto;
 
 import lombok.Data;
+import za.co.team02.model.Event;
+
+import java.util.Set;
 
 @Data
 public class UserDTO {
@@ -12,4 +15,5 @@ public class UserDTO {
     private String email;
     private String role;
     private String address;
+    private Set<Event> events;
 }

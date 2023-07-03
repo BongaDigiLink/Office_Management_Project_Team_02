@@ -166,7 +166,7 @@ public class UserController
      * controller -  complete a register
      */
     @PostMapping("/sign-register")
-    public String completeRegister(@RequestBody EventDTO eventDTO) {
+    public String completeRegister(@RequestBody EventDTO eventDTO, UserDTO userDTO) {
         this.eventService.logEvent(eventDTO);
         return "redirect:/event_register";
     }

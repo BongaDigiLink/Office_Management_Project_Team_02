@@ -18,8 +18,8 @@ public class SiteUser
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "admin_id")
-    private int adminId;
+    @Column(name = "user_id")
+    private int userId;
 
     @Column(name = "first_name")
     private String firstName;
@@ -42,6 +42,6 @@ public class SiteUser
     @Column(name = "user_address")
     private String address;
 
-//    @OneToMany(fetch = FetchType.EAGER,mappedBy="user",cascade = CascadeType.ALL)
-//    private Set<Event> event;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy="user",cascade = CascadeType.ALL)
+    private Set<Event> events;
 }
