@@ -88,35 +88,36 @@ public class UserController
      * @param facility The asset object to be created.
      * @return The created asset object.
      */
-    @PostMapping("user/create-facility-request")
-    public Facility createFacility(@RequestBody Facility facility){
-
-        try {
-            return  facilityService.createFacilityRequest(facility);
+    @PostMapping("/user/create-facility-request/")
+    public Facility createFacility(@RequestBody String email, @RequestBody Facility facility)
+    {
+        System.out.println(facility);
+        try
+        {
+            return  facilityService.createFacilityRequest(email,facility);
         }
-
-        catch(Exception e){
-
+        catch(Exception e)
+        {
             System.out.println(HttpStatus.INTERNAL_SERVER_ERROR);
             return null;
-
         }
-
     }
 
-    //Read Operation
+
     /**
-     * Endpoint for retrieving all Requested Meeting Rooms.
-     * @return A list of all assets.
+     *
+     * @param email - current logged in user email
+     * @return list of all facilities requested by this user.
      */
-    @GetMapping("user/get-facility-request")
-    public List<Facility> getAllRequestedRooms(Facility facility){
-        try{
-
-            return facilityService.findAllRequestedRooms();
+    @GetMapping("/user/user-facility-requests/{email}")
+    public List<Facility> getUserRequestedRooms(@PathVariable("email") String email)
+    {
+        try
+        {
+            return facilityService.findAllRequestedRoomsByUser(email);
         }
-
-        catch (Exception e) {
+        catch (Exception e)
+        {
             System.out.println(HttpStatus.NO_CONTENT);
             return null;
         }

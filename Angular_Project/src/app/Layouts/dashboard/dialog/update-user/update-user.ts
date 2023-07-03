@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
 import Swal from 'sweetalert2';
 
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
 export class RoomBookingInputComponent {
 
   constructor(private userService: UserService,
+    private authService: AuthService,
     private formBuilder: FormBuilder){}
 
     roomBookingForm = this.formBuilder.group({
@@ -23,7 +25,7 @@ export class RoomBookingInputComponent {
 
     createRoomBooking(): any
     {
-      this.userService.newBooking(this.roomBookingForm.value).subscribe(
+      this.userService.newBooking(this.authService.getEmail(), this.roomBookingForm.value).subscribe(
       {
         next: () => 
         {

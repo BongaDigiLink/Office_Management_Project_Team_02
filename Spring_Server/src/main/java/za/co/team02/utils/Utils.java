@@ -1,8 +1,10 @@
 package za.co.team02.utils;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import za.co.team02.model.SiteUser;
 import za.co.team02.repository.AuthRepository;
+import za.co.team02.repository.UserRepository;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -10,9 +12,14 @@ import java.security.NoSuchAlgorithmException;
 
 public class Utils
 {
-    @Autowired
-    private AuthRepository user;
-    private static String hashPassword(String password)
+    public Utils()
+    {
+    }
+
+    /**
+     * take plain text and hash to a 32 char string
+     */
+    public static String hashPassword(String password)
     {
         try
         {
@@ -34,16 +41,19 @@ public class Utils
         }
     }
 
-    private Boolean checkPasswords(String passwordToCompare, SiteUser user)
+    /**
+     * @param passwordToCompare - input password
+     * @param user - the user in db. take password and compare it to passwordToCompare
+     * @return - true for match. false for incorrect password.
+     */
+    public static Boolean checkPasswords(String passwordToCompare, SiteUser user)
     {
-        SiteUser user_ = this.user.findByEmail(user.getEmail());
-        if(hashPassword(user.getPassword()).equals(user_.getPassword()))
+        if(hashPassword(passwordToCompare).equals(user.getPassword()))
         {
             //Password Matches
             return true;
         }
-
-        //Password not correct or user doesnt exist.
+        //Password not correct or user doesn't exist.
         return false;
     }
 }

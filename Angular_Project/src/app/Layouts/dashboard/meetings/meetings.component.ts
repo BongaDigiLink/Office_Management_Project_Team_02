@@ -32,7 +32,7 @@ export class MeetingsComponent implements OnInit{
         this.allUserBookings = userBookings_
        })
 
-       //current loggedIn user email is stored in an obj store in the auth service
+       //Store user email in session storage or something
     this.userService.getMyBookings(this.authService.getEmail()).subscribe(
        (myBookings) => {
       this.userMeetingBookings = myBookings;
@@ -46,30 +46,43 @@ export class MeetingsComponent implements OnInit{
       date:new FormControl('', [Validators.required]),
       venue:new FormControl('', [Validators.required]),
       start_time: new FormControl('', [Validators.required]),
-      end_time: new FormControl('', Validators.required)
+      end_time: new FormControl('', Validators.required),
+      status_: new FormControl('pending'),
     }
   )
 
   //parse createMeetingForm details to this method
   createAMeeting()
   {
-
-    if(this.createMeetingForm.invalid){return;}
-
-    this.userService.newBooking(this.createMeetingForm.value).subscribe( 
+    console.log(this.createMeetingForm.value)
+    this.userService.newBooking(this.authService.getEmail(), this.createMeetingForm.value).subscribe( 
       {
-        next: ()=> {
-          Swal.fire({
-          title: 'Venue booking recieved',
-          icon:'success',
-          text: 'Your asset log will be processed soon.',
-          timer: 1500
-        })
-      },
+        next: (return_status) => 
+        {
+
+          if(return_status === null)
+          {
+              Swal.fire({
+              title: 'Your booking was created',
+              icon: 'success',
+              timer: 2000
+            })
+          }
+          else if(return_status === "reserved")
+          {
+            Swal.fire({
+              title: 'this slot has been taken',
+              icon:'error',
+              text: 'Please choose a different time slot.',
+              timer: 1500
+            })
+          }
+        },
         error: () => {
           Swal.fire({
-            title: 'Venue booking was unsuccessful',
+            title: 'We could not take your booking',
             icon:'error',
+            text: 'Please try again later.',
             timer: 1500
           })
         }

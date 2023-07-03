@@ -22,6 +22,10 @@ export class AuthService
 
   //User details of the current logged in user.
   user_!: User;
+
+  //user id
+  user_id !: number;
+
   getName(): string | undefined
   {
     return this.user_.firstName
@@ -36,6 +40,11 @@ export class AuthService
   {
     return this.user_.email
   }
+
+  // getId(): number | undefined
+  // {
+  //   return this.user_.;
+  // }
 
 
   apiURL = 'http://localhost:8081/auth'
@@ -54,6 +63,7 @@ export class AuthService
       {
         this.signedIn$.next(true)
         this.user_ = user;
+        console.log(user)
       } )
     )
   }

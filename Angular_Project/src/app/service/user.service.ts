@@ -73,9 +73,13 @@ export class UserService
   /**
    * user routes, my meetings/bookings
    */
-  newBooking(newBooking: dtoBooking)
+  newBooking(email: string | undefined, newBooking: dtoBooking)
   {
+<<<<<<< HEAD
     return this.http.post<any>(`${this.apiURL}/create-facility-request`, newBooking);
+=======
+    return this.http.post<any>(`${this.apiURL}/user/create-facility-request/`, email, newBooking);
+>>>>>>> f7ea899b64cc5c4d30b6c07ce4bee086296fa5d2
   }
 
   editBooking(id: number, editBooking: Booking)
@@ -88,7 +92,7 @@ export class UserService
    */
   getMyBookings(email: string | undefined): Observable<Booking[]>
   {
-    return this.http.get<Booking[]>(`${this.apiURL}/my-bookings/${email}`);
+    return this.http.get<Booking[]>(`${this.apiURL}/user/user-facility-requests/${email}`);
   }
 
 

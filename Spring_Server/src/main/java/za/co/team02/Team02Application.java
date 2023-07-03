@@ -27,7 +27,7 @@ public class Team02Application
 				.firstName("Hloni")
 				.lastName("Moloi")
 				.username("@hloni")
-				.password("hloni@gmail.com")
+				.password("71cf426fda18e7d884cff448e6d7920f9219c79ea85a6cac385a2b46c928d8ae")
 				.role("admin")
 				.address("Ameshoff JHB").build();
 		userRepository.save(admin);
@@ -37,7 +37,7 @@ public class Team02Application
 				.firstName("Bonga")
 				.lastName("Gougota")
 				.username("@Bongag")
-				.password("bonga@gmail.com")
+				.password("d5c40e418539a91860b5bb9ae07f0d51552cfba7b1a5ca37ff8ec8f836f7aca7")
 				.role("user")
 				.address("Ameshoff JHB").build();
 		userRepository.save(admin);
