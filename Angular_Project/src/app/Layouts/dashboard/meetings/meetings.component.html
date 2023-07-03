@@ -10,12 +10,12 @@
                           <tr>
                             <th>Date</th>
                             <th>Venue</th>
-                            <th>Capacity</th>
                             <th>Time</th>
                           </tr>
                         </thead>
                         <tbody *ngFor="let meeting of userMeetingBookings">
                           <tr>
+
                             <td>
                               <div class="d-flex align-items-center">
                                 <div class="ms-3">
@@ -23,6 +23,7 @@
                                 </div>
                               </div>
                             </td>
+
                             <td>
                               <div class="d-flex align-items-center">
                                   <div class="ms-3">
@@ -30,13 +31,7 @@
                                   </div>
                                 </div>
                             </td>
-                            <td>
-                              <div class="d-flex align-items-center">
-                                  <div class="ms-3">
-                                    <p class="fw-bold mb-1">{{ meeting.roomCapacity }}</p>
-                                  </div>
-                                </div>
-                            </td>
+                
                             <td>
                               <div class="d-flex align-items-center">
                                   <div class="ms-3">
@@ -44,6 +39,7 @@
                                   </div>
                                 </div>
                             <td>
+                              
                               <br>
                               <a routerLink="" class="btn btn-success square-btn-adjust">Update</a>
                             </td>
