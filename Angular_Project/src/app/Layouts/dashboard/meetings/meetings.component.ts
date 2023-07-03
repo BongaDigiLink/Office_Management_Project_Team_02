@@ -29,12 +29,15 @@ export class MeetingsComponent implements OnInit{
 
     this.adminService.getBookings().subscribe(
        (userBookings_) => {
+        console.log("User Bookings")
+        console.log(userBookings_)
         this.allUserBookings = userBookings_
        })
 
        //Store user email in session storage or something
     this.userService.getMyBookings(this.authService.getEmail()).subscribe(
-       (myBookings) => {
+       (myBookings) => 
+       {
       this.userMeetingBookings = myBookings;
     })
 
@@ -54,14 +57,10 @@ export class MeetingsComponent implements OnInit{
   //parse createMeetingForm details to this method
   createAMeeting()
   {
-    console.log("Inputs")
-    console.log(this.createMeetingForm.value)
     this.userService.newBooking(this.authService.getEmail(), this.createMeetingForm.value).subscribe( 
       {
         next: (return_status) => 
         {
-          console.log(return_status);
-
           if(return_status != null)
           {
               Swal.fire({

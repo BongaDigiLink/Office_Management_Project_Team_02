@@ -34,5 +34,5 @@ public class Facility
     private String status;
 
     @Column(name = "user_id")
-    private Integer userId;
+    private Integer user_id;
 }

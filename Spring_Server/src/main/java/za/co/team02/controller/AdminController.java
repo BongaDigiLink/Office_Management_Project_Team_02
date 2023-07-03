@@ -12,7 +12,7 @@ import za.co.team02.service.FacilityService;
 import java.util.List;
 
 @RestController
-@RequestMapping("admin")
+@RequestMapping("v1")
 public class AdminController {
 
     private final FacilityRepository facilityRepo;
@@ -128,7 +128,7 @@ public class AdminController {
      *
      * @return A list of all assets.
      */
-    @GetMapping("/user/get-facility-requests")
+    @GetMapping("/user/get-all-facility-requests")
     public List<Facility> getAllRequestedRooms(Facility facility)
     {
         try {

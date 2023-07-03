@@ -6,6 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import za.co.team02.dto.EventDTO;
 import za.co.team02.dto.UserDTO;
+import za.co.team02.model.Event;
 import za.co.team02.model.Facility;
 import za.co.team02.model.SiteUser;
 import za.co.team02.service.EventService;
@@ -147,8 +148,13 @@ public class UserController
 
     /**
      * user
-     * controller - make  meeting booking
+     * controller - get users record register
      */
+    @GetMapping("/my-register/{email}")
+    public List<Event> getMyRecordRegister(@PathVariable("email") String email)
+    {
+        return null;
+    }
 
 
     /**
