@@ -12,8 +12,8 @@ public interface FoodRepository extends JpaRepository<FoodSupply,Integer> {
 //@Query("SELECT * FROM Food_Supplies f WHERE f.id = ? ")
 //   Collection<FoodSupply> getFoodByCohort(int cohortId);
 @Query("SELECT COUNT(*) FROM Food_Supplies")
-Collection<FoodSupply> getAllNoodles(int cohortId);
+int getAllNoodles(String email);
 
 @Query("SELECT COUNT(*) FROM Food_Supplies")
-Collection<FoodSupply> getAllOats(int cohortId);
+int getAllOats(String email);
 }
