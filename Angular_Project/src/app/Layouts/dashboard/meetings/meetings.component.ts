@@ -76,7 +76,7 @@ export class MeetingsComponent implements OnInit{
               title: 'An error occured on the server.',
               icon: 'error',
               text: 'Please try again later',
-              timer: 1500
+              timer: 5000
             })
           }
           else if(return_status === "reserved")
@@ -85,7 +85,7 @@ export class MeetingsComponent implements OnInit{
               title: 'this slot has been taken',
               icon:'error',
               text: 'Please choose a different time slot.',
-              timer: 1500
+              timer: 5000
             })
           }
         },
@@ -94,7 +94,7 @@ export class MeetingsComponent implements OnInit{
             title: 'We could not take your booking',
             icon:'error',
             text: 'Please try again later.',
-            timer: 1500
+            timer: 5000
           })
         }
       }

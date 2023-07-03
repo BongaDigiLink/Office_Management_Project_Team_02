@@ -61,7 +61,7 @@ export class UserassetsComponent implements OnInit{
           title: 'Your asset log was sent',
           icon:'success',
           text: 'Your asset log will be processed soon.',
-          timer: 1500
+          timer: 5000
         })
       },
       error: () => {
@@ -69,7 +69,7 @@ export class UserassetsComponent implements OnInit{
           title: 'Asset log was not created',
           icon:'error',
           text: 'please try again',
-          timer: 1500
+          timer: 5000
         })
       }
     })
