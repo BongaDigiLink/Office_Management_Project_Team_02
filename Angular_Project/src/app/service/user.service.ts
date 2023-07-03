@@ -75,11 +75,7 @@ export class UserService
    */
   newBooking(email: string | undefined, newBooking: dtoBooking)
   {
-<<<<<<< HEAD
-    return this.http.post<any>(`${this.apiURL}/create-facility-request`, newBooking);
-=======
     return this.http.post<any>(`${this.apiURL}/user/create-facility-request/`, email, newBooking);
->>>>>>> f7ea899b64cc5c4d30b6c07ce4bee086296fa5d2
   }
 
   editBooking(id: number, editBooking: Booking)
