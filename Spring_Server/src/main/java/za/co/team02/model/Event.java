@@ -37,4 +37,5 @@ public class Event {
     //@ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private Integer user_id;
+
 }

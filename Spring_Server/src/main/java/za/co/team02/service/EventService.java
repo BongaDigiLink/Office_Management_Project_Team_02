@@ -2,9 +2,7 @@ package za.co.team02.service;
 
 import org.springframework.stereotype.Service;
 import za.co.team02.dto.EventDTO;
-import za.co.team02.dto.UserDTO;
 import za.co.team02.model.Event;
-import za.co.team02.model.SiteUser;
 import za.co.team02.repository.EventRepository;
 import za.co.team02.repository.UserRepository;
 
@@ -45,8 +43,7 @@ public class EventService {
         eventResponse.setEventId(newEvent.getEvent_id());
 //        eventResponse.setCandidateLoginId(newEvent.getCandidateLoginId());
         eventResponse.setSign_inTime(newEvent.getSign_time());
-        //.setUser_id(2);
-//        eventResponse.setUser(newEvent.getUser());
+
         return eventResponse;
     }
 }

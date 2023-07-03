@@ -1,6 +1,5 @@
 package za.co.team02.dto;
 
-import jakarta.persistence.*;
 import lombok.Data;
 import za.co.team02.model.SiteUser;
 

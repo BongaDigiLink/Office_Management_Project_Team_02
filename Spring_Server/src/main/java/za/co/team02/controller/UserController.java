@@ -6,13 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import za.co.team02.dto.EventDTO;
+import za.co.team02.dto.EventTypeDTO;
 import za.co.team02.dto.UserDTO;
-import za.co.team02.model.Event;
-import za.co.team02.model.Facility;
-import za.co.team02.model.SiteUser;
-import za.co.team02.service.EventService;
-import za.co.team02.service.FacilityService;
-import za.co.team02.service.UserService;
+import za.co.team02.model.*;
+import za.co.team02.service.*;
 
 import java.util.List;
 
@@ -22,14 +19,21 @@ public class UserController
 {
     private UserService userService;
     private EventService eventService;
-
+    private EventTypeService eventTypeService;
     private FacilityService facilityService;
+    private FoodService foodService;
 
     @Autowired
-    public UserController(UserService userService,EventService eventService, FacilityService facilityService) {
+    public UserController(UserService userService,
+                          EventService eventService,
+                          EventTypeService eventTypeService,
+                          FacilityService facilityService,
+                          FoodService foodService) {
         this.userService = userService;
         this.eventService = eventService;
         this.facilityService = facilityService;
+        this.eventTypeService = eventTypeService;
+        this.foodService = foodService;
     }
 
     /**
@@ -169,10 +173,18 @@ public class UserController
         return new ResponseEntity<>(this.eventService.logEvent(email, eventDTO), HttpStatus.OK);
     }
 
+    @PostMapping("/sign-type")
+    public String completeRegister(@RequestBody EventTypeDTO eventTypeDTO) {
+        this.eventTypeService.logEvent(eventTypeDTO);
+        return "redirect:/event_register";
+    }
 
     /**
      * user
      * controller - request food
      */
-
+    @GetMapping("/request-food")
+    public List<Integer> requestNoodles(@PathVariable String email) {
+       return this.foodService.getFood(email);
+    }
 }
