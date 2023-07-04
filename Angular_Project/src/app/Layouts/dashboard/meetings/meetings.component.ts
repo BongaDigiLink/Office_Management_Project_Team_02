@@ -4,6 +4,8 @@ import { Booking } from 'src/app/models/booking';
 import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+//import { UpdateuserComponent } from '../dialog/updateuser.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,6 +18,7 @@ export class MeetingsComponent implements OnInit{
   constructor(
     private userService: UserService,
     private adminService: AdminService,
+    private update: MatDialog,
     private authService: AuthService){}
 
     //the current logged user meetings.
@@ -124,4 +127,16 @@ export class MeetingsComponent implements OnInit{
 
   }
 
-}
+  //open editing dialogue
+   updateDialog() {
+  //   this.update.open(UpdateuserComponent, {
+  //     width: '50%',
+  //     height: '',
+  //     position: {
+  //       top: '30vh',
+  //       left: '30vw'
+  //   }
+     }
+  }
+
+

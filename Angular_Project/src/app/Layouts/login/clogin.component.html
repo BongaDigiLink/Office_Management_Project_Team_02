@@ -19,9 +19,9 @@
                         <mat-form-field>    
                         <h1>OMF Sign in</h1>
                         <label for="">Email</label><br>
-                        <input formControlName="email" /><br>
+                        <input formControlName="email" placeholder="Enter Email" /><br>
                             <label>Password</label><br>
-                            <input type="password" formControlName="password" matInput [type]="hide ? 'password' : 'text'" />
+                            <input type="password" formControlName="password" matInput [type]="hide ? 'password' : 'text'" placeholder="Enter Password" />
                             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>

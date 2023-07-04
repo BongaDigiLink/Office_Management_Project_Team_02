@@ -5,12 +5,11 @@ import { UserService } from 'src/app/service/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-room-booking-input',
-  templateUrl: './update-user.html',
-  styleUrls: ['./update-user.css']
+  selector: 'app-updateuser',
+  templateUrl: './updateuser.component.html',
+  styleUrls: ['./updateuser.component.css']
 })
-export class RoomBookingInputComponent {
-
+export class UpdateuserComponent {
   constructor(private userService: UserService,
     private authService: AuthService,
     private formBuilder: FormBuilder){}
@@ -21,6 +20,4 @@ export class RoomBookingInputComponent {
       start_time : this.formBuilder.control('', [Validators.required]),
       end_time : this.formBuilder.control('', [Validators.required]),
     })
-
-
 }
