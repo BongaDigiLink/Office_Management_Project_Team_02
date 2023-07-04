@@ -1,15 +1,22 @@
 export class LogAsset
 {
-        assetName?: string;
-        takeOutDate?: string;
-        returnDate?: Date
+        asset_name?: string;
+        from_date?: string;
+        to_date?: string;
+        notes?: string;
+        log_status?: string;
+        reason?: string;
+
 }
 
 export class logdtoAsset
 {
     constructor(
-        assetName: string,
-        takeOutDate: string,
-        returnDate: string
+        asset_name: string,
+        from_date: string,
+        to_date: string,
+        notes: string,
+        log_status: string,
+        reason: string,
     ){}
 }

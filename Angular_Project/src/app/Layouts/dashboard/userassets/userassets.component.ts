@@ -21,7 +21,7 @@ export class UserassetsComponent implements OnInit{
   allAssets?: Asset[];
 
   //user past asset log request array
-  myRequests?: LogAsset[];
+  mylogs?: LogAsset[];
 
   ngOnInit(): void {
 
@@ -33,7 +33,7 @@ export class UserassetsComponent implements OnInit{
     this.userService.getMyEvents(this.authservice.getEmail()).subscribe( 
       {
         next: (records) => {
-          this.myRequests = records;
+          this.mylogs = records;
         },
         error: () => {
           console.log("an error occured.")
@@ -42,29 +42,31 @@ export class UserassetsComponent implements OnInit{
   }
 
   logAssetForm = new FormGroup({
-    assetName: new FormControl('', Validators.required),
-    takeOutDay: new FormControl('', Validators.required),
-    returnDate: new FormControl('', Validators.required),
-    message: new FormControl('', [Validators.required])
+    asset_name: new FormControl('', Validators.required),
+    from_date: new FormControl('', Validators.required),
+    to_date: new FormControl('', Validators.required),
+    notes: new FormControl('', [Validators.required])
   })
 
   //Requesting to take out an asset.
   logAssetLog()
   {
-    console.log("Asset Log Form:")
-    console.log(this.logAssetForm.value)
+    this.userService.assetRegister(this.authservice.getEmail(), this.logAssetForm.value).subscribe( (return_status) => {
 
-    this.userService.assetRegister(this.logAssetForm.value).subscribe( 
-    {
-      next: () => {
+      console.log(return_status.status)
+      console.log("Status At the top!")
+
+      if(return_status != null)
+      {
         Swal.fire({
           title: 'Your asset log was sent',
           icon:'success',
           text: 'Your asset log will be processed soon.',
           timer: 5000
         })
-      },
-      error: () => {
+      }
+      else
+      {
         Swal.fire({
           title: 'Asset log was not created',
           icon:'error',
@@ -72,7 +74,8 @@ export class UserassetsComponent implements OnInit{
           timer: 5000
         })
       }
-    })
+    }
+    )
   }
 
   /**

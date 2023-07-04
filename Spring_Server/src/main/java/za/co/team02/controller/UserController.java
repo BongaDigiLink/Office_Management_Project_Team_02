@@ -22,18 +22,21 @@ public class UserController
     private EventTypeService eventTypeService;
     private FacilityService facilityService;
     private FoodService foodService;
+    private AssetLoggerService assetLoggerService;
 
     @Autowired
     public UserController(UserService userService,
                           EventService eventService,
                           EventTypeService eventTypeService,
                           FacilityService facilityService,
-                          FoodService foodService) {
+                          FoodService foodService,
+                          AssetLoggerService assetLoggerService) {
         this.userService = userService;
         this.eventService = eventService;
         this.facilityService = facilityService;
         this.eventTypeService = eventTypeService;
         this.foodService = foodService;
+        this.assetLoggerService = assetLoggerService;
     }
 
     /**
@@ -95,7 +98,8 @@ public class UserController
      * @return The created asset object.
      */
     @PostMapping("/user/create-facility-request/{email}")
-    public Facility createFacility(@PathVariable("email") String email, @RequestBody Facility facility)
+    public Facility createFacility(@PathVariable("email") String email,
+                                   @RequestBody Facility facility)
     {
         try
         {
@@ -106,6 +110,37 @@ public class UserController
             //System.out.println(HttpStatus.INTERNAL_SERVER_ERROR);
             return null;
         }
+    }
+
+    @PostMapping("/asset-register/{email}")
+    public ResponseEntity<?> createAssetLog(@PathVariable("email") String email,
+                                @RequestBody AssetLog loggedAsset)
+    {
+        try
+        {
+            if(assetLoggerService.createNewAssetLog(email, loggedAsset))
+            {
+                return new ResponseEntity<>("Success", HttpStatus.OK);
+            };
+            return new ResponseEntity<>("failed", HttpStatus.NO_CONTENT);
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
+
+
+    @GetMapping("/get-my-asset-log/{email}")
+    public ResponseEntity<List<AssetLog>> getMyAssetLogs(@PathVariable("email") String userEmail)
+    {
+        if(userService.getSingleUser(userEmail) != null)
+        {
+             List<AssetLog> logs = assetLoggerService.getLoggedInUserLogs(userEmail);
+             return new ResponseEntity<>(logs, HttpStatus.OK);
+        }
+
+        return null;
     }
 
 
@@ -167,10 +202,12 @@ public class UserController
      * controller -  complete a register
      */
     @PostMapping("/sign-register/{email}")
-    public ResponseEntity<EventDTO> completeRegister(@PathVariable("email") String email, @RequestBody EventDTO eventDTO)
+    public ResponseEntity<EventDTO> completeRegister(@PathVariable("email") String email,
+                                                     @RequestBody EventDTO eventDTO)
     {
         System.out.println(eventDTO);
-        return new ResponseEntity<>(this.eventService.logEvent(email, eventDTO), HttpStatus.OK);
+        return new ResponseEntity<>(this.eventService.logEvent(email,
+                eventDTO), HttpStatus.OK);
     }
 
     @PostMapping("/sign-type")
