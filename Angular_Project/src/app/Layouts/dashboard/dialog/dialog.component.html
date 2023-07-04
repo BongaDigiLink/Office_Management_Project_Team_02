@@ -2,29 +2,39 @@
 <div mat-dialog-content>
   <form [formGroup]="addUserForm">
 
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="Enter email">
+    </mat-form-field><br>
+
       <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input formControlName="firstName" matInput placeholder="Enter Name">
+        <mat-label>First Name</mat-label>
+        <input formControlName="firstName" matInput placeholder="Enter firstname">
       </mat-form-field><br>
       
       <mat-form-field appearance="outline">
-        <mat-label>Surname</mat-label>
-        <input formControlName="lastName" matInput placeholder="Enter Surname">
+        <mat-label>Last Name</mat-label>
+        <input formControlName="lastName" matInput placeholder="Enter lastname">
       </mat-form-field><br>
 
       <mat-form-field appearance="outline">
-        <mat-label>UserName</mat-label>
-        <input formControlName="username" matInput placeholder="Enter Surname">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput placeholder="Enter username">
       </mat-form-field><br>
 
       <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input formControlName="email" matInput placeholder="Enter Surname">
+        <mat-label>Password</mat-label>
+        <input formControlName="username" matInput placeholder="generate password">
+      </mat-form-field><br>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Role</mat-label>
+        <input formControlName="username" matInput placeholder="Enter role">
       </mat-form-field><br>
 
       <mat-form-field appearance="outline">
         <mat-label>Address</mat-label>
-        <input formControlName="address" matInput placeholder="User Address">
+        <input formControlName="address" matInput placeholder="User address">
       </mat-form-field><br>
 
       <!-- <mat-form-field appearance="outline">
