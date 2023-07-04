@@ -38,7 +38,7 @@ public class UserService
 
         //convert entity to DTO
         UserDTO userResponse = new UserDTO();
-        userResponse.setAdminId(newSiteUser.getAdminId());
+        userResponse.setAdminId(newSiteUser.getId());
         userResponse.setFirstName(newSiteUser.getFirstName());
         userResponse.setLastName(newSiteUser.getLastName());
         userResponse.setUsername(newSiteUser.getUsername());

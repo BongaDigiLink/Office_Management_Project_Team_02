@@ -2,16 +2,14 @@ package za.co.team02.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import za.co.team02.dto.EventDTO;
+import za.co.team02.dto.EventTypeDTO;
 import za.co.team02.dto.UserDTO;
-import za.co.team02.model.Event;
-import za.co.team02.model.Facility;
-import za.co.team02.model.SiteUser;
-import za.co.team02.service.EventService;
-import za.co.team02.service.FacilityService;
-import za.co.team02.service.UserService;
+import za.co.team02.model.*;
+import za.co.team02.service.*;
 
 import java.util.List;
 
@@ -21,14 +19,21 @@ public class UserController
 {
     private UserService userService;
     private EventService eventService;
-
+    private EventTypeService eventTypeService;
     private FacilityService facilityService;
+    private FoodService foodService;
 
     @Autowired
-    public UserController(UserService userService,EventService eventService, FacilityService facilityService) {
+    public UserController(UserService userService,
+                          EventService eventService,
+                          EventTypeService eventTypeService,
+                          FacilityService facilityService,
+                          FoodService foodService) {
         this.userService = userService;
         this.eventService = eventService;
         this.facilityService = facilityService;
+        this.eventTypeService = eventTypeService;
+        this.foodService = foodService;
     }
 
     /**
@@ -153,7 +158,7 @@ public class UserController
     @GetMapping("/my-register/{email}")
     public List<Event> getMyRecordRegister(@PathVariable("email") String email)
     {
-        return null;
+        return eventService.getMyAttendance(email);
     }
 
 
@@ -161,16 +166,25 @@ public class UserController
      * user
      * controller -  complete a register
      */
-    @PostMapping("/sign-register")
-    public String completeRegister(@RequestBody EventDTO eventDTO) {
-        this.eventService.logEvent(eventDTO);
-        return "redirect:/event_register";
+    @PostMapping("/sign-register/{email}")
+    public ResponseEntity<EventDTO> completeRegister(@PathVariable("email") String email, @RequestBody EventDTO eventDTO)
+    {
+        System.out.println(eventDTO);
+        return new ResponseEntity<>(this.eventService.logEvent(email, eventDTO), HttpStatus.OK);
     }
 
+    @PostMapping("/sign-type")
+    public String completeRegister(@RequestBody EventTypeDTO eventTypeDTO) {
+        this.eventTypeService.logEvent(eventTypeDTO);
+        return "redirect:/event_register";
+    }
 
     /**
      * user
      * controller - request food
      */
-
+    @GetMapping("/request-food")
+    public List<Integer> requestNoodles(@PathVariable String email) {
+       return this.foodService.getFood(email);
+    }
 }

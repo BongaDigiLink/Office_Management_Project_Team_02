@@ -7,6 +7,7 @@ import za.co.team02.model.FoodSupply;
 import za.co.team02.model.SiteUser;
 import za.co.team02.repository.FoodRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,15 +21,23 @@ public class FoodService {
 
 //    @PersistenceContext
 //    private EntityManager em;
-    public List<FoodSupply> getNoodles(int cohortId)
+    public int getNoodles(String email)
     {
-        List<FoodSupply> food = foodRepository.getAllNoodles(cohortId).stream().collect(Collectors.toList());
-        return  food;
+        int noodleCount = foodRepository.getAllNoodles(email);
+        return noodleCount;
     }
 
-    public List<FoodSupply> getOats(int cohortId)
+    public int getOats(String email)
     {
-        List<FoodSupply> food = foodRepository.getAllNoodles(cohortId).stream().collect(Collectors.toList());
-        return  food;
+        int oatsCount = foodRepository.getAllOats(email);
+        return  oatsCount;
+    }
+
+    public List<Integer> getFood(String email)
+    {
+        List<Integer> foodCount = new ArrayList();
+        foodCount.add(getNoodles(email));
+        foodCount.add(getOats(email));
+        return foodCount;
     }
 }
