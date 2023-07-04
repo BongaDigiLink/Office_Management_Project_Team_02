@@ -29,9 +29,9 @@ export class UserService
   /**
    * Asset Register
    */
-  assetRegister(logDetails: logdtoAsset)
+  assetRegister(email: string | undefined, logDetails: logdtoAsset)
   {
-    return this.http.post<any>(`${this.apiURL}/asset-register`, logDetails);
+    return this.http.post<any>(`${this.apiURL}/asset-register/${email}`, logDetails);
   }
 
   /**
