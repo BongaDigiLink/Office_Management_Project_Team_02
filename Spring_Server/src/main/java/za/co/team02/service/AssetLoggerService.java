@@ -59,17 +59,10 @@ public class AssetLoggerService
          return false;
      }
 
-    public boolean approveAssets() {
-        for (AssetLog assetLog : getAllUserLogs()) {
-            if (assetLog != null &&  assetLog.getCandidate_id()!= null) {
-                assetLog.setCandidate_id(assetLog.getCandidate_id());
-                assetLog.setLog_status("Approved");
-                assetLoggerRepository.save(assetLog);
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
+    public boolean approveAssets(int requestId) {
+        AssetLog assetLog = assetLoggerRepository.findById(requestId).get();
+        assetLog.setLog_status("Approved");
+        assetLoggerRepository.save(assetLog);
+        return true;
     }
 }
