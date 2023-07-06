@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Asset } from 'src/app/models/asset';
 import { Booking } from 'src/app/models/booking';
 import { AdminService } from 'src/app/service/admin.service';
+import { LogAsset } from 'src/app/models/LogAsset';
 
 @Component({
   selector: 'app-asset',
@@ -15,6 +16,7 @@ export class AssetComponent implements OnInit{
 
   allAssets!: Asset[]
   allUserBookings?: Booking[];
+  allAssetLogs?: LogAsset[];
 
   ngOnInit(): void {
     this.adminService.getAssets().subscribe( 
@@ -31,4 +33,19 @@ export class AssetComponent implements OnInit{
         })
   }
 
+
+  /**
+   *ADMIN methods decline/accept take in request id and create a put call
+   */
+   acceptAssetLog(id: number | undefined)
+   {
+     this.adminService.disapproveAssetLog(id);
+   }
+
+
+   declineAssetLog(id: number | undefined)
+   {
+     this.adminService.acceptAssetLog(id);
+   }
+ 
 }
