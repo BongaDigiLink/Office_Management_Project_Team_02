@@ -1,6 +1,5 @@
 package za.co.team02;
 
-import lombok.Builder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -9,7 +8,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import za.co.team02.model.SiteUser;
-import za.co.team02.repository.EventRepository;
 import za.co.team02.repository.UserRepository;
 
 import java.util.Arrays;
@@ -44,8 +42,17 @@ public class Team02Application
 				.password("d5c40e418539a91860b5bb9ae07f0d51552cfba7b1a5ca37ff8ec8f836f7aca7")
 				.role("user")
 				.address("Ameshoff JHB").build();
-		userRepository.save(admin);
 		userRepository.save(user);
+
+		SiteUser user2 = SiteUser.builder()
+				.email("nokuthula@gmail.com")
+				.firstName("Nokuthula")
+				.lastName("Mahlangu")
+				.username("nokuthula@gmail.com")
+				.password("d5c40e418539a91860b5bb9ae07f0d51552cfba7b1a5ca37ff8ec8f836f7aca7")
+				.role("user")
+				.address("Ameshoff JHB").build();
+		userRepository.save(user2);
 	}
 
 	@Bean
