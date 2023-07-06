@@ -68,15 +68,15 @@ export class AdminService
     return this.http.get<Asset[]>(`${this.apiURL}/all-assets`);
   }
 
-  acceptAssetLog(admin: number)
+  acceptAssetLog(admin: number | undefined)
   {
-    return this.http.put<any>(`${this.apiURL}/approve-log`, admin);
+    return this.http.put<any>(`${this.apiURL}/approve-log/${admin}`,admin);
   }
 
-  disapproveAssetLog(admin: number)
+  disapproveAssetLog(admin: number|undefined)
   {
     
-    return this.http.put<any>(`${this.apiURL}/disapprove-log`, admin);
+    return this.http.put<any>(`${this.apiURL}/disapprove-log/${admin}`, admin);
   }
 
 
