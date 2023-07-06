@@ -5,7 +5,9 @@ export class RegisterRecord
     userRecord?: string;
     timeSignedIn?: Time;
     dateSignedIn?: Date;
-    eventType?: string
+    event_type?: string;
+    event_message?: string;
+    sign_time?: string;
 }
 
 export class dtoRegisterRecord

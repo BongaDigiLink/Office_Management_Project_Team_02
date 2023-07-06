@@ -21,11 +21,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { RegisterInputComponent } from './dialog/register-input/register-input.component';
-import { RoomBookingInputComponent } from './dialog/room-booking-input/room-booking-input.component';
+import { RoomBookingInputComponent } from './dialog/update-user/update-user';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpdateuserComponent } from './dialog/updateuser/updateuser.component';
 
 @NgModule({
-  declarations: [MainComponent, UserComponent, AssetComponent, BookingComponent, StockComponent, CheaderComponent, IndexComponent, MeetingsComponent, UserassetsComponent, DigitalregisterComponent, DialogComponent, RegisterInputComponent, RoomBookingInputComponent],
+  declarations: [MainComponent, UserComponent, AssetComponent, BookingComponent, StockComponent, CheaderComponent, IndexComponent, MeetingsComponent, UserassetsComponent, DigitalregisterComponent, DialogComponent, RegisterInputComponent, RoomBookingInputComponent, UpdateuserComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

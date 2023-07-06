@@ -22,16 +22,16 @@ export class RegisterInputComponent {
 
   signInRegister()
   {
-    this.service.createEvent("sign-in", this.registerForm.value).subscribe( () => {
+    //this.service.createEvent("sign-in", this.registerForm.value).subscribe( () => {
 
-    })
+   // })
   }
 
   signOutRegister()
   {
-    this.service.createEvent("sign-out", this.registerForm.value).subscribe( () => {
+    //this.service.createEvent("sign-out", this.registerForm.value).subscribe( () => {
       
-    } )
+    //} )
   }
 
 }

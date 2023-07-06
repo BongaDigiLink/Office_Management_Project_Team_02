@@ -1,17 +1,17 @@
 package za.co.team02.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import za.co.team02.dto.EventDTO;
+import za.co.team02.dto.EventTypeDTO;
 import za.co.team02.dto.UserDTO;
-import za.co.team02.model.SiteUser;
-import za.co.team02.service.EventService;
-import za.co.team02.service.UserService;
+import za.co.team02.model.*;
+import za.co.team02.service.*;
 
 import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping("/v1")
@@ -19,11 +19,24 @@ public class UserController
 {
     private UserService userService;
     private EventService eventService;
+    private EventTypeService eventTypeService;
+    private FacilityService facilityService;
+    private FoodService foodService;
+    private AssetLoggerService assetLoggerService;
 
     @Autowired
-    public UserController(UserService userService,EventService eventService) {
+    public UserController(UserService userService,
+                          EventService eventService,
+                          EventTypeService eventTypeService,
+                          FacilityService facilityService,
+                          FoodService foodService,
+                          AssetLoggerService assetLoggerService) {
         this.userService = userService;
         this.eventService = eventService;
+        this.facilityService = facilityService;
+        this.eventTypeService = eventTypeService;
+        this.foodService = foodService;
+        this.assetLoggerService = assetLoggerService;
     }
 
     /**
@@ -74,6 +87,85 @@ public class UserController
         userService.updateUser(siteUser);
     }
 
+
+    //Start Of Facility End Points
+    //Start User Facility Functions
+
+    // Create Operation
+    /**
+     * Endpoint for creating a new asset.
+     * @param facility The asset object to be created.
+     * @return The created asset object.
+     */
+    @PostMapping("/user/create-facility-request/{email}")
+    public Facility createFacility(@PathVariable("email") String email,
+                                   @RequestBody Facility facility)
+    {
+        try
+        {
+            return  facilityService.createFacilityRequest(email, facility);
+        }
+        catch(Exception e)
+        {
+            //System.out.println(HttpStatus.INTERNAL_SERVER_ERROR);
+            return null;
+        }
+    }
+
+    @PostMapping("/asset-register/{email}")
+    public ResponseEntity<?> createAssetLog(@PathVariable("email") String email,
+                                @RequestBody AssetLog loggedAsset)
+    {
+        try
+        {
+            if(assetLoggerService.createNewAssetLog(email, loggedAsset))
+            {
+                return new ResponseEntity<>("Success", HttpStatus.OK);
+            };
+            return new ResponseEntity<>("failed", HttpStatus.NO_CONTENT);
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
+
+
+    @GetMapping("/get-my-asset-log/{email}")
+    public ResponseEntity<List<AssetLog>> getMyAssetLogs(@PathVariable("email") String userEmail)
+    {
+        if(userService.getSingleUser(userEmail) != null)
+        {
+             List<AssetLog> logs = assetLoggerService.getLoggedInUserLogs(userEmail);
+             return new ResponseEntity<>(logs, HttpStatus.OK);
+        }
+
+        return null;
+    }
+
+
+    /**
+     *
+     * @param email - current logged in user email
+     * @return list of all facilities requested by this user.
+     */
+    @GetMapping("/user/user-facility-requests/{email}")
+    public List<Facility> getUserRequestedRooms(@PathVariable("email") String email)
+    {
+        try
+        {
+            return facilityService.findAllRequestedRoomsByUser(email);
+        }
+        catch (Exception e)
+        {
+            System.out.println(HttpStatus.NO_CONTENT);
+            return null;
+        }
+    }
+
+    //End User Facility Functions
+
+
     /**
      * admin
      * controller - update food reserve
@@ -96,24 +188,40 @@ public class UserController
 
     /**
      * user
-     * controller - make  meeting booking
+     * controller - get users record register
      */
+    @GetMapping("/my-register/{email}")
+    public List<Event> getMyRecordRegister(@PathVariable("email") String email)
+    {
+        return eventService.getMyAttendance(email);
+    }
 
 
     /**
      * user
      * controller -  complete a register
      */
-    @PostMapping("/sign-register")
-    public String completeRegister(@RequestBody EventDTO eventDTO) {
-        this.eventService.logEvent(eventDTO);
-        return "redirect:/event_register";
+    @PostMapping("/sign-register/{email}")
+    public ResponseEntity<EventDTO> completeRegister(@PathVariable("email") String email,
+                                                     @RequestBody EventDTO eventDTO)
+    {
+        System.out.println(eventDTO);
+        return new ResponseEntity<>(this.eventService.logEvent(email,
+                eventDTO), HttpStatus.OK);
     }
 
+    @PostMapping("/sign-type")
+    public String completeRegister(@RequestBody EventTypeDTO eventTypeDTO) {
+        this.eventTypeService.logEvent(eventTypeDTO);
+        return "redirect:/event_register";
+    }
 
     /**
      * user
      * controller - request food
      */
-
+    @GetMapping("/request-food")
+    public List<Integer> requestNoodles(@PathVariable String email) {
+       return this.foodService.getFood(email);
+    }
 }

@@ -3,11 +3,8 @@ package za.co.team02.service;
 import org.springframework.stereotype.Service;
 import za.co.team02.dto.UserDTO;
 import za.co.team02.model.SiteUser;
-import za.co.team02.repository.EventRepository;
 import za.co.team02.repository.UserRepository;
-
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -41,7 +38,7 @@ public class UserService
 
         //convert entity to DTO
         UserDTO userResponse = new UserDTO();
-        userResponse.setAdminId(newSiteUser.getAdminId());
+        userResponse.setAdminId(newSiteUser.getId());
         userResponse.setFirstName(newSiteUser.getFirstName());
         userResponse.setLastName(newSiteUser.getLastName());
         userResponse.setUsername(newSiteUser.getUsername());

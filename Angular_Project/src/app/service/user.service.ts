@@ -5,6 +5,7 @@ import { Asset } from '../models/asset';
 import { Booking, dtoBooking } from '../models/booking';
 import { Observable } from 'rxjs';
 import { RegisterRecord, dtoRegisterRecord } from '../models/register';
+import { LogAsset, logdtoAsset } from '../models/LogAsset';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class UserService
 {
   constructor(private http: HttpClient) { }
 
-  apiURL = 'http://localhost:8081/user'
+  apiURL = 'http://localhost:8081/v1'
 
   /**
    * User updates details.
@@ -28,9 +29,9 @@ export class UserService
   /**
    * Asset Register
    */
-  assetRegister(assetDetails: Asset)
+  assetRegister(email: string | undefined, logDetails: logdtoAsset)
   {
-    return this.http.post<Asset>(`${this.apiURL}/asset-register`, assetDetails);
+    return this.http.post<any>(`${this.apiURL}/asset-register/${email}`, logDetails);
   }
 
   /**
@@ -46,20 +47,25 @@ export class UserService
    * @param email - user email
    * @returns - record of my register attendance
    */
-  myRegister(email: string): Observable<RegisterRecord[]>
+  myRegister(email: string | undefined): Observable<RegisterRecord[]>
   {
     return this.http.get<RegisterRecord[]>(`${this.apiURL}/my-register/${email}`)
   }
 
   //User creates event// Register (in or out)
-  createEvent(event_type: string, registerRecord: dtoRegisterRecord)
+  createEvent(email: string | undefined, registerRecord: dtoRegisterRecord)
   {
-    return this.http.post<any>(`${this.apiURL}/record-register/`, registerRecord)
+    return this.http.post<any>(`${this.apiURL}/sign-register/${email}`, registerRecord)
   }
 
   requestFood(email: string)
   {
     this.http.get<any>(`${this.apiURL}/request-food/${email}`)
+  }
+
+  getMyEvents(email: string | undefined): Observable<LogAsset[]>
+  {
+    return this.http.get<LogAsset[]>(`${this.apiURL}/get-my-asset-log/${email}`)
   }
   
 
@@ -67,9 +73,9 @@ export class UserService
   /**
    * user routes, my meetings/bookings
    */
-  newBooking(newBooking: dtoBooking)
+  newBooking(email: string | undefined, newBooking: dtoBooking)
   {
-    return this.http.post<any>(`${this.apiURL}/create-booking/`, newBooking);
+    return this.http.post<any>(`${this.apiURL}/user/create-facility-request/${email}`, newBooking);
   }
 
   editBooking(id: number, editBooking: Booking)
@@ -80,9 +86,9 @@ export class UserService
   /**
    * @returns list of my bookings
    */
-  getMyBookings(email: string | null): Observable<Booking[]>
+  getMyBookings(email: string | undefined): Observable<Booking[]>
   {
-    return this.http.get<Booking[]>(`${this.apiURL}/my-bookings/${email}`);
+    return this.http.get<Booking[]>(`${this.apiURL}/user/user-facility-requests/${email}`);
   }
 
 

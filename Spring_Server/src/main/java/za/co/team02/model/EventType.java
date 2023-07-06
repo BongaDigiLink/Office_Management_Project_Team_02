@@ -19,4 +19,5 @@ public class EventType {
 
     @Column(name = "event_name")
     private String eventName;
+
 }

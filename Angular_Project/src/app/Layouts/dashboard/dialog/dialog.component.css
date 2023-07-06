@@ -2,3 +2,51 @@
 mat-form-filed {
     width: 100%;
 }
+mat-label{
+    border: #DFDCDF;
+    padding: 14px 56px 13px 57px;
+    align-items: center;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, #DFDCDF 0%, rgba(223, 220, 223, 0.00) 100%);
+}
+
+mat-form-field {
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* mat-form-field {
+    align-items: center;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, #DFDCDF 0%, rgba(223, 220, 223, 0.00) 100%);
+} */
+
+.form {
+    padding: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+mat-dialog-title{
+    background: #FFF;
+}
+
+mat-diaog-content{
+    width: 1181px;
+    height: 1008px;
+    border: 1px solid #FFF;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.00) 100%);
+}
+
+mat-dialog-action{
+    /* display: flex; */
+    /* width: 219px;
+    height: 79px; */
+    /* padding: 14px 56px 13px 57px; */
+    /* justify-content: center;
+    align-items: center; */
+
+    /* border-radius: 30px;
+    border: 2px solid #000;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, rgba(0, 0, 0, 0.00) 100%); */
+}

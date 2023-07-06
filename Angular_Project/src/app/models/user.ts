@@ -4,7 +4,6 @@ export class User
     firstName?: string;
     lastName?: string;
     department?: string;
-    imageUrl?: string;
     userType?: string;
     role?: string
 }
@@ -12,10 +11,13 @@ export class User
 export class dtoUser
 {
     constructor(
-        email: string,
         name: string,
         surname: string,
-        imageUrl: string,
-        role: string,
+        email: string,
+        address: string,
+        password: string,
+        role : string,
     ){}
+
+
 }

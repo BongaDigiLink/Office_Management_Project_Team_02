@@ -2,33 +2,104 @@
               
     <div class="row" >
         <div class="col-md-9 col-sm-12 col-xs-12">
-        <h3>Asset Register</h3> 
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <form>
-                    <ul class="form-style-1">
-                        <li>
-                            <label>Assets</label>
-                            <select name="field4" class="field-select">
-                            <option value="Laptop">Laptop</option>
-                            <option value="Headsets">Headsets</option>
-                            <option value="Desktop">Desktop</option>
-                            </select>
-                        </li>                        
-                        <li><label>From <span class="required">*</span></label><input type="date" name="field1" class="field-divided" /></li>
-                        <li><label>To <span class="required">*</span></label><input type="date" name="field2" class="field-divided" /></li>
-                        <li>
-                            <label>Reason <span class="required">*</span></label>
-                            <input type="email" name="field3" class="field-long" />
-                        </li>
-                        <li>
-                            <input type="submit" value="Create Log" />
-                        </li>
-                    </ul>
+            <h3>Asset Register</h3> 
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <form [formGroup]="logAssetForm">
+
+                        <ul class="form-style-1">
+                            <li>
+                                <label>Assets</label>
+                                <select formControlName="asset_name" name="field4" class="field-select">
+                                <option value="Laptop">Laptop</option>
+                                <option value="Headsets">Headsets</option>
+                                <option value="Desktop">Desktop</option>
+                                </select>
+                            </li>                        
+                            <li><label>From <span class="required">*</span></label>
+                                <input formControlName="from_date" type="date" name="field1" class="field-divided" /></li>
+
+                            <li><label>To <span class="required">*</span></label>
+                                <input formControlName="to_date" type="date" name="field2" class="field-divided" /></li>
+                            <li>
+                                <label>Reason <span class="required">*</span></label>
+                                <input formControlName="notes" type="email" name="field3" class="field-long" />
+                            </li>
+                            <li>
+                                <button class="btn btn-success square-btn-adjust" (click)="logAssetLog()" type="submit">Create Log</button>
+                            </li>
+                        </ul>
+
                     </form>
+
+                </div>
             </div>
-        </div>
         
         </div>
+
+        <div class="col-md-9 col-sm-12 col-xs-12">
+            <h3>Asset Log History</h3> 
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-borderless">
+                        <thead class="bg-light">
+                            <tr>
+                              <th>Requested Asset</th>
+                              <th>From</th>
+                              <th>until</th>
+                              <th>Log Status</th>
+                              <th>Response</th>
+                            </tr>
+                          </thead>
+                          <tbody *ngFor="let log of mylogs">
+                            <tr>
+  
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <div class="ms-3">
+                                    <p class="fw-bold mb-1">{{ log.asset_name }}</p>
+                                  </div>
+                                </div>
+                              </td>
+  
+                              <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                      <p class="fw-bold mb-1">{{ log.from_date }}</p>
+                                    </div>
+                                  </div>
+                              </td>
+                  
+                              <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                      <p class="fw-bold mb-1">{{ log.to_date }}</p>
+                                    </div>
+                                  </div>
+                                </td>
+
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1">{{ log.log_status }}</p>
+                                    </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1">{{ log.reason }}</p>
+                                    </div>
+                                    </div>
+                                </td>
+                            
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>  
+          </div>
     </div>
     <!--End of Main Content here.-- End of module component here.-->

@@ -4,8 +4,10 @@ import { RegisterRecord } from 'src/app/models/register';
 import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
-import { RoomBookingInputComponent } from '../dialog/room-booking-input/room-booking-input.component';
+import { RoomBookingInputComponent } from '../dialog/update-user/update-user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-digitalregister',
@@ -27,8 +29,8 @@ export class DigitalregisterComponent implements OnInit{
 
     eventForm = new FormGroup({
       event_type: new FormControl('', [Validators.required]),
-      signInTime: new FormControl(''),
-      signOutTime: new FormControl(''),
+      sign_inTime: new FormControl(''),
+      sign_outTime: new FormControl(''),
       event_message: new FormControl('')
     })
 
@@ -42,7 +44,7 @@ export class DigitalregisterComponent implements OnInit{
       }
       else if( value == 2)
       {
-        this.userService.myRegister("email@mail.com").subscribe(
+        this.userService.myRegister(this.authService.getEmail()).subscribe(
            (my_record) => {
           this.myEvents = my_record
         } )
@@ -50,10 +52,73 @@ export class DigitalregisterComponent implements OnInit{
     })
   }
 
-  signRegister()
+  signIn()
   {
-    console.log("Register inputs")
-    console.log(this.eventForm.value)
+    this.eventForm.value.event_type = 'sign-in';
+    const sign_time = new Date();
+
+    this.eventForm.value.sign_inTime = sign_time.getHours()+":"+sign_time.getMinutes();
+  
+
+    this.userService.createEvent(this.authService.getEmail(), this.eventForm.value).subscribe( 
+      {
+        next: () => {
+          Swal.fire(
+            {
+            position: 'center',
+            icon: 'success',
+            title: 'Signed In',
+            showConfirmButton: false,
+            timer: 1600
+            }
+          )
+        },
+        error: () => {
+          Swal.fire(
+            {
+            position: 'center',
+            icon: 'error',
+            title: 'Not Signed-In',
+            showConfirmButton: false,
+            timer: 1600
+            }
+          )
+        }
+       })
+  }
+
+  signOut()
+  {
+    this.eventForm.value.event_type = 'sign-out';
+
+    const sign_time = new Date();
+
+    this.eventForm.value.sign_outTime = sign_time.getHours()+":"+sign_time.getMinutes();
+
+    this.userService.createEvent(this.authService.getEmail(), this.eventForm.value).subscribe( 
+      {
+        next: () => {
+          Swal.fire(
+            {
+            position: 'center',
+            icon: 'success',
+            title: 'Signed-Out',
+            showConfirmButton: false,
+            timer: 1600
+            }
+          )
+        },
+        error: () => {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Not Signed-Out',
+            showConfirmButton: false,
+            timer: 1600
+          })
+
+        }
+       })
   }
 
 

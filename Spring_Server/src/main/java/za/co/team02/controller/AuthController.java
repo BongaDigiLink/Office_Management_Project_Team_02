@@ -10,24 +10,31 @@ import org.springframework.web.bind.annotation.RestController;
 import za.co.team02.model.SiteUser;
 import za.co.team02.service.AuthService;
 import za.co.team02.dto.LoginDetails;
+import za.co.team02.utils.Utils;
 
 @RestController
 @RequestMapping(path = "/auth")
 public class AuthController
 {
-    @Autowired
     private AuthService authService;
+    private Utils utils = new Utils();
 
+    @Autowired
+    public AuthController(AuthService authService)
+    {
+        this.authService = authService;
+    }
+
+    /**
+     * @param loginDetails - from login page
+     * @return - user object if user exists
+     */
     @PostMapping("/login")
     public ResponseEntity<SiteUser> loginUser(@RequestBody LoginDetails loginDetails)
     {
-        //System.out.println("Test Login Post:"+loginDetails.getEmail() +" psswd:"+loginDetails.getPassword());
-        if(this.authService.checkUser(loginDetails.getEmail()))
+        if(this.authService.getUserByEmail(loginDetails.getEmail()) != null)
         {
-            if(this.authService.getUserByEmail(loginDetails.getEmail()) != null
-                    && this.authService.getUserByEmail(loginDetails.getEmail())
-                    .getPassword()
-                    .equals(loginDetails.getPassword()))
+            if(utils.checkPasswords(loginDetails.getPassword(), this.authService.getUserByEmail(loginDetails.getEmail())))
             {
                 return new ResponseEntity<>(this.authService.getUserByEmail(loginDetails.getEmail()),
                         HttpStatus.OK);

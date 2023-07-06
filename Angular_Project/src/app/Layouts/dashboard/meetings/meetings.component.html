@@ -2,59 +2,55 @@
               
     <div class="row" >
         <div class="col-md-9 col-sm-12 col-xs-12">
-        <h3>My Meeting</h3> 
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <table class="table table-borderless">
-                    <thead class="bg-light">
-                        <tr>
-                          <th>Date</th>
-                          <th>Venue</th>
-                          <th>Capacity</th>
-                          <th>Time</th>
-                        </tr>
-                      </thead>
-                      <tbody *ngFor="let meeting of userMeetingBookings">
-                        <tr>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div class="ms-3">
-                                <p class="fw-bold mb-1">{{ meeting.bookingDate }}</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="d-flex align-items-center">
+          <h3>My Meeting</h3> 
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <table class="table table-borderless">
+                      <thead class="bg-light">
+                          <tr>
+                            <th>Date</th>
+                            <th>Venue</th>
+                            <th>Time</th>
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let meeting of userMeetingBookings">
+                          <tr>
+
+                            <td>
+                              <div class="d-flex align-items-center">
                                 <div class="ms-3">
-                                  <p class="fw-bold mb-1">{{ meeting.roomName }}</p>
+                                  <p class="fw-bold mb-1">{{ meeting.bookingDate }}</p>
                                 </div>
                               </div>
-                          </td>
-                          <td>
-                            <div class="d-flex align-items-center">
-                                <div class="ms-3">
-                                  <p class="fw-bold mb-1">{{ meeting.roomCapacity }}</p>
+                            </td>
+
+                            <td>
+                              <div class="d-flex align-items-center">
+                                  <div class="ms-3">
+                                    <p class="fw-bold mb-1">{{ meeting.room_name }}</p>
+                                  </div>
                                 </div>
-                              </div>
-                          </td>
-                          <td>
-                            <div class="d-flex align-items-center">
-                                <div class="ms-3">
-                                  <p class="fw-bold mb-1">{{ meeting.bookingTime }}</p>
+                            </td>
+                
+                            <td>
+                              <div class="d-flex align-items-center">
+                                  <div class="ms-3">
+                                    <p class="fw-bold mb-1">{{ meeting.start_time }}</p>
+                                  </div>
                                 </div>
-                              </div>
-                          <td>
-                            <br>
-                            <a routerLink="" class="btn btn-success square-btn-adjust">Update</a>
-                          </td>
-                        </tr>
-                      </tbody>
-                </table>
-            </div>
-        </div>  
+                            <td>
+                              
+                              <br>
+                              <a class="btn btn-success square-btn-adjust" (click)="updateDialog()">Update</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                  </table>
+              </div>
+          </div>
+
         </div>
 
-        <div class="row" >
           <div class="col-md-9 col-sm-12 col-xs-12">
           <h3>Meeting Room Booking</h3> 
             <div class="panel panel-default">
@@ -65,7 +61,7 @@
                         <ul class="form-style-1">
                             <li>
                                 <label>Meeting Venues</label>
-                                  <select formControlName="venue" class="field-select">
+                                  <select formControlName="room_name" class="field-select">
                                   <option>Green Room</option>
                                   <option>Blue Room</option>
                                   <option>Red Room</option>
@@ -82,7 +78,7 @@
                               <input type="time" formControlName="end_time" class="field-divided" /></li>
                       
                             <li>
-                                <button type="submit" (click)="createAMeeting()">Book Room</button>
+                                <button class="btn btn-success square-btn-adjust" type="submit" (click)="createAMeeting()">Book Room</button>
                             </li>
                         </ul>
 
@@ -91,7 +87,7 @@
 
             </div>
           </div>
-        </div>
+
         
     </div>
     <!--End of Main Content here.-- End of module component here.-->
