@@ -89,17 +89,17 @@ public class AdminController {
             return new ResponseEntity<>(logs, HttpStatus.OK);
     }
 
-    @PostMapping("/approve-assets")
-    public boolean approveAssets() {
+    @PutMapping("/approve-log/{id}")
+    public boolean approveAssets(@PathVariable("id")int id) {
         try {
-            return assetLoggerService.approveAssets();
+            return assetLoggerService.approveAssets(id);
         } catch (Exception e) {
             System.out.println(HttpStatus.NO_CONTENT);
             return false;
         }
     }
 //
-//    @PostMapping("/decline-assets")
+//    @PostMapping("/disapprove-log")
 //    public List<Asset> declineAssets() {
 //        try {
 //            return adminServiceOBJ.declineAssets();
