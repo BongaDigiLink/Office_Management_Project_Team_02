@@ -21,32 +21,30 @@ public class Team02Application
 	public static void main(String[] args)
 	{
 		ApplicationContext context = SpringApplication.run(Team02Application.class, args);
-//		UserRepository mobileRepository = context.getBean(UserRepository.class);
-//		EventRepository appRepository = context.getBean(EventRepository.class);
 	}
 
-	public Team02Application(UserRepository userRepository) {
-		SiteUser admin = SiteUser.builder()
-				.email("hloni@gmail.com")
-				.firstName("Hloni")
-				.lastName("Moloi")
-				.username("@hloni")
-				.password("71cf426fda18e7d884cff448e6d7920f9219c79ea85a6cac385a2b46c928d8ae")
-				.role("admin")
-				.address("Ameshoff JHB").build();
-		userRepository.save(admin);
-
-		SiteUser user = SiteUser.builder()
-				.email("bonga@gmail.com")
-				.firstName("Bonga")
-				.lastName("Gougota")
-				.username("@Bongag")
-				.password("d5c40e418539a91860b5bb9ae07f0d51552cfba7b1a5ca37ff8ec8f836f7aca7")
-				.role("user")
-				.address("Ameshoff JHB").build();
-		userRepository.save(admin);
-		userRepository.save(user);
-	}
+//	public Team02Application(UserRepository userRepository) {
+//		SiteUser admin = SiteUser.builder()
+//				.email("hloni@gmail.com")
+//				.firstName("Hloni")
+//				.lastName("Moloi")
+//				.username("@hloni")
+//				.password("71cf426fda18e7d884cff448e6d7920f9219c79ea85a6cac385a2b46c928d8ae")
+//				.role("admin")
+//				.address("Ameshoff JHB").build();
+//		userRepository.save(admin);
+//
+//		SiteUser user = SiteUser.builder()
+//				.email("bonga@gmail.com")
+//				.firstName("Bonga")
+//				.lastName("Gougota")
+//				.username("@Bongag")
+//				.password("d5c40e418539a91860b5bb9ae07f0d51552cfba7b1a5ca37ff8ec8f836f7aca7")
+//				.role("user")
+//				.address("Ameshoff JHB").build();
+//		userRepository.save(admin);
+//		userRepository.save(user);
+//	}
 
 	@Bean
 	public CorsFilter corsFilter()
