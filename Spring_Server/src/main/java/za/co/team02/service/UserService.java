@@ -27,24 +27,24 @@ public class UserService
 
         // convert DTO to entity
         siteUser.setEmail(userDto.getEmail());
-        siteUser.setFirstName(userDto.getFirstName());
-        siteUser.setLastName(userDto.getLastName());
+        siteUser.setFirstName(userDto.getFirst_Name());
+        siteUser.setLastName(userDto.getLast_Name());
         siteUser.setUsername(userDto.getUsername());
         siteUser.setPassword(userDto.getPassword());
         siteUser.setRole(userDto.getRole());
-        siteUser.setAddress(userDto.getAddress());
+        //siteUser.setAddress(userDto.getAddress());
 
         SiteUser newSiteUser = userRepository.save(siteUser);
 
         //convert entity to DTO
         UserDTO userResponse = new UserDTO();
-        userResponse.setAdminId(newSiteUser.getId());
-        userResponse.setFirstName(newSiteUser.getFirstName());
-        userResponse.setLastName(newSiteUser.getLastName());
+        userResponse.setAdmin_Id(newSiteUser.getId());
+        userResponse.setFirst_Name(newSiteUser.getFirstName());
+        userResponse.setLast_Name(newSiteUser.getLastName());
         userResponse.setUsername(newSiteUser.getUsername());
         userResponse.setPassword(newSiteUser.getPassword());
         userResponse.setRole(newSiteUser.getRole());
-        userResponse.setAddress(newSiteUser.getAddress());
+        //userResponse.setAddress(newSiteUser.getAddress());
         return userResponse;
     }
 

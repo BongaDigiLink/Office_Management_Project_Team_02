@@ -6,14 +6,17 @@ import za.co.team02.model.Event;
 import java.util.Set;
 
 @Data
-public class UserDTO {
-    private int adminId;
-    private String firstName;
-    private String lastName;
-    private String username;
+public class UserDTO
+{
+    private int Admin_Id;
+    private int Candidate_id;
+    private String First_Name;
+    private String Last_Name;
+    private int Cohort_id;
+    private String Username;
     private String password;
     private String email;
     private String role;
-    private String address;
+    private int Location_id;
     private Set<Event> events;
 }
