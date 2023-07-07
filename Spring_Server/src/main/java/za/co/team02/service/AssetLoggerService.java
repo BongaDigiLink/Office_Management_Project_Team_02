@@ -8,6 +8,7 @@ import za.co.team02.repository.AssetLoggerRepository;
 import za.co.team02.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AssetLoggerService
@@ -30,7 +31,7 @@ public class AssetLoggerService
 
     public List<AssetLog> getAllUserLogs()
     {
-        return assetLoggerRepository.findAll().stream().toList();
+        return assetLoggerRepository.findAll();
     }
 
     private int getUserId(String userEmail)
@@ -38,11 +39,18 @@ public class AssetLoggerService
         return userRepository.findByEmail(userEmail).get().getId();
     }
 
+    private Optional<SiteUser> getUser(String userEmail)
+    {
+        return userRepository.findByEmail(userEmail);
+    }
+
     public boolean createNewAssetLog(String userEmail, AssetLog assetLog)
     {
         if(assetLog != null && userEmail != null)
         {
+
             assetLog.setCandidate_id(getUserId(userEmail));
+            assetLog.setCandidate_name(getUser(userEmail).get().getFirstName()+" "+getUser(userEmail).get().getLastName());
             assetLog.setLog_status("Pending");
             assetLoggerRepository.save(assetLog);
 
