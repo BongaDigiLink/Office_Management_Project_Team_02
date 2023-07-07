@@ -8,19 +8,19 @@
                     <table class="table table-borderless">
                         <thead class="bg-light">
                             <tr>
-                              <!-- <th>User Requested</th> -->
+                              <th>User Requested</th>
                               <th>Asset Requested</th>
                               <th>From</th>
                               <th>To</th>
                               <th></th>
                             </tr>
                           </thead>
-                          <tbody *ngFor="let log of allAssetLogs">
+                          <tbody *ngFor="let log of allAssetdto">
                             <tr>
                               <td>
                                 <div class="d-flex align-items-center">
                                   <div class="ms-3">
-                                    <!-- <p class="fw-bold mb-1">{{log.asset_name}}</p> -->
+                                    <p class="fw-bold mb-1">{{log.candidate_name}}</p>
                                   </div>
                                 </div>
                               </td>
@@ -35,8 +35,8 @@
                               </td>
                               <td>
                                 <br>
-                                <a routerLink="/accept" class="btn btn-success" (click)="acceptAssetLog(log.id)"> margin-right: 10px">Accept</a>
-                                <a routerLink="/decline" class="btn btn-danger" (click)="log.id">Decline</a>
+                                <a  class="btn btn-success"  margin-right: 10px >Accept</a>
+                                <a  class="btn btn-danger">Decline</a>
                               </td>
                             </tr>
                         </tbody>

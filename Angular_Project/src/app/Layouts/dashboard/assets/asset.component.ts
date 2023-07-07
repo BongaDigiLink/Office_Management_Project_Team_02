@@ -12,27 +12,40 @@ import { LogAsset } from 'src/app/models/LogAsset';
 
 export class AssetComponent implements OnInit{
 
-  constructor(private adminService: AdminService){}
+  constructor(private adminService: AdminService){
+  
+  }
 
   allAssets!: Asset[]
   allUserBookings?: Booking[];
-  allAssetLogs?: LogAsset[];
+  allAssetdto?: LogAsset[];
+   
 
-  ngOnInit(): void {
-    this.adminService.getAssets().subscribe( 
-      (all_assets) => 
+  ngOnInit() : void{
+    // ============================================
+    this.adminService.getAllAssetLogs().subscribe( (assets) => {
+      this.allAssetdto = assets;
+    })
+
+    //Get users log records
+    this.adminService.getAllAssetLogs().subscribe( 
       {
-        console.log(all_assets)
+        next: (records) => {
+          this.allAssetdto = records;
+        },
+        error: () => {
+          console.log("an error occured.")
+        }
+      } )
 
-        this.allAssets = this.allAssets
-      })
+      console.log("asset logs",this.allAssetdto);
 
       this.adminService.getBookings().subscribe(
         (userBookings_) => {
          this.allUserBookings = userBookings_
-        })
-  }
+      });
 
+  }
 
   /**
    *ADMIN methods decline/accept take in request id and create a put call

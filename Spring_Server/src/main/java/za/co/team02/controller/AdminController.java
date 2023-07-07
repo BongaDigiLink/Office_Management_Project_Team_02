@@ -81,10 +81,9 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/get-asset-logs")
+    @GetMapping("/get-all-asset-log")
     public ResponseEntity<List<AssetLog>> getAssetLogs()
     {
-
             List<AssetLog> logs = assetLoggerService.getAllUserLogs();
             return new ResponseEntity<>(logs, HttpStatus.OK);
     }
