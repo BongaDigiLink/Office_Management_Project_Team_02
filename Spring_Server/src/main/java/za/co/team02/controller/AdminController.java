@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import za.co.team02.dto.AssetLogDTO;
 import za.co.team02.dto.BookingDTO;
 import za.co.team02.dto.UpdateBookingDTO;
 import za.co.team02.dto.UserDTO;
@@ -103,18 +104,21 @@ public class AdminController {
     }
 
     @GetMapping("/get-all-asset-log")
-    public ResponseEntity<List<AssetLog>> getAssetLogs()
+    public ResponseEntity<List<AssetLogDTO>> getAssetLogs()
     {
-            List<AssetLog> logs = assetLoggerService.getAllUserLogs();
+            List<AssetLogDTO> logs = assetLoggerService.getAllUserLogs();
             return new ResponseEntity<>(logs, HttpStatus.OK);
     }
 
-    @PutMapping("/approve-log/{id}")
-    public boolean approveAssets(@PathVariable("id")int id) {
-        try {
-            return assetLoggerService.approveAssets(id);
-        } catch (Exception e) {
-            System.out.println(HttpStatus.NO_CONTENT);
+    @PutMapping("/edit-log/")
+    public boolean approveAssets(@RequestBody AssetLogDTO data)
+    {
+        if(assetLoggerService.approveAssets(data))
+        {
+            return true;
+        }
+        else
+        {
             return false;
         }
     }

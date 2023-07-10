@@ -20,27 +20,22 @@ export class AssetComponent implements OnInit{
 
   allAssets!: Asset[]
   allUserBookings?: Booking[];
-  allAssetdto?: LogAsset[];
+  log_requests?: LogAsset[];
    
 
   ngOnInit() : void{
     // ============================================
     this.adminService.getAllAssetLogs().subscribe( (assets) => {
-      this.allAssetdto = assets;
+      this.log_requests = assets;
     })
 
     //Get users log records
-    this.adminService.getAllAssetLogs().subscribe( 
-      {
-        next: (records) => {
-          this.allAssetdto = records;
-        },
-        error: () => {
-          console.log("an error occured.")
-        }
-      } )
+    this.adminService.getAllAssetLogs().subscribe( (records) => 
+    {
+      this.log_requests = records;
+      console.log(records)
+    })
 
-      console.log("asset logs",this.allAssetdto);
 
       this.adminService.getBookings().subscribe(
         (userBookings_) => {
@@ -52,6 +47,31 @@ export class AssetComponent implements OnInit{
   /**
    *ADMIN methods decline/accept take in request id and create a put call
    */
+   approveRequest(id: number | undefined)
+   {
+    this.adminService.editAssetRequest( 
+      {
+      "id": id,
+      "admin_user": this.authService.getEmail(),
+      "log_status": "approved",
+      "reason": "Digilink has authorised your request. Be safe! ;)"
+    }).subscribe( (return_) => {
+      console.log(return_)
+    })
+   }
+
+   declineRequest(id: number | undefined)
+   {
+    this.adminService.editAssetRequest(
+      {"id":id,
+      "admin_user":this.authService.getEmail(),
+    "log_status":"declined",
+    "reason":""
+  }).subscribe( (return_) => {
+    console.log(return_)
+  })
+   }
+
    acceptAssetLog(id: number | undefined)
    {
      this.adminService.editBooking(

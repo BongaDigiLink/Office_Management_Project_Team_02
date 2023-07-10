@@ -18,4 +18,15 @@ public class AssetLogDTO
     Integer candidate_id; //user making the log
     String candidate_name; //name of the user making the log
 
+    //For admin accept or decline
+    int id;
+    String admin_user;
+//    candidate_name?: string;
+//    asset_name?: string;
+//    from_date?: string;
+//    to_date?: string;
+//    notes?: string;
+//    log_status?: string;
+//    reason?: string;
+
 }

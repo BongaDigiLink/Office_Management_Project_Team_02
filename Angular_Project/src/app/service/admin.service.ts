@@ -72,22 +72,17 @@ export class AdminService
   }
 
   
-  getAllAssetLogs()
+  getAllAssetLogs(): Observable<LogAsset[]>
   {
-    return this.http.get<logdtoAsset[]>(`${this.apiURL}/get-all-asset-log`)
+    return this.http.get<LogAsset[]>(`${this.apiURL}/get-all-asset-log`)
   }
   
 
-  acceptAssetLog(admin: number | undefined)
+  editAssetRequest(data: LogAsset)
   {
-    return this.http.put<any>(`${this.apiURL}/approve-log/${admin}`,admin);
+    return this.http.put<any>(`${this.apiURL}/edit-log/`,data);
   }
 
-  disapproveAssetLog(admin: number|undefined)
-  {
-    
-    return this.http.put<any>(`${this.apiURL}/disapprove-log/${admin}`, admin);
-  }
 
 
   /**
