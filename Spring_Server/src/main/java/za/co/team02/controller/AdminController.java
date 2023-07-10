@@ -168,14 +168,16 @@ public class AdminController {
     //
 
     //@PatchMapping("/facility/{id}/{status}")
-    @PatchMapping("/update-facility-request/{id}/{status}")
-    public ResponseEntity<Facility> updateEmployeePartially(@PathVariable Integer id, @PathVariable String status)
+    @PutMapping("/update-facility-request/{id}/{status}")
+    public ResponseEntity<?> updateMeetingRoomBooking(@PathVariable Integer id, @PathVariable String status)
     {
         try
         {
-            Facility facility = facilityRepo.findById(id).get();
-            facility.setStatus(status);
-            return new ResponseEntity<Facility>(facilityRepo.save(facility), HttpStatus.OK);
+            if(facilityService.updatingMeetingRoomBooking(id,status))
+            {
+                return new ResponseEntity<>("success", HttpStatus.OK);
+            }
+            return new ResponseEntity<>("failed", HttpStatus.BAD_REQUEST);
         }
         catch (Exception e)
         {

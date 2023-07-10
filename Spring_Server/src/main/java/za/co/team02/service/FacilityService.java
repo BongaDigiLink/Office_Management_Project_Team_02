@@ -8,6 +8,7 @@ import za.co.team02.model.SiteUser;
 import za.co.team02.repository.FacilityRepository;
 import za.co.team02.repository.UserRepository;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +69,7 @@ public class FacilityService {
                 SiteUser user = userRepository.findById(obj.getUser_id()).get();
                 BookingDTO bookings = new BookingDTO();
 
+                bookings.setBookingId(obj.getId());
                 bookings.setApplicant_name(user.getFirstName()+" "+user.getLastName());
                 bookings.setBookingDate(obj.getDate());
                 bookings.setStart_time(obj.getStart_time());
@@ -86,6 +88,24 @@ public class FacilityService {
 
         return list_of_bookings;
     }
+
+    public boolean updatingMeetingRoomBooking(int booking_id, String updateStatus)
+    {
+        try
+        {
+            Facility bookingToUpdate = facilityRepo.findById(booking_id).get();
+            bookingToUpdate.setStatus(updateStatus);
+
+            facilityRepo.save(bookingToUpdate);
+            return true;
+        }
+        catch (Exception e)
+        {
+           System.out.println(e);
+           return false;
+        }
+    }
+
 
     /**
      * @param userEmail - the current user
