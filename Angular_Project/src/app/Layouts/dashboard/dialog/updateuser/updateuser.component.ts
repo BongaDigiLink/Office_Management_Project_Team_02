@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
 import Swal from 'sweetalert2';
@@ -12,7 +13,8 @@ import Swal from 'sweetalert2';
 export class UpdateuserComponent {
   constructor(private userService: UserService,
     private authService: AuthService,
-    private formBuilder: FormBuilder){}
+    private formBuilder: FormBuilder,
+    private update: MatDialogRef <UpdateuserComponent>){}
 
     roomBookingForm = this.formBuilder.group({
       room_name : this.formBuilder.control('', [Validators.required]),

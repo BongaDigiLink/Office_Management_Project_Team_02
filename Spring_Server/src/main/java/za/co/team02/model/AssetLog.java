@@ -34,6 +34,10 @@ public class AssetLog {
 
     @Column(name = "reason") //response message from admin for (approval or decline) status
     private String reason;
+
     @Column(name = "candidate_id")
     private Integer candidate_id;
+
+    @Column(name = "candidate_name")
+    private String candidate_name;
 }

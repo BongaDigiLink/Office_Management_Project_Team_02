@@ -5,6 +5,7 @@ import { Asset } from '../models/asset';
 import { Observable } from 'rxjs';
 import { Booking } from '../models/booking';
 import { RegisterRecord } from '../models/register';
+import { LogAsset, logdtoAsset } from '../models/LogAsset';
 
 @Injectable({
   providedIn: 'root'
@@ -68,15 +69,22 @@ export class AdminService
     return this.http.get<Asset[]>(`${this.apiURL}/all-assets`);
   }
 
-  acceptAssetLog(admin: number)
+  
+  getAllAssetLogs()
   {
-    return this.http.put<any>(`${this.apiURL}/approve-log`, admin);
+    return this.http.get<logdtoAsset[]>(`${this.apiURL}/get-all-asset-log`)
+  }
+  
+
+  acceptAssetLog(admin: number | undefined)
+  {
+    return this.http.put<any>(`${this.apiURL}/approve-log/${admin}`,admin);
   }
 
-  disapproveAssetLog(admin: number)
+  disapproveAssetLog(admin: number|undefined)
   {
     
-    return this.http.put<any>(`${this.apiURL}/disapprove-log`, admin);
+    return this.http.put<any>(`${this.apiURL}/disapprove-log/${admin}`, admin);
   }
 
 

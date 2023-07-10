@@ -6,9 +6,11 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import za.co.team02.dto.UserDTO;
 import za.co.team02.model.Asset;
+import za.co.team02.model.AssetLog;
 import za.co.team02.model.Facility;
 import za.co.team02.repository.FacilityRepository;
 import za.co.team02.service.AdminService;
+import za.co.team02.service.AssetLoggerService;
 import za.co.team02.service.FacilityService;
 import za.co.team02.service.UserService;
 
@@ -22,19 +24,27 @@ public class AdminController {
     private final AdminService adminServiceOBJ;
     private FacilityService facilityService;
     private UserService userService;
+    private AssetLoggerService assetLoggerService;
 
     /**
-     * Constructor for the CustomerController class.
+     * Constructor for the AdminController class.
      *
      * @param facilityRepo
      * @param adminServiceArg The service used to perform user-related operations.
      */
     // Service Constructor
-    public AdminController(FacilityRepository facilityRepo, AdminService adminServiceArg, FacilityService facilityService, UserService userService) {
+
+    public AdminController(FacilityRepository facilityRepo,
+                           AdminService adminServiceArg,
+                           FacilityService facilityService,
+                           UserService userService,
+                           AssetLoggerService assetLoggerService) {
         this.facilityRepo = facilityRepo;
         this.adminServiceOBJ = adminServiceArg;
         this.facilityService = facilityService;
         this.userService = userService;
+        this.assetLoggerService = assetLoggerService;
+
     }
 
     //Assets
@@ -89,6 +99,33 @@ public class AdminController {
             return null;
         }
     }
+
+    @GetMapping("/get-all-asset-log")
+    public ResponseEntity<List<AssetLog>> getAssetLogs()
+    {
+            List<AssetLog> logs = assetLoggerService.getAllUserLogs();
+            return new ResponseEntity<>(logs, HttpStatus.OK);
+    }
+
+    @PutMapping("/approve-log/{id}")
+    public boolean approveAssets(@PathVariable("id")int id) {
+        try {
+            return assetLoggerService.approveAssets(id);
+        } catch (Exception e) {
+            System.out.println(HttpStatus.NO_CONTENT);
+            return false;
+        }
+    }
+//
+//    @PostMapping("/disapprove-log")
+//    public List<Asset> declineAssets() {
+//        try {
+//            return adminServiceOBJ.declineAssets();
+//        } catch (Exception e) {
+//            System.out.println(HttpStatus.NO_CONTENT);
+//            return null;
+//        }
+//    }
 
     //Update Operation
 

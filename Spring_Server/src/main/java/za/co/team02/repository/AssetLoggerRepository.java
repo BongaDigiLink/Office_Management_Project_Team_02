@@ -6,6 +6,7 @@ import za.co.team02.model.AssetLog;
 import za.co.team02.model.Facility;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface AssetLoggerRepository extends JpaRepository<AssetLog, Integer>
 {
