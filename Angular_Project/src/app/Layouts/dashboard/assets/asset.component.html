@@ -97,11 +97,11 @@
                               </div>
                             </div>
                          <td>
-                            <a class="btn btn-success" style="margin-right: 10px">Approve</a>
+                            <a (click)="acceptAssetLog( meeting.bookingId )" class="btn btn-success" style="margin-right: 4px">Approve</a>
                         </td>
 
                         <td>
-                            <a class="btn btn-danger">Decline</a>
+                            <a (click)="declineAssetLog( meeting.bookingId )" class="btn btn-danger">Decline</a>
                         </td>
                       </tr>
                     </tbody>

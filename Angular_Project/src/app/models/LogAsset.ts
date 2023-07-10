@@ -21,6 +21,5 @@ export class logdtoAsset
         notes: string,
         log_status: string,
         reason: string,
-    ){
-    }
+    ){}
 }

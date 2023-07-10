@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Booking } from '../models/booking';
 import { RegisterRecord } from '../models/register';
 import { LogAsset, logdtoAsset } from '../models/LogAsset';
+import { updateBooking } from '../models/updateBooking';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class AdminService
 {
 
   constructor(private http: HttpClient) { }
+
 
   apiURL = 'http://localhost:8081/v1'
 
@@ -92,9 +94,9 @@ export class AdminService
    * Admin routes to edit meetings/bookings
    * 
    */
-  editBooking(id: number, editBooking: Booking)
+  editBooking(editBooking: updateBooking)
   {
-    return this.http.put<Booking>(`${this.apiURL}/edit-booking/${id}`, editBooking)
+    return this.http.put<any>(`${this.apiURL}/update-facility-request/`, editBooking)
   }
 
   getBookings(): Observable<Booking[]>
