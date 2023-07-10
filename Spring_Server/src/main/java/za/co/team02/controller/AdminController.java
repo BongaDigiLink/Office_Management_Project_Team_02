@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import za.co.team02.dto.BookingDTO;
 import za.co.team02.dto.UserDTO;
 import za.co.team02.model.Asset;
 import za.co.team02.model.AssetLog;
@@ -168,12 +169,16 @@ public class AdminController {
 
     //@PatchMapping("/facility/{id}/{status}")
     @PatchMapping("/update-facility-request/{id}/{status}")
-    public ResponseEntity<Facility> updateEmployeePartially(@PathVariable Integer id, @PathVariable String status) {
-        try {
+    public ResponseEntity<Facility> updateEmployeePartially(@PathVariable Integer id, @PathVariable String status)
+    {
+        try
+        {
             Facility facility = facilityRepo.findById(id).get();
             facility.setStatus(status);
             return new ResponseEntity<Facility>(facilityRepo.save(facility), HttpStatus.OK);
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -186,11 +191,13 @@ public class AdminController {
      * @return A list of all assets.
      */
     @GetMapping("/user/get-all-facility-requests")
-    public List<Facility> getAllRequestedRooms(Facility facility)
+    public List<BookingDTO> getAllRequestedRooms(Facility facility)
     {
-        try {
+        try
+        {
             return facilityService.findAllRequestedRooms();
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             System.out.println(HttpStatus.NO_CONTENT);
             return null;
         }

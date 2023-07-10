@@ -2,8 +2,8 @@ export class Booking
 {
     bookingId?: number;
     roomId?: number;
+    applicant_name?: string;
     room_name?: string;
-    roomCapacity?: string;
     bookingDate?: string;
     start_time?: string;
     end_time?: string;
