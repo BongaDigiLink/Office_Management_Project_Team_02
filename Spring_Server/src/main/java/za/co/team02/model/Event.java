@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity(name = "event")
 @Data
@@ -37,5 +38,10 @@ public class Event {
     //@ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private Integer user_id;
+
+    @ManyToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "admin_id")
+    private SiteUser user;
+
 
 }
