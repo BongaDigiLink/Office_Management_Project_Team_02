@@ -10,8 +10,8 @@
                       <tr>
                         <th>Name</th>
                         <th>Surname</th>
-                        <th>Department</th>
-                        <th>Position</th>
+                        <th>Username</th>
+                        <th>Role</th>
                         <a class="btn btn-success square-btn-adjust" style="margin-left: 80px;"  (click)="openDialog()"> Add User</a>
                       </tr>
                     </thead>
@@ -34,7 +34,7 @@
                         <td>
                           <div class="d-flex align-items-center">
                             <div class="ms-3">
-                              <p class="fw-bold mb-1">{{ user.department }}</p>
+                              <p class="fw-bold mb-1">{{ user.username }}</p>
                             </div>
                           </div>
                         </td>
@@ -48,7 +48,7 @@
                         <td>
                           <br>
                           <a routerLink="" class="btn btn-info square-btn-adjust">Edit User</a>
-                          <a routerLink="" class="btn btn-danger square-btn-adjust mx-3">Delete</a>
+                          <a routerLink="" class="btn btn-danger square-btn-adjust mx-3">Deactivate</a>
                         </td>
                       </tr>
                     </tbody>

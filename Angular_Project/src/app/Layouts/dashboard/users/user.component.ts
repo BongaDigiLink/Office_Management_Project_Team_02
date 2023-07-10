@@ -42,18 +42,6 @@ export class UserComponent implements OnInit{
     });
   }
 
-  // OpenModal(): void {
-  //   const overlay = document.getElementById('popup1')!
-  //   overlay.style.display = 'block'
-  //   const modal = document.getElementById('modal')!
-  //   modal.style.display = 'block'
-  // }
-
-  // CloseModal(): void {
-  //   const overlay = document.getElementById('popup1')!
-  //   overlay.style.display = 'none'
-  //   const modal = document.getElementById('modal')!
-  //   modal.style.display = 'none'
-  // }
-
+  //deactivation function
+  
 }
