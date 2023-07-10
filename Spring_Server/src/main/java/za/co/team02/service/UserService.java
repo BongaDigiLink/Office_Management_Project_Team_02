@@ -33,8 +33,8 @@ public class UserService
         siteUser.setFirstName(userDto.getFirstName());
         siteUser.setLastName(userDto.getLastName());
         siteUser.setUsername(userDto.getUsername());
-        siteUser.setPassword(utils.hashPassword(userDto.getPassword()));
-        siteUser.setRole(userDto.getRole());
+        siteUser.setPassword(utils.hashPassword("Welcome@123"));
+        siteUser.setRole("user");
         siteUser.setAddress(userDto.getAddress());
 
         SiteUser newSiteUser = userRepository.save(siteUser);
