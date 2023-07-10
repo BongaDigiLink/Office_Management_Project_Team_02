@@ -1,0 +1,44 @@
+<h3 mat-dialog-title>Edit User</h3>
+<div mat-dialog-content>
+  <form [formGroup]="editUserForm">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="datetime" formControlName="start_time" matInput placeholder="Email">
+      </mat-form-field><br>
+
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input type="" formControlName="end_time" matInput placeholder="First Name">
+      </mat-form-field><br>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input type="datetime" formControlName="end_time" matInput placeholder="Last Name">
+      </mat-form-field><br>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input type="datetime" formControlName="end_time" matInput placeholder="Username">
+      </mat-form-field><br>
+
+        <mat-form-field appearance="outline">
+            <mat-select formControlName="role" placeholder="Select role">
+              <mat-option value="">User</mat-option>
+              <mat-option value="">Admin</mat-option>
+          </mat-select>
+      </mat-form-field><br>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input type="datetime" formControlName="end_time" matInput placeholder="Address">
+      </mat-form-field><br>
+
+    <div mat-dialog-action [align]="'end'">
+      <button mat-raised-button color="primary">Update</button>
+      <button style="margin-left: 8px;" mat-raised-button color="warn" mat-dialog-close>Close</button>
+    </div>
+
+  </form>
+   
+</div>
