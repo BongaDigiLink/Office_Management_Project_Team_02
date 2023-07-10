@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import za.co.team02.dto.BookingDTO;
+import za.co.team02.dto.UpdateBookingDTO;
 import za.co.team02.dto.UserDTO;
 import za.co.team02.model.Asset;
 import za.co.team02.model.AssetLog;
@@ -168,12 +169,12 @@ public class AdminController {
     //
 
     //@PatchMapping("/facility/{id}/{status}")
-    @PutMapping("/update-facility-request/{id}/{status}")
-    public ResponseEntity<?> updateMeetingRoomBooking(@PathVariable Integer id, @PathVariable String status)
+    @PutMapping("/update-facility-request/")
+    public ResponseEntity<?> updateMeetingRoomBooking(@RequestBody UpdateBookingDTO data)
     {
         try
         {
-            if(facilityService.updatingMeetingRoomBooking(id,status))
+            if(facilityService.updatingMeetingRoomBooking(data))
             {
                 return new ResponseEntity<>("success", HttpStatus.OK);
             }

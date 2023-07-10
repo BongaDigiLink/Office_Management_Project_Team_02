@@ -2,6 +2,7 @@ package za.co.team02.service;
 
 import org.springframework.stereotype.Service;
 import za.co.team02.dto.BookingDTO;
+import za.co.team02.dto.UpdateBookingDTO;
 import za.co.team02.model.Event;
 import za.co.team02.model.Facility;
 import za.co.team02.model.SiteUser;
@@ -89,12 +90,12 @@ public class FacilityService {
         return list_of_bookings;
     }
 
-    public boolean updatingMeetingRoomBooking(int booking_id, String updateStatus)
+    public boolean updatingMeetingRoomBooking(UpdateBookingDTO data)
     {
         try
         {
-            Facility bookingToUpdate = facilityRepo.findById(booking_id).get();
-            bookingToUpdate.setStatus(updateStatus);
+            Facility bookingToUpdate = facilityRepo.findById(data.getBooking_id()).get();
+            bookingToUpdate.setStatus(data.getStatus());
 
             facilityRepo.save(bookingToUpdate);
             return true;
