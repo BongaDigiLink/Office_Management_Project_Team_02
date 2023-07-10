@@ -41,22 +41,6 @@ public class UserController
 
     /**
      * admin
-     * controller - add user
-     */
-    @PostMapping("/add-user")
-    public String addUser(@RequestBody UserDTO userDto,Errors errors) {
-        if(errors.hasErrors()){
-            System.out.println("Contact form validation failed due to : " + errors.toString());
-            return "user.component.html";
-        }
-
-        this.userService.addUser(userDto);
-        return "redirect:/contact";
-    }
-
-
-    /**
-     * admin
      * controller - view all users
      */
     @GetMapping("/all-users")

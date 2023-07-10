@@ -3,7 +3,7 @@ export class User
     email?: string;
     firstName?: string;
     lastName?: string;
-    department?: string;
+    username?: string;
     userType?: string;
     role?: string
 }
@@ -16,8 +16,8 @@ export class dtoUser
         email: string,
         address: string,
         password: string,
+        username: string,
         role : string,
     ){}
-
 
 }

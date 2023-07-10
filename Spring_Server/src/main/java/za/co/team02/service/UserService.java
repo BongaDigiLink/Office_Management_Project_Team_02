@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import za.co.team02.dto.UserDTO;
 import za.co.team02.model.SiteUser;
 import za.co.team02.repository.UserRepository;
+import za.co.team02.utils.Utils;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +25,7 @@ public class UserService
      * @return - the added user transfer object
      */
     public UserDTO addUser(UserDTO userDto){
+        Utils utils = new Utils();
         SiteUser siteUser = new SiteUser();
 
         // convert DTO to entity
@@ -30,8 +33,8 @@ public class UserService
         siteUser.setFirstName(userDto.getFirstName());
         siteUser.setLastName(userDto.getLastName());
         siteUser.setUsername(userDto.getUsername());
-        siteUser.setPassword(userDto.getPassword());
-        siteUser.setRole(userDto.getRole());
+        siteUser.setPassword(utils.hashPassword("Welcome@123"));
+        siteUser.setRole("user");
         siteUser.setAddress(userDto.getAddress());
 
         SiteUser newSiteUser = userRepository.save(siteUser);
@@ -42,7 +45,7 @@ public class UserService
         userResponse.setFirstName(newSiteUser.getFirstName());
         userResponse.setLastName(newSiteUser.getLastName());
         userResponse.setUsername(newSiteUser.getUsername());
-        userResponse.setPassword(newSiteUser.getPassword());
+        userResponse.setPassword(utils.hashPassword(newSiteUser.getPassword()));
         userResponse.setRole(newSiteUser.getRole());
         userResponse.setAddress(newSiteUser.getAddress());
         return userResponse;

@@ -8,11 +8,12 @@
                     <table class="table table-borderless">
                         <thead class="bg-light">
                             <tr>
-                              <th>User Requested</th>
+                              <th>Applicant</th>
                               <th>Asset Requested</th>
-                              <th>From</th>
-                              <th>To</th>
-                              <th></th>
+                              <th>Check-Out Date</th>
+                              <th>Return Date</th>
+                              <th>Approve</th>
+                              <th>Decline</th>
                             </tr>
                           </thead>
                           <tbody *ngFor="let log of allAssetdto">
@@ -50,16 +51,24 @@
               <table class="table table-borderless">
                   <thead class="bg-light">
                       <tr>
+                        <th>Applicant</th>
                         <th>Date</th>
-                        <th>Venue</th>
-                        <th>Capacity</th>
-                        <th>Sessions</th>
+                        <th>Room Name</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
                         <th>Approve</th>
                         <th>Decline</th>
                       </tr>
                     </thead>
                     <tbody *ngFor="let meeting of allUserBookings">
                       <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="ms-3">
+                              <p class="fw-bold mb-1">{{ meeting.bookingDate }}</p>
+                            </div>
+                          </div>
+                        </td>
                         <td>
                           <div class="d-flex align-items-center">
                             <div class="ms-3">
@@ -77,14 +86,14 @@
                         <td>
                           <div class="d-flex align-items-center">
                               <div class="ms-3">
-                                <p class="fw-bold mb-1">{{ meeting.roomCapacity }}</p>
+                                <p class="fw-bold mb-1">{{ meeting.start_time }}</p>
                               </div>
                             </div>
                         </td>
                         <td>
                           <div class="d-flex align-items-center">
                               <div class="ms-3">
-                                <p class="fw-bold mb-1">{{ meeting.start_time }}</p>
+                                <p class="fw-bold mb-1">{{ meeting.end_time }}</p>
                               </div>
                             </div>
                          <td>

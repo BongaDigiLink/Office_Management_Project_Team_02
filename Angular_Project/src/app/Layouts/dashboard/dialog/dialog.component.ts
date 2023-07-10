@@ -29,8 +29,6 @@ export class DialogComponent {
     role: this.formBuilder.control('user')
   })
 
-  
-//you must know your types
 
 //Updating a user.
   updateUser(): any
