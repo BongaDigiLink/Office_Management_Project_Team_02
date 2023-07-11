@@ -59,7 +59,7 @@ public class AssetLoggerService
 
     private int getUserId(String userEmail)
     {
-        return userRepository.findByEmail(userEmail).get().getId();
+        return userRepository.findByEmail(userEmail).get().getUser_id();
     }
 
     private Optional<SiteUser> getUser(String userEmail)

@@ -5,19 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "event_type")
+@Entity(name = "event_typee")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class EventType {
-
+public class EventType
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int eventTypeId;
+    private int eventType_id;
 
     @Column(name = "event_name")
-    private String eventName;
-
+    private String event_name;
 }

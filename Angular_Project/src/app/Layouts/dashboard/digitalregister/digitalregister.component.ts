@@ -54,13 +54,19 @@ export class DigitalregisterComponent implements OnInit{
 
   signIn()
   {
-    this.eventForm.value.event_type = 'sign-in';
+    this.eventForm.value.event_type = 'IN';
     const sign_time = new Date();
 
     this.eventForm.value.sign_inTime = sign_time.getHours()+":"+sign_time.getMinutes();
   
 
-    this.userService.createEvent(this.authService.getEmail(), this.eventForm.value).subscribe( 
+    this.userService.createEvent(
+      {
+        "user_email": this.authService.getEmail(),
+        "event_name": this.eventForm.value.event_type,
+        "time": sign_time.getHours()+":"+sign_time.getMinutes(),
+         "event_message": this.eventForm.value.event_message+"",
+      }).subscribe( 
       {
         next: () => {
           Swal.fire(
@@ -89,13 +95,19 @@ export class DigitalregisterComponent implements OnInit{
 
   signOut()
   {
-    this.eventForm.value.event_type = 'sign-out';
+    this.eventForm.value.event_type = 'Out';
 
     const sign_time = new Date();
 
     this.eventForm.value.sign_outTime = sign_time.getHours()+":"+sign_time.getMinutes();
 
-    this.userService.createEvent(this.authService.getEmail(), this.eventForm.value).subscribe( 
+    this.userService.createEvent(
+      {
+        "user_email": this.authService.getEmail(),
+        "event_name": this.eventForm.value.event_type,
+        "time": sign_time.getHours()+":"+sign_time.getMinutes(),
+         "event_message": this.eventForm.value.event_message+"",
+      }).subscribe( 
       {
         next: () => {
           Swal.fire(
@@ -117,6 +129,46 @@ export class DigitalregisterComponent implements OnInit{
             timer: 1600
           })
 
+        }
+       })
+  }
+
+  signClient()
+  {
+    this.eventForm.value.event_type = 'CLIENT';
+    const sign_time = new Date();
+
+    this.eventForm.value.sign_inTime = sign_time.getHours()+":"+sign_time.getMinutes();
+
+    this.userService.createEvent(
+      {
+        "user_email": this.authService.getEmail(),
+        "event_name": this.eventForm.value.event_type,
+        "time": sign_time.getHours()+":"+sign_time.getMinutes(),
+         "event_message": this.eventForm.value.event_message+"",
+      }).subscribe( 
+      {
+        next: () => {
+          Swal.fire(
+            {
+            position: 'center',
+            icon: 'success',
+            title: 'Signed to Client.',
+            showConfirmButton: false,
+            timer: 1600
+            }
+          )
+        },
+        error: () => {
+          Swal.fire(
+            {
+            position: 'center',
+            icon: 'error',
+            title: 'Not Signed',
+            showConfirmButton: false,
+            timer: 1600
+            }
+          )
         }
        })
   }

@@ -6,6 +6,7 @@ import { Booking, dtoBooking } from '../models/booking';
 import { Observable } from 'rxjs';
 import { RegisterRecord, dtoRegisterRecord } from '../models/register';
 import { LogAsset, logdtoAsset } from '../models/LogAsset';
+import { EventRegister } from '../models/EventRegister';
 
 @Injectable({
   providedIn: 'root'
@@ -47,15 +48,15 @@ export class UserService
    * @param email - user email
    * @returns - record of my register attendance
    */
-  myRegister(email: string | undefined): Observable<RegisterRecord[]>
+  myRegister(email: string | undefined): Observable<EventRegister[]>
   {
-    return this.http.get<RegisterRecord[]>(`${this.apiURL}/my-register/${email}`)
+    return this.http.get<EventRegister[]>(`${this.apiURL}/my-register/${email}`)
   }
 
   //User creates event// Register (in or out)
-  createEvent(email: string | undefined, registerRecord: dtoRegisterRecord)
+  createEvent(eventData: EventRegister)
   {
-    return this.http.post<any>(`${this.apiURL}/sign-register/${email}`, registerRecord)
+    return this.http.post<any>(`${this.apiURL}/sign-register/`, eventData)
   }
 
   requestFood(email: string)

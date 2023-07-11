@@ -39,7 +39,7 @@ public class FacilityService {
         //make checks to see whether this request doesn't conflict with existing meetings
 
         //Save new booking
-        facility.setUser_id(user.getId());
+        facility.setUser_id(user.getUser_id());
         facility.setStatus("Pending");
         System.out.println(facility);
 
@@ -115,7 +115,7 @@ public class FacilityService {
     public List<Facility> findAllRequestedRoomsByUser(String userEmail)
     {
         SiteUser user = userRepository.findByEmail(userEmail).get();
-        return facilityRepo.getUserMeetings(user.getId()).stream().toList();
+        return facilityRepo.getUserMeetings(user.getUser_id()).stream().toList();
     }
 
 

@@ -10,7 +10,7 @@ import java.util.Collection;
 
 public interface EventRepository extends JpaRepository<Event,Integer>
 {
-    @Query("SELECT e FROM event e WHERE e.user_id = ?1 ")
-    Collection<Event> getAttendance(Integer user_id);
+    @Query("SELECT e FROM eventss e WHERE e.candidate_id = ?1 ")
+    Collection<Event> getAttendance(int candidate_id);
 
 }

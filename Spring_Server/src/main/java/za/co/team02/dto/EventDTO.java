@@ -6,13 +6,16 @@ import za.co.team02.model.SiteUser;
 import java.time.LocalDateTime;
 
 @Data
-public class EventDTO {
-    private int eventId;
-    private int user_id;
-//    private LocalDateTime dateTime;
-    private String sign_inTime;
-    private String sign_outTime;
-    private String event_type;
-    private String event_message;
+public class EventDTO
+{
+    //Incoming Data
+    private String user_email; //use this for candidate_id
+    private String time;
+    private String event_name; //use this for event_id
+    private String event_message; //Column - Event
+
+    //Outgoing Data
+    private int event_id;
+    private String candidate_name;
 }
 

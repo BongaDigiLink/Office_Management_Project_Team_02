@@ -185,13 +185,11 @@ public class UserController
      * user
      * controller -  complete a register
      */
-    @PostMapping("/sign-register/{email}")
-    public ResponseEntity<EventDTO> completeRegister(@PathVariable("email") String email,
-                                                     @RequestBody EventDTO eventDTO)
+    @PostMapping("/sign-register/")
+    public ResponseEntity<?> completeRegister(@RequestBody EventDTO eventDTO)
     {
         System.out.println(eventDTO);
-        return new ResponseEntity<>(this.eventService.logEvent(email,
-                eventDTO), HttpStatus.OK);
+        return new ResponseEntity<>(this.eventService.logEvent(eventDTO), HttpStatus.OK);
     }
 
     @PostMapping("/sign-type")

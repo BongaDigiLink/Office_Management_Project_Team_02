@@ -21,7 +21,7 @@ public class EventTypeService {
         EventType eventType = new EventType();
 
         // convert DTO to entity
-        eventType.setEventName(eventTypeDTO.getEventName());
+        eventType.setEvent_name(eventTypeDTO.getEventName());
 
         // save the entity to the database
         EventType newEventType = eventTypeRepository.save(eventType);
@@ -30,8 +30,8 @@ public class EventTypeService {
         EventTypeDTO eventTypeResponse = new EventTypeDTO();
 
         //convert entity to DTO
-        eventTypeResponse.setEventTypeId(newEventType.getEventTypeId());
-        eventTypeResponse.setEventName(newEventType.getEventName());
+        eventTypeResponse.setEventTypeId(newEventType.getEventType_id());
+        eventTypeResponse.setEventName(newEventType.getEvent_name());
 
         return eventTypeResponse;
     }

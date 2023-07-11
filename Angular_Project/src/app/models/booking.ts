@@ -4,7 +4,7 @@ export class Booking
     roomId?: number;
     applicant_name?: string;
     room_name?: string;
-    bookingDate?: string;
+    booking_date?: string;
     start_time?: string;
     end_time?: string;
     status?: string;
@@ -16,7 +16,7 @@ export class dtoBooking
     constructor(
         room_name: string,
         //Following data types should be Date, time.
-        bookingDate: string,
+        booking_date: string,
         start_time: string,
         end_time: string,
         status: string,

@@ -9,39 +9,37 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Entity(name = "event")
+@Entity(name = "eventss")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Event {
-
+public class Event
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int Id;
 
+    //@ManyToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "candidatelogin_id")
+    private int candidatelogin_id;
+
+    @Column(name = "evenType_id")
+    private int eventType_id;
+
+//    @ManyToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "candidate_id")
+    private int candidate_id;
+
     @Column(name = "event_id")
     private int event_id;
 
-    @Column(name = "date_time")
-//    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm")
-    //@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
-//    private LocalDateTime date_time;
-    private String sign_time;
+    @Column(name = "Time")
+    private String time;
 
-    @Column(name = "event_message")
-    private String event_message;
+    @Column(name = "DATE")
+    String date;
 
-    @Column(name = "event_type")
-    private String event_type;
-
-    //@ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private Integer user_id;
-
-    @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "admin_id")
-    private SiteUser user;
-
-
+    @Column(name="Event")
+    String event;
 }

@@ -19,7 +19,7 @@ public class SiteUser
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "User_id")
-    private int id;
+    private int User_id;
 
     @Column(name = "first_name")
     private String firstName;

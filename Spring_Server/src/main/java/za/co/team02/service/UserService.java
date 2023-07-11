@@ -42,7 +42,7 @@ public class UserService
 
         //convert entity to DTO
         UserDTO userResponse = new UserDTO();
-        userResponse.setAdmin_Id(newSiteUser.getId());
+        userResponse.setAdmin_Id(newSiteUser.getUser_id());
         userResponse.setFirst_Name(newSiteUser.getFirstName());
         userResponse.setLast_Name(newSiteUser.getLastName());
         userResponse.setUsername(newSiteUser.getUsername());
@@ -65,7 +65,8 @@ public class UserService
         return  siteUser;
     }
 
-    public void updateUser(SiteUser updateUser) {
+    public void updateUser(SiteUser updateUser)
+    {
         SiteUser siteUser = userRepository.findByEmail(updateUser.getEmail()).orElseThrow(()-> new IllegalStateException("user with email "+ updateUser.getEmail()+" does not exist"));
 //        SiteUser siteUser = getSingleUser(updateUser.getEmail());
         siteUser.setFirstName(updateUser.getFirstName());
