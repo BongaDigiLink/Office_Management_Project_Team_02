@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
-@Entity(name = "users")
+@Entity(name = "site_user")
 @Builder
 @Data
 @NoArgsConstructor
@@ -18,7 +18,7 @@ public class SiteUser
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "User_id")
     private int id;
 
     @Column(name = "first_name")
@@ -39,7 +39,7 @@ public class SiteUser
     @Column(name = "role")
     private String role;
 
-    @Column(name = "user_address")
+    @Column(name = "address")
     private String address;
 
 }

@@ -18,6 +18,6 @@ public interface UserRepository extends JpaRepository<SiteUser, Integer> {
 
     Optional<SiteUser> findByEmail(String email);
 
-    @Query("SELECT u FROM users u WHERE u.role = 'user' ")
+    @Query("SELECT u FROM site_user u WHERE u.role = 'user' ")
     Collection<SiteUser> getSiteUsersByRole();
 }
