@@ -5,7 +5,7 @@ import { Asset } from '../models/asset';
 import { Observable } from 'rxjs';
 import { Booking } from '../models/booking';
 import { RegisterRecord } from '../models/register';
-import { LogAsset, logdtoAsset } from '../models/LogAsset';
+import { LogAsset } from '../models/LogAsset';
 import { updateBooking } from '../models/updateBooking';
 
 @Injectable({
