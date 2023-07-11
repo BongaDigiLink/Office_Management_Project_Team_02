@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
-@Entity(name="asset_logger")
+@Entity(name="assets_logger")
 @NoArgsConstructor
 @AllArgsConstructor
 public class AssetLog {
