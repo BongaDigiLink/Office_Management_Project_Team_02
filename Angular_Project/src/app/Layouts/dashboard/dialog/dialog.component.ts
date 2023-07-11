@@ -57,7 +57,9 @@ export class DialogComponent {
 
     if(this.addUserForm.invalid)
     {
-      return;
+      //return;
+      this.addUserForm.reset();
+      this.dialog.close();
     }
 
     this.service.addUser(this.addUserForm.value).subscribe(
