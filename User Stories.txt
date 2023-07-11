@@ -1,0 +1,11 @@
+User Stories
+=======================
+1. As User I need need to be able to log an Asset Register: 1hr
+2. As admin I need to be able to Manage(Appprove/Decline) Asset logged by user: 2hrs 
+3. As User I need to be to View all logs and filter requests by(status, date): 2hrs
+
+4. ERD Re-modelling and align java entities: 1 day (Thurday)  6 July 2023
+
+
+
+

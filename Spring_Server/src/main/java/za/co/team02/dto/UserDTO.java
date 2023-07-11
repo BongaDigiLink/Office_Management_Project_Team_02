@@ -18,5 +18,6 @@ public class UserDTO
     private String email;
     private String role;
     private int Location_id;
+    private String address;
     private Set<Event> events;
 }

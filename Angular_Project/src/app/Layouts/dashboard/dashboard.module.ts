@@ -24,9 +24,10 @@ import { RegisterInputComponent } from './dialog/register-input/register-input.c
 import { RoomBookingInputComponent } from './dialog/update-user/update-user';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateuserComponent } from './dialog/updateuser/updateuser.component';
+import { EdituserComponent } from './dialog/edituser/edituser.component';
 
 @NgModule({
-  declarations: [MainComponent, UserComponent, AssetComponent, BookingComponent, StockComponent, CheaderComponent, IndexComponent, MeetingsComponent, UserassetsComponent, DigitalregisterComponent, DialogComponent, RegisterInputComponent, RoomBookingInputComponent, UpdateuserComponent],
+  declarations: [MainComponent, UserComponent, AssetComponent, BookingComponent, StockComponent, CheaderComponent, IndexComponent, MeetingsComponent, UserassetsComponent, DigitalregisterComponent, DialogComponent, RegisterInputComponent, RoomBookingInputComponent, UpdateuserComponent, EdituserComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

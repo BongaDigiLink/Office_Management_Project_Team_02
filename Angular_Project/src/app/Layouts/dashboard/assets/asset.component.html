@@ -2,46 +2,75 @@
               
         <div class="row" >
           <div class="col-md-9 col-sm-12 col-xs-12">
-            <h3>Asset Manager</h3> 
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <table class="table table-borderless">
-                        <thead class="bg-light">
-                            <tr>
-                              <th>User Requested</th>
-                              <th>Asset Requested</th>
-                              <th>From</th>
-                              <th>To</th>
-                              <th></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <div class="d-flex align-items-center">
-                                  <div class="ms-3">
-                                    <p class="fw-bold mb-1">Fani Titi</p>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <p class="fw-normal mb-1">Laptop</p>
-                              </td>
-                              <td>
-                                <p class="fw-normal mb-1">04/06/2023</p>
-                              </td>
-                              <td>
-                                <p class="fw-normal mb-1">27/06/2023</p>
-                              </td>
-                              <td>
-                                <br>
-                                <a routerLink="/accept" class="btn btn-success" style="margin-right: 10px">Accept</a>
-                                <a routerLink="/decline" class="btn btn-danger">Decline</a>
-                              </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+
+            <hr>
+            <h3>Asset Requests</h3>
+            <div class="panel-body">
+              <table class="table table-borderless">
+                  <thead class="bg-light">
+                      <tr>
+                        <th>Applicant</th>
+                        <th>Asset Name</th>
+                        <th>Check-Out Date</th>
+                        <th>Return Date</th>
+                        <th>Request Message</th>
+                        <th>Approve</th>
+                        <th>Decline</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let log of log_requests">
+                      <tr>
+
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="ms-3">
+                              <p class="fw-bold mb-1">{{ log.candidate_name }}</p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="ms-3">
+                              <p class="fw-bold mb-1">{{ log.asset_name }}</p>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="d-flex align-items-center">
+                              <div class="ms-3">
+                                <p class="fw-bold mb-1">{{ log.from_date }}</p>
+                              </div>
+                            </div>
+                        </td>
+
+                        <td>
+                          <div class="d-flex align-items-center">
+                              <div class="ms-3">
+                                <p class="fw-bold mb-1">{{ log.to_date }}</p>
+                              </div>
+                            </div>
+                        </td>
+
+                        <td>
+                          <div class="d-flex align-items-center">
+                              <div class="ms-3">
+                                <p class="fw-bold mb-1">{{ log.notes }}</p>
+                              </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            <a (click)="approveRequest( log.id )" class="btn btn-success" style="margin-right: 4px">Approve</a>
+                        </td>
+
+                        <td>
+                            <a (click)="declineRequest( log.id )" class="btn btn-danger">Decline</a>
+                        </td>
+                      </tr>
+                    </tbody>
+              </table>
             </div>
 
             <hr>
@@ -50,16 +79,24 @@
               <table class="table table-borderless">
                   <thead class="bg-light">
                       <tr>
+                        <th>Applicant</th>
                         <th>Date</th>
-                        <th>Venue</th>
-                        <th>Capacity</th>
-                        <th>Sessions</th>
+                        <th>Room Name</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
                         <th>Approve</th>
                         <th>Decline</th>
                       </tr>
                     </thead>
                     <tbody *ngFor="let meeting of allUserBookings">
                       <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="ms-3">
+                              <p class="fw-bold mb-1">{{ meeting.applicant_name }}</p>
+                            </div>
+                          </div>
+                        </td>
                         <td>
                           <div class="d-flex align-items-center">
                             <div class="ms-3">
@@ -77,22 +114,22 @@
                         <td>
                           <div class="d-flex align-items-center">
                               <div class="ms-3">
-                                <p class="fw-bold mb-1">{{ meeting.roomCapacity }}</p>
+                                <p class="fw-bold mb-1">{{ meeting.start_time }}</p>
                               </div>
                             </div>
                         </td>
                         <td>
                           <div class="d-flex align-items-center">
                               <div class="ms-3">
-                                <p class="fw-bold mb-1">{{ meeting.start_time }}</p>
+                                <p class="fw-bold mb-1">{{ meeting.end_time }}</p>
                               </div>
                             </div>
                          <td>
-                            <a routerLink="/accept" class="btn btn-success" style="margin-right: 10px">Approve</a>
+                            <a (click)="acceptAssetLog( meeting.bookingId )" class="btn btn-success" style="margin-right: 4px">Approve</a>
                         </td>
 
                         <td>
-                            <a routerLink="/decline" class="btn btn-danger">Decline</a>
+                            <a (click)="declineAssetLog( meeting.bookingId )" class="btn btn-danger">Decline</a>
                         </td>
                       </tr>
                     </tbody>

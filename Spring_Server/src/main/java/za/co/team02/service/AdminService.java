@@ -2,6 +2,8 @@ package za.co.team02.service;
 
 import org.springframework.stereotype.Service;
 import za.co.team02.model.Asset;
+import za.co.team02.model.AssetLog;
+import za.co.team02.repository.AssetLoggerRepository;
 import za.co.team02.repository.AssetRepository;
 
 import java.util.List;
@@ -13,9 +15,11 @@ public class AdminService {
     // Assets Service Implementation
     private final AssetRepository assetRepository;
 
-    public AdminService(AssetRepository assetRepo){
+    private final AssetLoggerRepository assetLoggerRepository;
+    public AdminService(AssetRepository assetRepo,AssetLoggerRepository assetLoggerRepository){
 
         this.assetRepository = assetRepo;
+        this.assetLoggerRepository = assetLoggerRepository;
     }
 
     /**
@@ -66,5 +70,4 @@ public class AdminService {
     }
 
     // End of Asset end points
-
 }

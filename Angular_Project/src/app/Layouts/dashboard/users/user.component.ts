@@ -3,6 +3,7 @@ import { User } from 'src/app/models/user';
 import { AdminService } from 'src/app/service/admin.service';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { EdituserComponent } from '../dialog/edituser/edituser.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,7 +16,8 @@ export class UserComponent implements OnInit{
 
   constructor(
     private service: AdminService,
-     private dialog: MatDialog)
+     private dialog: MatDialog,
+     private edit : MatDialog)
   {}
 
   all_users?: User[];
@@ -41,19 +43,17 @@ export class UserComponent implements OnInit{
     }
     });
   }
-
-  // OpenModal(): void {
-  //   const overlay = document.getElementById('popup1')!
-  //   overlay.style.display = 'block'
-  //   const modal = document.getElementById('modal')!
-  //   modal.style.display = 'block'
-  // }
-
-  // CloseModal(): void {
-  //   const overlay = document.getElementById('popup1')!
-  //   overlay.style.display = 'none'
-  //   const modal = document.getElementById('modal')!
-  //   modal.style.display = 'none'
-  // }
+// edit user
+editDialog(){
+  this.edit.open(EdituserComponent,{
+    width: '50%',
+    height: '',
+    position: {
+      top: '30vh',
+      left: '30vw'
+    }
+  })
+}
+//deactivation function
 
 }

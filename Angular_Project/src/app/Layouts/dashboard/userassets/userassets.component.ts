@@ -78,17 +78,6 @@ export class UserassetsComponent implements OnInit{
     )
   }
 
-  /**
-   *ADMIN methods decline/accept take in request id and create a put call
-   */
-  declineAssetLog()
-  {
-    //this.adminService.
-  }
 
-  acceptAssetLog()
-  {
-
-  }
 
 }

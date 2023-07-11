@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 //import { UpdateuserComponent } from '../dialog/updateuser.component';
+import { UpdateuserComponent } from '../dialog/updateuser/updateuser.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -129,14 +130,13 @@ export class MeetingsComponent implements OnInit{
 
   //open editing dialogue
    updateDialog() {
-  //   this.update.open(UpdateuserComponent, {
-  //     width: '50%',
-  //     height: '',
-  //     position: {
-  //       top: '30vh',
-  //       left: '30vw'
-  //   }
-     }
+    this.update.open(UpdateuserComponent, {
+      width: '50%',
+      height: '',
+      position: {
+        top: '30vh',
+        left: '30vw'
+    }
+     });
+    }
   }
-
-

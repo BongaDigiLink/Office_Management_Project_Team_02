@@ -9,8 +9,10 @@
                       <thead class="bg-light">
                           <tr>
                             <th>Date</th>
-                            <th>Venue</th>
-                            <th>Time</th>
+                            <th>Room Name</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Booking Status</th>
                           </tr>
                         </thead>
                         <tbody *ngFor="let meeting of userMeetingBookings">
@@ -38,11 +40,27 @@
                                     <p class="fw-bold mb-1">{{ meeting.start_time }}</p>
                                   </div>
                                 </div>
-                            <td>
+                            </td>
+
+                              <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                      <p class="fw-bold mb-1">{{ meeting.end_time }}</p>
+                                    </div>
+                                  </div>
+                              </td>
+
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                      <div class="ms-3">
+                                        <p class="fw-bold mb-1">{{ meeting.status }}</p>
+                                      </div>
+                                    </div>
+                                </td>
                               
                               <br>
                               <a class="btn btn-success square-btn-adjust" (click)="updateDialog()">Update</a>
-                            </td>
+                           
                           </tr>
                         </tbody>
                   </table>

@@ -5,6 +5,8 @@ import { Asset } from '../models/asset';
 import { Observable } from 'rxjs';
 import { Booking } from '../models/booking';
 import { RegisterRecord } from '../models/register';
+import { LogAsset } from '../models/LogAsset';
+import { updateBooking } from '../models/updateBooking';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,7 @@ export class AdminService
 {
 
   constructor(private http: HttpClient) { }
+
 
   apiURL = 'http://localhost:8081/v1'
 
@@ -68,25 +71,27 @@ export class AdminService
     return this.http.get<Asset[]>(`${this.apiURL}/all-assets`);
   }
 
-  acceptAssetLog(admin: number)
+  
+  getAllAssetLogs(): Observable<LogAsset[]>
   {
-    return this.http.put<any>(`${this.apiURL}/approve-log`, admin);
+    return this.http.get<LogAsset[]>(`${this.apiURL}/get-all-asset-log`)
+  }
+  
+
+  editAssetRequest(data: LogAsset)
+  {
+    return this.http.put<any>(`${this.apiURL}/edit-log/`,data);
   }
 
-  disapproveAssetLog(admin: number)
-  {
-    
-    return this.http.put<any>(`${this.apiURL}/disapprove-log`, admin);
-  }
 
 
   /**
    * Admin routes to edit meetings/bookings
    * 
    */
-  editBooking(id: number, editBooking: Booking)
+  editBooking(editBooking: updateBooking)
   {
-    return this.http.put<Booking>(`${this.apiURL}/edit-booking/${id}`, editBooking)
+    return this.http.put<any>(`${this.apiURL}/update-facility-request/`, editBooking)
   }
 
   getBookings(): Observable<Booking[]>
