@@ -1,6 +1,7 @@
 package za.co.team02.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import za.co.team02.dto.DashBoardData;
 import za.co.team02.dto.UserDTO;
 import za.co.team02.model.SiteUser;
@@ -78,9 +79,9 @@ public class UserService
         return data;
     }
 
+    @Transactional
     public void updateUser(SiteUser updateUser) {
         SiteUser siteUser = userRepository.findByEmail(updateUser.getEmail()).orElseThrow(()-> new IllegalStateException("user with email "+ updateUser.getEmail()+" does not exist"));
-//        SiteUser siteUser = getSingleUser(updateUser.getEmail());
         siteUser.setFirstName(updateUser.getFirstName());
         siteUser.setLastName(updateUser.getLastName());
         siteUser.setRole(updateUser.getRole());
