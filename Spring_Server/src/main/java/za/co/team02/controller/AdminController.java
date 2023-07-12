@@ -61,6 +61,7 @@ public class AdminController {
      */
     @PostMapping("/add-user")
     public String addUser(@RequestBody UserDTO userDto, Errors errors) {
+        System.out.println(userDto);
         if(errors.hasErrors()){
             System.out.println("Contact form validation failed due to : " + errors.toString());
             return "user.component.html";

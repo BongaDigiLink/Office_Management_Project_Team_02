@@ -18,7 +18,7 @@ public class SiteUser
 {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "User_id")
     private int User_id;
 

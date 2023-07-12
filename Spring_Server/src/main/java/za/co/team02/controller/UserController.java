@@ -188,7 +188,6 @@ public class UserController
     @PostMapping("/sign-register/")
     public ResponseEntity<?> completeRegister(@RequestBody EventDTO eventDTO)
     {
-        System.out.println(eventDTO);
         return new ResponseEntity<>(this.eventService.logEvent(eventDTO), HttpStatus.OK);
     }
 

@@ -34,7 +34,7 @@ public class EventService
         //event.setEvent_id(event.getEvent_id());
         event.setUser_id(user.getUser_id());
         event.setTime(eventDTO.getTime());
-        event.setDate(eventDTO.getDate());
+        event.setDate("Now");
         event.setEvent(eventDTO.getEvent_message());
         System.out.println(event);
 
