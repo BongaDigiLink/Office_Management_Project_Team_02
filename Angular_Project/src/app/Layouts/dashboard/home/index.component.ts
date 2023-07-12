@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DashBoardData } from 'src/app/models/DashBoardData';
 import { Asset } from 'src/app/models/asset';
 import { Booking } from 'src/app/models/booking';
 import { RegisterRecord } from 'src/app/models/register';
 import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
+import { LogAsset } from 'src/app/models/LogAsset';
+import { DashBoardData } from 'src/app/models/DashBoardData';
 
 @Component({
   selector: 'app-index',
@@ -36,12 +37,33 @@ export class IndexComponent implements OnInit {
   
   dashBoardData !: DashBoardData;
 
+  // User asset arrays
+  allAssets!: Asset[]
+  allUserBookings?: Booking[];
+  log_requests?: LogAsset[];
+
   ngOnInit(): void 
   {
     this.service.userType$.subscribe( (value) => 
     {
       this.setInterfaces(value)
     })
+
+    // ============================================
+    this.adminService.getAllAssetLogs().subscribe( (assets) => {
+      this.log_requests = assets;
+    })
+
+    //Get users log records
+    this.userService.getMyEvents(this.service.getEmail()).subscribe( 
+    {
+      next: (records) => {
+        this.log_requests = records;
+      },
+      error: () => {
+        console.log("an error occured.")
+      }
+    } )
   }
 
   /**
@@ -55,7 +77,7 @@ export class IndexComponent implements OnInit {
       //Get a few records ( bookings, assets logs, user register etc. ) for admin Overview display.
       //- this.adminService.
 
-      this.getAdminDashBoardData()
+      this.getAdminDashBoardData();
     }
     else if(value === 2)
     {
@@ -63,8 +85,7 @@ export class IndexComponent implements OnInit {
 
       //Get minimal records ( bookings, register etc. )  about this user for Overview display.
       //- this.userService.
-
-      this.getUserDashBoardData()
+      this.getUserDashBoardData();
     }
     else
     {
