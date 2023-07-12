@@ -30,7 +30,7 @@ public class UserService
 
         // convert DTO to entity
         siteUser.setFirst_Name(userDto.getFirst_Name());
-        siteUser.setLastName(userDto.getLast_Name());
+        siteUser.setLastName(userDto.getLastName());
         siteUser.setUsername(userDto.getUsername());
         siteUser.setEmail(userDto.getEmail());
         siteUser.setPassword(utils.hashPassword("Welcome@123"));
@@ -43,13 +43,14 @@ public class UserService
 
         //convert entity to DTO
         UserDTO userResponse = new UserDTO();
-        userResponse.setAdmin_Id(newSiteUser.getUser_id());
+        //userResponse.setAdmin_Id(newSiteUser.getUser_id());
         userResponse.setFirst_Name(newSiteUser.getFirst_Name());
-        userResponse.setLast_Name(newSiteUser.getLastName());
+        userResponse.setLastName(newSiteUser.getLastName());
         userResponse.setUsername(newSiteUser.getUsername());
         userResponse.setPassword(utils.hashPassword(newSiteUser.getPassword()));
+        userResponse.setEmail(newSiteUser.getEmail());
         userResponse.setRole(newSiteUser.getRole());
-        //userResponse.setAddress(newSiteUser.getAddress());
+        userResponse.setAddress(newSiteUser.getAddress());
         return userResponse;
     }
 
