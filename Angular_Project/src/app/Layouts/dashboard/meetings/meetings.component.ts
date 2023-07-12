@@ -5,7 +5,6 @@ import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
-//import { UpdateuserComponent } from '../dialog/updateuser.component';
 import { UpdateuserComponent } from '../dialog/updateuser/updateuser.component';
 import Swal from 'sweetalert2';
 

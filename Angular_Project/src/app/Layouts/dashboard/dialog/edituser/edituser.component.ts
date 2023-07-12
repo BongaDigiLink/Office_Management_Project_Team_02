@@ -16,6 +16,11 @@ private formBuilder: FormBuilder){}
 
 
 editUserForm = this.formBuilder.group({
-  
+  email : this.formBuilder.control('', [Validators.required]),
+  first_name : this.formBuilder.control('', [Validators.required]),
+  last_name : this.formBuilder.control('', [Validators.required]),
+  username : this.formBuilder.control('', [Validators.required]),
+  role : this.formBuilder.control('', [Validators.required]),
+  address : this.formBuilder.control('',[Validators.required])
 })
 }
