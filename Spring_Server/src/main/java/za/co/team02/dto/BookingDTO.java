@@ -11,10 +11,10 @@ public class BookingDTO
 {
     int bookingId;
     int roomId;
-    String applicant_name;
-    String room_name;
+    String applicantName;
+    String roomName;
     Date bookingDate;
-    String start_time;
-    String end_time;
+    String startTime;
+    String endTime;
     String status;
 }

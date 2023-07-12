@@ -18,26 +18,26 @@ public class AssetLog {
     private int id;
 
     @Column(name = "asset_name")
-    private String asset_name;
+    private String assetName;
 
     @Column(name = "from_date")
-    private Date from_date;
+    private Date fromDate;
 
     @Column(name = "to_date")
-    private Date to_date;
+    private Date toDate;
 
     @Column(name = "notes")
     private String notes;
 
     @Column(name = "log_status") //approved or declined
-    private String log_status;
+    private String logStatus;
 
     @Column(name = "reason") //response message from admin for (approval or decline) status
     private String reason;
 
     @Column(name = "candidate_id")
-    private Integer candidate_id;
+    private Integer candidateId;
 
     @Column(name = "candidate_name")
-    private String candidate_name;
+    private String candidateName;
 }

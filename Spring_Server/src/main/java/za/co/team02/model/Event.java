@@ -21,23 +21,23 @@ public class Event {
     private int Id;
 
     @Column(name = "event_id")
-    private int event_id;
+    private int eventId;
 
     @Column(name = "date_time")
 //    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm")
     //@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
 //    private LocalDateTime date_time;
-    private String sign_time;
+    private String signTime;
 
     @Column(name = "event_message")
-    private String event_message;
+    private String eventMessage;
 
     @Column(name = "event_type")
-    private String event_type;
+    private String eventType;
 
     //@ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private Integer user_id;
+    private Integer userId;
 
     @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "admin_id")

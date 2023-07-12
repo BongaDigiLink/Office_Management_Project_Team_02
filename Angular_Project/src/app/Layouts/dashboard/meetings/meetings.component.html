@@ -12,7 +12,7 @@
                         <ul class="form-style-1">
                             <li>
                                 <label>Meeting Venues</label>
-                                  <select formControlName="room_name" class="field-select">
+                                  <select formControlName="roomName" class="field-select">
                                   <option>Green Room</option>
                                   <option>Blue Room</option>
                                   <option>Red Room</option>
@@ -23,10 +23,10 @@
                             <input type="date" formControlName="date">
 
                             <li><label>Start Time<span class="required"></span></label>
-                              <input type="time" formControlName="start_time" class="field-divided" /></li>
+                              <input type="time" formControlName="startTime" class="field-divided" /></li>
 
                             <li><label>End Time<span class="required"></span></label>
-                              <input type="time" formControlName="end_time" class="field-divided" /></li>
+                              <input type="time" formControlName="endTime" class="field-divided" /></li>
                       
                             <li>
                                 <button class="btn btn-success square-btn-adjust" type="submit" (click)="createAMeeting()">Book Room</button>
@@ -67,7 +67,7 @@
                               <td>
                                 <div class="d-flex align-items-center">
                                     <div class="ms-3">
-                                      <p class="fw-bold mb-1">{{ meeting.room_name }}</p>
+                                      <p class="fw-bold mb-1">{{ meeting.roomName }}</p>
                                     </div>
                                   </div>
                               </td>
@@ -75,7 +75,7 @@
                               <td>
                                 <div class="d-flex align-items-center">
                                     <div class="ms-3">
-                                      <p class="fw-bold mb-1">{{ meeting.start_time }}</p>
+                                      <p class="fw-bold mb-1">{{ meeting.startTime }}</p>
                                     </div>
                                   </div>
                               </td>
@@ -83,7 +83,7 @@
                                 <td>
                                   <div class="d-flex align-items-center">
                                       <div class="ms-3">
-                                        <p class="fw-bold mb-1">{{ meeting.end_time }}</p>
+                                        <p class="fw-bold mb-1">{{ meeting.endTime }}</p>
                                       </div>
                                     </div>
                                 </td>

@@ -39,16 +39,16 @@ public class AssetLoggerService
         for(AssetLog assetLog: logs)
         {
             AssetLogDTO assetLogDTO = new AssetLogDTO();
-             if(assetLog.getLog_status().equals("Pending"))
+             if(assetLog.getLogStatus().equals("Pending"))
              {
-                 assetLogDTO.setAsset_name(assetLog.getAsset_name());
+                 assetLogDTO.setAsset_name(assetLog.getAssetName());
                  assetLogDTO.setId(assetLog.getId());
-                 assetLogDTO.setLog_status(assetLog.getLog_status());
+                 assetLogDTO.setLog_status(assetLog.getLogStatus());
                  assetLogDTO.setNotes(assetLog.getNotes());
-                 assetLogDTO.setCandidate_name(assetLog.getCandidate_name());
-                 assetLogDTO.setFrom_date(assetLog.getFrom_date());
-                 assetLogDTO.setTo_date(assetLog.getTo_date());
-                 assetLogDTO.setCandidate_id(assetLog.getCandidate_id());
+                 assetLogDTO.setCandidate_name(assetLog.getCandidateName());
+                 assetLogDTO.setFrom_date(assetLog.getFromDate());
+                 assetLogDTO.setTo_date(assetLog.getToDate());
+                 assetLogDTO.setCandidate_id(assetLog.getCandidateId());
 
                  list.add(assetLogDTO);
              }
@@ -72,9 +72,9 @@ public class AssetLoggerService
         if(assetLog != null && userEmail != null)
         {
 
-            assetLog.setCandidate_id(getUserId(userEmail));
-            assetLog.setCandidate_name(getUser(userEmail).get().getFirstName()+" "+getUser(userEmail).get().getLastName());
-            assetLog.setLog_status("Pending");
+            assetLog.setCandidateId(getUserId(userEmail));
+            assetLog.setCandidateName(getUser(userEmail).get().getFirstName()+" "+getUser(userEmail).get().getLastName());
+            assetLog.setLogStatus("Pending");
             assetLoggerRepository.save(assetLog);
 
             return true;
@@ -92,10 +92,10 @@ public class AssetLoggerService
 
         if(assetLog != null)
         {
-            SiteUser user =  userRepository.findById(assetLog.getCandidate_id()).get();
+            SiteUser user =  userRepository.findById(assetLog.getCandidateId()).get();
             System.out.println(user);
 
-            assetLog.setLog_status(updateLog.getLog_status());
+            assetLog.setLogStatus(updateLog.getLog_status());
             assetLoggerRepository.save(assetLog);
             return true;
         }
