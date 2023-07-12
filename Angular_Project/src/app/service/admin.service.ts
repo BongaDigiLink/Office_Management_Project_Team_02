@@ -7,6 +7,7 @@ import { Booking } from '../models/booking';
 import { RegisterRecord } from '../models/register';
 import { LogAsset } from '../models/LogAsset';
 import { updateBooking } from '../models/updateBooking';
+import { DashBoardData } from '../models/DashBoardData';
 
 @Injectable({
   providedIn: 'root'
@@ -97,6 +98,11 @@ export class AdminService
   getBookings(): Observable<Booking[]>
   {
     return this.http.get<Booking[]>(`${this.apiURL}/user/get-all-facility-requests`);
+  }
+
+  getDashBoardData(): Observable<DashBoardData>
+  {
+    return this.http.get<DashBoardData>(`${this.apiURL}/get-admin-dashboard-data`);
   }
 
 }

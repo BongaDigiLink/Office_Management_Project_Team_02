@@ -1,10 +1,12 @@
 package za.co.team02.service;
 
 import org.springframework.stereotype.Service;
+import za.co.team02.dto.DashBoardData;
 import za.co.team02.model.Asset;
 import za.co.team02.model.AssetLog;
 import za.co.team02.repository.AssetLoggerRepository;
 import za.co.team02.repository.AssetRepository;
+import za.co.team02.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,12 +16,14 @@ public class AdminService {
 
     // Assets Service Implementation
     private final AssetRepository assetRepository;
+    private UserRepository userRepository;
 
     private final AssetLoggerRepository assetLoggerRepository;
-    public AdminService(AssetRepository assetRepo,AssetLoggerRepository assetLoggerRepository){
+    public AdminService(AssetRepository assetRepo,AssetLoggerRepository assetLoggerRepository, UserRepository userRepository){
 
         this.assetRepository = assetRepo;
         this.assetLoggerRepository = assetLoggerRepository;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -70,4 +74,14 @@ public class AdminService {
     }
 
     // End of Asset end points
+    public DashBoardData getAdminData()
+    {
+        DashBoardData data = new DashBoardData();
+
+        data.setUserCount(userRepository.findAll().size());
+        data.setMeetingsCount(446);
+        data.setUserCount(3555);
+
+        return data;
+    }
 }

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import za.co.team02.dto.DashBoardData;
 import za.co.team02.dto.EventDTO;
 import za.co.team02.dto.EventTypeDTO;
 import za.co.team02.dto.UserDTO;
@@ -148,7 +149,12 @@ public class UserController
     }
 
     //End User Facility Functions
-
+    @GetMapping("/get-dashboard-data/{email}")
+    public DashBoardData getDashboardData(@PathVariable("email") String email)
+    {
+        DashBoardData newObj = userService.getDashBoardData(email);
+        return newObj;
+    }
 
     /**
      * admin

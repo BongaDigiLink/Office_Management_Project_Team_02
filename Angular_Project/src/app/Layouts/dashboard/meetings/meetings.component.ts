@@ -71,6 +71,7 @@ export class MeetingsComponent implements OnInit{
               icon: 'success',
               timer: 1500
             })
+
           }
           else if(return_status === null)
           {
