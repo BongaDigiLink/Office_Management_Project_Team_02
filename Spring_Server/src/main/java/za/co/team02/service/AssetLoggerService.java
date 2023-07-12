@@ -2,8 +2,10 @@ package za.co.team02.service;
 
 import org.springframework.stereotype.Service;
 import za.co.team02.dto.AssetLogDTO;
+import za.co.team02.dto.EventDTO;
 import za.co.team02.model.Asset;
 import za.co.team02.model.AssetLog;
+import za.co.team02.model.Event;
 import za.co.team02.model.SiteUser;
 import za.co.team02.repository.AssetLoggerRepository;
 import za.co.team02.repository.UserRepository;
@@ -66,22 +68,32 @@ public class AssetLoggerService
         return userRepository.findByEmail(userEmail);
     }
 
-    public boolean createNewAssetLog(String userEmail, AssetLog assetLog)
+    public AssetLogDTO createNewAssetLog(String userEmail, AssetLogDTO assetLogDTO)
     {
         Optional<SiteUser> user = userRepository.findByEmail(userEmail);
-        if(assetLog ==null) return false;
+        AssetLog assetLog = new AssetLog();
+
         assetLog.setCandidateId(getUserId(userEmail));
         assetLog.setCandidateName(user.get().getFirstName()+" "+getUser(userEmail).get().getLastName());
-        assetLog.setAssetName(assetLog.getAssetName());
-        assetLog.setFromDate(assetLog.getFromDate());
-        assetLog.setToDate(assetLog.getToDate());
+        assetLog.setAssetName(assetLogDTO.getAssetName());
+        assetLog.setFromDate(assetLogDTO.getFromDate());
+        assetLog.setToDate(assetLogDTO.getToDate());
         assetLog.setLogStatus("Pending");
-        assetLog.setNotes(assetLog.getNotes());
-        assetLog.setReason(assetLog.getReason());
-        assetLoggerRepository.save(assetLog);
-        return true;
-    }
+        assetLog.setNotes(assetLogDTO.getNotes());
+        assetLog.setReason(assetLogDTO.getReason());
 
+        AssetLog newAssetLog = assetLoggerRepository.save(assetLog);
+
+        AssetLogDTO logResponse = new AssetLogDTO();
+        logResponse.setCandidateId(newAssetLog.getCandidateId());
+        logResponse.setAssetName(newAssetLog.getAssetName());
+        logResponse.setFromDate(newAssetLog.getFromDate());
+        logResponse.setToDate(newAssetLog.getToDate());
+        logResponse.setLogStatus(newAssetLog.getLogStatus());
+        logResponse.setNotes(newAssetLog.getNotes());
+        logResponse.setReason(newAssetLog.getReason());
+        return logResponse;
+    }
     // Admin Methods
 
     public boolean approveAssets(AssetLogDTO updateLog)
