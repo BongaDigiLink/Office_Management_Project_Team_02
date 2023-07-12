@@ -23,12 +23,19 @@
       </mat-form-field><br>
 
         <mat-form-field appearance="outline">
+          <mat-label>Select user</mat-label>
             <mat-select formControlName="role" placeholder="Select role">
               <mat-option value="">User</mat-option>
-              <mat-option value="">Admin</mat-option>
           </mat-select>
       </mat-form-field><br>
 
+      <mat-form-field appearance="outline">
+        <mat-label>Activate user</mat-label>
+        <mat-select formControlName="activation" placeholder="">
+          <mat-option value="">Activate</mat-option>
+      </mat-select>
+  </mat-form-field>
+  <br>
       <mat-form-field appearance="outline">
         <mat-label>Address</mat-label>
         <input type="text" formControlName="end_time" matInput placeholder="Address">
