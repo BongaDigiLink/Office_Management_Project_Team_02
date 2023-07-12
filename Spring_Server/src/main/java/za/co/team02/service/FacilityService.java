@@ -71,7 +71,7 @@ public class FacilityService {
                 BookingDTO bookings = new BookingDTO();
 
                 bookings.setBookingId(obj.getId());
-                bookings.setApplicant_name(user.getFirstName()+" "+user.getLastName());
+                bookings.setApplicant_name(user.getFirst_Name()+" "+user.getLastName());
                 bookings.setBookingDate(obj.getDate());
                 bookings.setStart_time(obj.getStart_time());
                 bookings.setEnd_time(obj.getEnd_time());

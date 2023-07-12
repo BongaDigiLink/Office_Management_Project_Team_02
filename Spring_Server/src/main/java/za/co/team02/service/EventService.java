@@ -30,20 +30,17 @@ public class EventService
     {
         Event event = new Event();
         SiteUser user = userRepository.findByEmail(eventDTO.getUser_email()).get();
-        List<EventType> list = eventTypeRepository.findAll();
-        System.out.println(list);
 
-        for(EventType e : list)
-        {
-            if(e.getEvent_name().equals(eventDTO.getEvent_name()))
-            {
-                event.setCandidate_id(user.getUser_id());
-                event.setEventType_id(e.getEventType_id());
-                event.setEvent(eventDTO.getEvent_message());
-                event.setTime(eventDTO.getTime());
-                event.setDate("Now");
-            }
-        }
+        //System.out.println(user);
+        //List<EventType> list = eventTypeRepository.findAll();
+        //System.out.println(list);
+
+        event.setUser_id(user.getUser_id());
+        //event.setEventType_id(e.getEventTypeId());
+        event.setTime(eventDTO.getTime());
+        event.setDate("Now");
+        event.setEvent(eventDTO.getEvent_message());
+        System.out.println(event);
 
         Event newEvent = eventRepository.save(event);
 
@@ -52,10 +49,11 @@ public class EventService
 
     public List<Event> getMyAttendance(String email)
     {
-        SiteUser user = userRepository.findByEmail(email).get();
-        System.out.println(user);
-        System.out.println(user.getUser_id());
-
-        return eventRepository.getAttendance(user.getUser_id()).stream().toList();
+//        SiteUser user = userRepository.findByEmail(email).get();
+//        System.out.println(user);
+//        System.out.println(user.getUser_id());
+//
+//        return eventRepository.getAttendance(user.getUser_id()).stream().toList();
+        return null;
     }
 }

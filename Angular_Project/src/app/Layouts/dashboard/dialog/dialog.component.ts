@@ -20,12 +20,12 @@ export class DialogComponent {
   //details are parsed to the update.service on the updateUser method
 
   addUserForm = this.formBuilder.group({
-    email: this.formBuilder.control('', [Validators.email, Validators.required]),
     firstName: this.formBuilder.control('', [Validators.required]),
     lastName: this.formBuilder.control('', [Validators.required]),
     username: this.formBuilder.control('', [Validators.required]),
-    address: this.formBuilder.control('', [Validators.required]),
+    email: this.formBuilder.control('', [Validators.email, Validators.required]),
     password: this.formBuilder.control('welcome@123'),
+    address: this.formBuilder.control('', [Validators.required]),
     role: this.formBuilder.control('user')
   })
 

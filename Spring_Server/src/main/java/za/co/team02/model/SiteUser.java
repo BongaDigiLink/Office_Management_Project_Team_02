@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
-@Entity(name = "site_user")
+@Entity(name = "userss")
+@Table(name = "userss", schema = "dbo")
 @Builder
 @Data
 @NoArgsConstructor
@@ -21,25 +22,25 @@ public class SiteUser
     @Column(name = "User_id")
     private int User_id;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "First_Name")
+    private String First_Name;
 
-    @Column(name = "last_name")
+    @Column(name = "last_Name")
     private String lastName;
 
-    @Column(name = "username")
+    @Column(name = "Username")
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "Password")
     private String password;
 
-    @Column(name = "email")
+    @Column(name = "Email")
     private String email;
 
-    @Column(name = "role")
+    @Column(name = "Role")
     private String role;
 
-    @Column(name = "address")
+    @Column(name = "Address")
     private String address;
 
 }

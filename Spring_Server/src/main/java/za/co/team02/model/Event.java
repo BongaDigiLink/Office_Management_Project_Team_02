@@ -9,37 +9,27 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Entity(name = "eventss")
+@Entity(name = "Register_Events")
+@Table(name = "Register_Events", schema="dbo")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Event
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int Id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "Event_id")
+    private int Event_id;
 
-    //@ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "candidatelogin_id")
-    private int candidatelogin_id;
-
-    @Column(name = "evenType_id")
-    private int eventType_id;
-
-//    @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "candidate_id")
-    private int candidate_id;
-
-    @Column(name = "event_id")
-    private int event_id;
+    @Column(name = "User_id")
+    private int User_id;
 
     @Column(name = "Time")
     private String time;
 
-    @Column(name = "DATE")
+    @Column(name = "Date")
     String date;
 
-    @Column(name="Event")
+    @Column(name="Event_message")
     String event;
 }

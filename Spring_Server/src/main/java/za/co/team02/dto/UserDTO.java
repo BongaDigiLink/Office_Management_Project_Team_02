@@ -9,7 +9,7 @@ import java.util.Set;
 public class UserDTO
 {
     private int Admin_Id;
-    private int Candidate_id;
+    private int User_id;
     private String First_Name;
     private String Last_Name;
     private int Cohort_id;

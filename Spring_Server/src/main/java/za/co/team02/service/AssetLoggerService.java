@@ -73,7 +73,7 @@ public class AssetLoggerService
         {
 
             assetLog.setCandidate_id(getUserId(userEmail));
-            assetLog.setCandidate_name(getUser(userEmail).get().getFirstName()+" "+getUser(userEmail).get().getLastName());
+            assetLog.setCandidate_name(getUser(userEmail).get().getFirst_Name()+" "+getUser(userEmail).get().getLastName());
             assetLog.setLog_status("Pending");
             assetLoggerRepository.save(assetLog);
 

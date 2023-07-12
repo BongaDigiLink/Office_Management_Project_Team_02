@@ -29,21 +29,22 @@ public class UserService
         SiteUser siteUser = new SiteUser();
 
         // convert DTO to entity
-        siteUser.setEmail(userDto.getEmail());
-        siteUser.setFirstName(userDto.getFirst_Name());
+        siteUser.setFirst_Name(userDto.getFirst_Name());
         siteUser.setLastName(userDto.getLast_Name());
         siteUser.setUsername(userDto.getUsername());
-
+        siteUser.setEmail(userDto.getEmail());
         siteUser.setPassword(utils.hashPassword("Welcome@123"));
-        siteUser.setRole("user");
         siteUser.setAddress(userDto.getAddress());
+        siteUser.setRole("user");
 
+        System.out.println(siteUser);
         SiteUser newSiteUser = userRepository.save(siteUser);
+
 
         //convert entity to DTO
         UserDTO userResponse = new UserDTO();
         userResponse.setAdmin_Id(newSiteUser.getUser_id());
-        userResponse.setFirst_Name(newSiteUser.getFirstName());
+        userResponse.setFirst_Name(newSiteUser.getFirst_Name());
         userResponse.setLast_Name(newSiteUser.getLastName());
         userResponse.setUsername(newSiteUser.getUsername());
         userResponse.setPassword(utils.hashPassword(newSiteUser.getPassword()));
@@ -69,7 +70,7 @@ public class UserService
     {
         SiteUser siteUser = userRepository.findByEmail(updateUser.getEmail()).orElseThrow(()-> new IllegalStateException("user with email "+ updateUser.getEmail()+" does not exist"));
 //        SiteUser siteUser = getSingleUser(updateUser.getEmail());
-        siteUser.setFirstName(updateUser.getFirstName());
+        siteUser.setFirst_Name(updateUser.getFirst_Name());
         siteUser.setLastName(updateUser.getLastName());
         siteUser.setRole(updateUser.getRole());
         siteUser.setAddress(updateUser.getAddress());
