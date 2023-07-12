@@ -1,6 +1,7 @@
 package za.co.team02.service;
 
 import org.springframework.stereotype.Service;
+import za.co.team02.dto.DashBoardData;
 import za.co.team02.dto.UserDTO;
 import za.co.team02.model.SiteUser;
 import za.co.team02.repository.UserRepository;
@@ -62,6 +63,17 @@ public class UserService
     {
         SiteUser siteUser =userRepository.findByEmail(email).orElseThrow(() -> new IllegalStateException("user with email " + email + " does not exixst"));
         return  siteUser;
+    }
+
+    public DashBoardData getDashBoardData(String userEmail)
+    {
+        DashBoardData data = new DashBoardData();
+
+        data.setUserCount(userRepository.findAll().size());
+        data.setMeetingsCount(446);
+        data.setUserCount(3555);
+
+        return data;
     }
 
     public void updateUser(SiteUser updateUser) {

@@ -6,6 +6,7 @@ import { Booking, dtoBooking } from '../models/booking';
 import { Observable } from 'rxjs';
 import { RegisterRecord, dtoRegisterRecord } from '../models/register';
 import { LogAsset, logdtoAsset } from '../models/LogAsset';
+import { DashBoardData } from '../models/DashBoardData';
 
 @Injectable({
   providedIn: 'root'
@@ -81,6 +82,11 @@ export class UserService
   editBooking(id: number, editBooking: Booking)
   {
     return this.http.put<Booking>(`${this.apiURL}/edit-booking/${id}`, editBooking)
+  }
+
+  getDashBoardData(email: string | undefined): Observable<DashBoardData>
+  {
+    return this.http.get<DashBoardData>(`${this.apiURL}/get-dashboard-data/${email}`);
   }
 
   /**

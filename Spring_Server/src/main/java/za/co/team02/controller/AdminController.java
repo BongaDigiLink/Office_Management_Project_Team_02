@@ -4,10 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import za.co.team02.dto.AssetLogDTO;
-import za.co.team02.dto.BookingDTO;
-import za.co.team02.dto.UpdateBookingDTO;
-import za.co.team02.dto.UserDTO;
+import za.co.team02.dto.*;
 import za.co.team02.model.Asset;
 import za.co.team02.model.AssetLog;
 import za.co.team02.model.Facility;
@@ -108,6 +105,12 @@ public class AdminController {
     {
             List<AssetLogDTO> logs = assetLoggerService.getAllUserLogs();
             return new ResponseEntity<>(logs, HttpStatus.OK);
+    }
+
+    @GetMapping("/get-admin-dashboard-data")
+    public DashBoardData getAdminData()
+    {
+        return this.adminServiceOBJ.getAdminData();
     }
 
     @PutMapping("/edit-log/")

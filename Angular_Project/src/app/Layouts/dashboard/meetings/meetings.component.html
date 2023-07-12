@@ -1,73 +1,6 @@
     <!--Main Content Comes here.-- Place router-outlet here for reusable module component-->
               
     <div class="row" >
-        <div class="col-md-9 col-sm-12 col-xs-12">
-          <h3>My Meeting</h3> 
-          <div class="panel panel-default">
-              <div class="panel-body">
-                  <table class="table table-borderless">
-                      <thead class="bg-light">
-                          <tr>
-                            <th>Date</th>
-                            <th>Room Name</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
-                            <th>Booking Status</th>
-                          </tr>
-                        </thead>
-                        <tbody *ngFor="let meeting of userMeetingBookings">
-                          <tr>
-
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <div class="ms-3">
-                                  <p class="fw-bold mb-1">{{ meeting.bookingDate }}</p>
-                                </div>
-                              </div>
-                            </td>
-
-                            <td>
-                              <div class="d-flex align-items-center">
-                                  <div class="ms-3">
-                                    <p class="fw-bold mb-1">{{ meeting.room_name }}</p>
-                                  </div>
-                                </div>
-                            </td>
-                
-                            <td>
-                              <div class="d-flex align-items-center">
-                                  <div class="ms-3">
-                                    <p class="fw-bold mb-1">{{ meeting.start_time }}</p>
-                                  </div>
-                                </div>
-                            </td>
-
-                              <td>
-                                <div class="d-flex align-items-center">
-                                    <div class="ms-3">
-                                      <p class="fw-bold mb-1">{{ meeting.end_time }}</p>
-                                    </div>
-                                  </div>
-                              </td>
-
-                                <td>
-                                  <div class="d-flex align-items-center">
-                                      <div class="ms-3">
-                                        <p class="fw-bold mb-1">{{ meeting.status }}</p>
-                                      </div>
-                                    </div>
-                                </td>
-                              
-                              <br>
-                              <a class="btn btn-success square-btn-adjust" (click)="updateDialog()">Update</a>
-                           
-                          </tr>
-                        </tbody>
-                  </table>
-              </div>
-          </div>
-
-        </div>
 
           <div class="col-md-9 col-sm-12 col-xs-12">
           <h3>Meeting Room Booking</h3> 
@@ -105,6 +38,75 @@
 
             </div>
           </div>
+
+          <div class="col-md-9 col-sm-12 col-xs-12">
+            <h3>My Meeting</h3> 
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-borderless">
+                        <thead class="bg-light">
+                            <tr>
+                              <th>Date</th>
+                              <th>Room Name</th>
+                              <th>Start Time</th>
+                              <th>End Time</th>
+                              <th>Booking Status</th>
+                            </tr>
+                          </thead>
+                          <tbody *ngFor="let meeting of userMeetingBookings">
+                            <tr>
+  
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <div class="ms-3">
+                                    <p class="fw-bold mb-1">{{ meeting.bookingDate }}</p>
+                                  </div>
+                                </div>
+                              </td>
+  
+                              <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                      <p class="fw-bold mb-1">{{ meeting.room_name }}</p>
+                                    </div>
+                                  </div>
+                              </td>
+                  
+                              <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="ms-3">
+                                      <p class="fw-bold mb-1">{{ meeting.start_time }}</p>
+                                    </div>
+                                  </div>
+                              </td>
+  
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                      <div class="ms-3">
+                                        <p class="fw-bold mb-1">{{ meeting.end_time }}</p>
+                                      </div>
+                                    </div>
+                                </td>
+  
+                                  <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="ms-3">
+                                          <p class="fw-bold mb-1">{{ meeting.status }}</p>
+                                        </div>
+                                      </div>
+                                  </td>
+                                
+                                <br>
+                                <a class="btn btn-success square-btn-adjust" (click)="updateDialog()">Update</a>
+                             
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+  
+          </div>
+  
 
         
     </div>

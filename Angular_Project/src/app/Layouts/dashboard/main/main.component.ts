@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DashBoardData } from 'src/app/models/DashBoardData';
+import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
+import { UserService } from 'src/app/service/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,10 +12,18 @@ import Swal from 'sweetalert2';
 })
 export class MainComponent implements OnInit
 {
-  constructor(private service: AuthService){}
+  constructor(private service: AuthService,
+    private userService: UserService,
+    private adminService: AdminService){}
 
   admin_interface : boolean = false;
   user_interface : boolean = false;
+
+  meetingsCount?: number;
+  registerCount?: number;
+  usersCount?: number;
+  
+  dashBoardData !: DashBoardData;
 
   userName!: string | undefined;
 
@@ -44,6 +55,27 @@ export class MainComponent implements OnInit
       //do nothing.
       this.user_interface = true;
     }
+  }
+
+
+  getUserDashBoardData()
+  {
+    this.userService.getDashBoardData(this.service.getEmail()).subscribe( 
+      (data) => {
+        this.dashBoardData = data;
+        this.meetingsCount = data.meetingsCount;
+        this.registerCount = data.registerCount;
+      })
+  }
+
+  getAdminDashBoardData()
+  {
+    this.adminService.getDashBoardData().subscribe( 
+      (data) => {
+        this.dashBoardData = data;
+        this.meetingsCount = data.meetingsCount;
+        this.registerCount = data.registerCount;
+      } )
   }
 
 }
