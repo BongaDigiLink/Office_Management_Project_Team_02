@@ -17,7 +17,7 @@ import java.util.Set;
 public class Event
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator= "register_events_seq", strategy = GenerationType.SEQUENCE)
     @Column(name = "Event_id")
     private int Event_id;
 

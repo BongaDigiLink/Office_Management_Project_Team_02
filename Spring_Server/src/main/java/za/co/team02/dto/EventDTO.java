@@ -11,6 +11,7 @@ public class EventDTO
     //Incoming Data
     private String user_email; //use this for candidate_id
     private String time;
+    private String date;
     private String event_name; //use this for event_id
     private String event_message; //Column - Event
 

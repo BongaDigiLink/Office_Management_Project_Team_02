@@ -31,14 +31,10 @@ public class EventService
         Event event = new Event();
         SiteUser user = userRepository.findByEmail(eventDTO.getUser_email()).get();
 
-        //System.out.println(user);
-        //List<EventType> list = eventTypeRepository.findAll();
-        //System.out.println(list);
-
+        //event.setEvent_id(event.getEvent_id());
         event.setUser_id(user.getUser_id());
-        //event.setEventType_id(e.getEventTypeId());
         event.setTime(eventDTO.getTime());
-        event.setDate("Now");
+        event.setDate(eventDTO.getDate());
         event.setEvent(eventDTO.getEvent_message());
         System.out.println(event);
 
