@@ -42,9 +42,9 @@ export class UserassetsComponent implements OnInit{
   }
 
   logAssetForm = new FormGroup({
-    asset_name: new FormControl('', Validators.required),
-    from_date: new FormControl('', Validators.required),
-    to_date: new FormControl('', Validators.required),
+    asset_name: new FormControl('', [Validators.required]),
+    from_date: new FormControl('', [Validators.required]),
+    to_date: new FormControl('', [Validators.required]),
     notes: new FormControl('', [Validators.required])
   })
 
@@ -53,7 +53,6 @@ export class UserassetsComponent implements OnInit{
   {
     this.userService.assetRegister(this.authservice.getEmail(), this.logAssetForm.value).subscribe( (return_status) => {
 
-      console.log(return_status.status)
       console.log("Status At the top!")
 
       if(return_status != null)
