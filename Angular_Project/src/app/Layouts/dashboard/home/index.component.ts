@@ -6,6 +6,7 @@ import { RegisterRecord } from 'src/app/models/register';
 import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
+import { LogAsset } from 'src/app/models/LogAsset';
 
 @Component({
   selector: 'app-index',
@@ -29,12 +30,34 @@ export class IndexComponent implements OnInit {
   availRooms!: Booking[]; //Query select only unbooked
   userRegister!: RegisterRecord[];
 
+
+  // User asset arrays
+  allAssets!: Asset[]
+  allUserBookings?: Booking[];
+  log_requests?: LogAsset[];
+
   ngOnInit(): void 
   {
     this.service.userType$.subscribe( (value) => 
     {
       this.setInterfaces(value)
     })
+
+    // ============================================
+    this.adminService.getAllAssetLogs().subscribe( (assets) => {
+      this.log_requests = assets;
+    })
+
+    //Get users log records
+    this.userService.getMyEvents(this.service.getEmail()).subscribe( 
+    {
+      next: (records) => {
+        this.log_requests = records;
+      },
+      error: () => {
+        console.log("an error occured.")
+      }
+    } )
   }
 
   /**
