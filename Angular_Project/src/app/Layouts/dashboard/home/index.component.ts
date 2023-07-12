@@ -30,9 +30,9 @@ export class IndexComponent implements OnInit {
   availRooms!: Booking[]; //Query select only unbooked
   userRegister!: RegisterRecord[];
 
-  meetingsCount?: number;
-  registerCount?: number;
-  usersCount?: number;
+  meetingsCount?: number; //for adming and user
+  registerCount?: number; //for admin and user
+  usersCount?: number; //for admin
   
   dashBoardData !: DashBoardData;
 
@@ -90,6 +90,7 @@ export class IndexComponent implements OnInit {
         this.dashBoardData = data;
         this.meetingsCount = data.meetingsCount;
         this.registerCount = data.registerCount;
+        this.usersCount = data.userCount;
       } )
   }
 
