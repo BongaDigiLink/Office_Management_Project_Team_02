@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface AssetLoggerRepository extends JpaRepository<AssetLog, Integer>
 {
-    @Query("SELECT a FROM asset_logger a WHERE a.candidate_id = ?1 ")
+    @Query("SELECT a FROM asset_logger a WHERE a.candidateId = ?1 ")
     Collection<AssetLog> getUserLogs(int id);
 }

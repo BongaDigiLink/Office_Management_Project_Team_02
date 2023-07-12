@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface FacilityRepository extends JpaRepository<Facility, Integer>
 {
-    @Query("SELECT f FROM facility f WHERE f.user_id = ?1 ")
+    @Query("SELECT f FROM facility f WHERE f.userId = ?1 ")
     Collection<Facility> getUserMeetings(Integer id);
 }

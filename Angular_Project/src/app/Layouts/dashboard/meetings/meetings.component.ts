@@ -50,9 +50,9 @@ export class MeetingsComponent implements OnInit{
   createMeetingForm = new FormGroup(
     {
       date:new FormControl('', [Validators.required]),
-      room_name:new FormControl('', [Validators.required]),
-      start_time: new FormControl('', [Validators.required]),
-      end_time: new FormControl('', Validators.required),
+      roomName:new FormControl('', [Validators.required]),
+      startTime: new FormControl('', [Validators.required]),
+      endTime: new FormControl('', Validators.required),
       status: new FormControl('pending'),
     }
   )

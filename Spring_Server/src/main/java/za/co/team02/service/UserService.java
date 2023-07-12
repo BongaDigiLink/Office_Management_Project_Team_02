@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import za.co.team02.dto.DashBoardData;
 import za.co.team02.dto.UserDTO;
 import za.co.team02.model.SiteUser;
+import za.co.team02.repository.FacilityRepository;
 import za.co.team02.repository.UserRepository;
 import za.co.team02.utils.Utils;
 
@@ -15,9 +16,11 @@ import java.util.stream.Collectors;
 public class UserService
 {
     private UserRepository userRepository;
+    private FacilityRepository facilityRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, FacilityRepository facilityRepository) {
         this.userRepository = userRepository;
+        this.facilityRepository = facilityRepository;
     }
 
     /**
@@ -61,17 +64,16 @@ public class UserService
 
     public SiteUser getSingleUser(String email)
     {
-        SiteUser siteUser =userRepository.findByEmail(email).orElseThrow(() -> new IllegalStateException("user with email " + email + " does not exixst"));
+        SiteUser siteUser = userRepository.findByEmail(email).orElseThrow(() -> new IllegalStateException("user with email " + email + " does not exixst"));
         return  siteUser;
     }
 
     public DashBoardData getDashBoardData(String userEmail)
     {
         DashBoardData data = new DashBoardData();
+        SiteUser user = userRepository.findByEmail(userEmail).get();
 
-        data.setUserCount(userRepository.findAll().size());
-        data.setMeetingsCount(446);
-        data.setUserCount(3555);
+        data.setMeetingsCount(facilityRepository.getUserMeetings(user.getId()).size());
 
         return data;
     }

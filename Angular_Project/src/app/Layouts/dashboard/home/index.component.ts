@@ -7,6 +7,7 @@ import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
 import { LogAsset } from 'src/app/models/LogAsset';
+import { DashBoardData } from 'src/app/models/DashBoardData';
 
 @Component({
   selector: 'app-index',
@@ -30,6 +31,11 @@ export class IndexComponent implements OnInit {
   availRooms!: Booking[]; //Query select only unbooked
   userRegister!: RegisterRecord[];
 
+  meetingsCount?: number; //for adming and user
+  registerCount?: number; //for admin and user
+  usersCount?: number; //for admin
+  
+  dashBoardData !: DashBoardData;
 
   // User asset arrays
   allAssets!: Asset[]
@@ -70,6 +76,8 @@ export class IndexComponent implements OnInit {
       this.admin_interface = true;
       //Get a few records ( bookings, assets logs, user register etc. ) for admin Overview display.
       //- this.adminService.
+
+      this.getAdminDashBoardData();
     }
     else if(value === 2)
     {
@@ -77,6 +85,7 @@ export class IndexComponent implements OnInit {
 
       //Get minimal records ( bookings, register etc. )  about this user for Overview display.
       //- this.userService.
+      this.getUserDashBoardData();
     }
     else
     {
@@ -84,4 +93,26 @@ export class IndexComponent implements OnInit {
       this.router.navigateByUrl('login');
     }
   }
+
+  getUserDashBoardData()
+  {
+    this.userService.getDashBoardData(this.service.getEmail()).subscribe( 
+      (data) => {
+        this.dashBoardData = data;
+        this.meetingsCount = data.meetingsCount;
+        this.registerCount = data.registerCount;
+      })
+  }
+
+  getAdminDashBoardData()
+  {
+    this.adminService.getDashBoardData().subscribe( 
+      (data) => {
+        this.dashBoardData = data;
+        this.meetingsCount = data.meetingsCount;
+        this.registerCount = data.registerCount;
+        this.usersCount = data.userCount;
+      } )
+  }
+
 }

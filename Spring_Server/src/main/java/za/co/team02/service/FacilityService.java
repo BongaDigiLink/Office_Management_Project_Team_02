@@ -39,7 +39,7 @@ public class FacilityService {
         //make checks to see whether this request doesn't conflict with existing meetings
 
         //Save new booking
-        facility.setUser_id(user.getId());
+        facility.setUserId(user.getId());
         facility.setStatus("Pending");
         System.out.println(facility);
 
@@ -67,15 +67,15 @@ public class FacilityService {
         {
             for(Facility obj: list)
             {
-                SiteUser user = userRepository.findById(obj.getUser_id()).get();
+                SiteUser user = userRepository.findById(obj.getUserId()).get();
                 BookingDTO bookings = new BookingDTO();
 
                 bookings.setBookingId(obj.getId());
-                bookings.setApplicant_name(user.getFirstName()+" "+user.getLastName());
+                bookings.setApplicantName(user.getFirstName()+" "+user.getLastName());
                 bookings.setBookingDate(obj.getDate());
-                bookings.setStart_time(obj.getStart_time());
-                bookings.setEnd_time(obj.getEnd_time());
-                bookings.setRoom_name(obj.getRoom_name());
+                bookings.setStartTime(obj.getStartTime());
+                bookings.setEndTime(obj.getEndTime());
+                bookings.setRoomName(obj.getRoomName());
                 bookings.setStatus(obj.getStatus());
 
                 list_of_bookings.add(bookings);

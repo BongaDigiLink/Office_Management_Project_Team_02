@@ -18,21 +18,21 @@ public class Facility
     private Integer id;
 
     @Column(name = "room_name", nullable = false)
-    private String room_name;
+    private String roomName;
 
     @Temporal(TemporalType.DATE)
     Date date;
 
     @Column (name = "start_time", nullable = false)
-    private String start_time;
+    private String startTime;
 
     @Column (name = "end_time",nullable = false)
-    private String end_time;
+    private String endTime;
 
     // Nullable Awaiting Admin Approval
     @Column(name = "status")
     private String status;
 
     @Column(name = "user_id")
-    private Integer user_id;
+    private Integer userId;
 }

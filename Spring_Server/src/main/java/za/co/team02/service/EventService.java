@@ -28,24 +28,24 @@ public class EventService {
         // convert DTO to entity
         if(eventDTO.getSign_inTime() != null)
         {
-            event.setSign_time(eventDTO.getSign_inTime());
+            event.setSignTime(eventDTO.getSign_inTime());
         }
         else
         {
-            event.setSign_time(eventDTO.getSign_outTime());
+            event.setSignTime(eventDTO.getSign_outTime());
         }
 
-        event.setUser_id(userRepository.findByEmail(email).get().getId());
-        event.setEvent_message(eventDTO.getEvent_message());
-        event.setEvent_type(eventDTO.getEvent_type());
+        event.setUserId(userRepository.findByEmail(email).get().getId());
+        event.setEventMessage(eventDTO.getEvent_message());
+        event.setEventType(eventDTO.getEvent_type());
 
         Event newEvent = eventRepository.save(event);
 
         //convert entity to DTO
         EventDTO eventResponse = new EventDTO();
-        eventResponse.setEventId(newEvent.getEvent_id());
+        eventResponse.setEventId(newEvent.getEventId());
 //        eventResponse.setCandidateLoginId(newEvent.getCandidateLoginId());
-        eventResponse.setSign_inTime(newEvent.getSign_time());
+        eventResponse.setSign_inTime(newEvent.getSignTime());
 
         return eventResponse;
     }

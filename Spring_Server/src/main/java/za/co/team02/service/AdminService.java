@@ -4,9 +4,7 @@ import org.springframework.stereotype.Service;
 import za.co.team02.dto.DashBoardData;
 import za.co.team02.model.Asset;
 import za.co.team02.model.AssetLog;
-import za.co.team02.repository.AssetLoggerRepository;
-import za.co.team02.repository.AssetRepository;
-import za.co.team02.repository.UserRepository;
+import za.co.team02.repository.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,13 +15,18 @@ public class AdminService {
     // Assets Service Implementation
     private final AssetRepository assetRepository;
     private UserRepository userRepository;
+    private EventRepository eventRepository;
+    private FacilityRepository facilityRepository;
 
     private final AssetLoggerRepository assetLoggerRepository;
-    public AdminService(AssetRepository assetRepo,AssetLoggerRepository assetLoggerRepository, UserRepository userRepository){
+    public AdminService(AssetRepository assetRepo,AssetLoggerRepository assetLoggerRepository,
+                        UserRepository userRepository, EventRepository eventRepository, FacilityRepository facilityRepository){
 
         this.assetRepository = assetRepo;
         this.assetLoggerRepository = assetLoggerRepository;
         this.userRepository = userRepository;
+        this.eventRepository = eventRepository;
+        this.facilityRepository = facilityRepository;
     }
 
     /**
@@ -78,9 +81,9 @@ public class AdminService {
     {
         DashBoardData data = new DashBoardData();
 
-        data.setUserCount(userRepository.findAll().size());
-        data.setMeetingsCount(446);
-        data.setUserCount(3555);
+        data.setUserCount(userRepository.getSiteUsersByRole().size());
+        data.setMeetingsCount(facilityRepository.findAll().size());
+        data.setRegisterCount(eventRepository.findAll().size());
 
         return data;
     }
