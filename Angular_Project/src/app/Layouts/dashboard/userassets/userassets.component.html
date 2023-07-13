@@ -11,17 +11,17 @@
                         <ul class="form-style-1">
                             <li>
                                 <label>Assets</label>
-                                <select formControlName="asset_name" name="field4" class="field-select">
+                                <select formControlName="assetName" name="field4" class="field-select">
                                 <option value="Laptop">Laptop</option>
                                 <option value="Headsets">Headsets</option>
                                 <option value="Desktop">Desktop</option>
                                 </select>
                             </li>                        
                             <li><label>From <span class="required">*</span></label>
-                                <input formControlName="from_date" type="date" name="field1" class="field-divided" /></li>
+                                <input formControlName="fromDate" type="date" name="field1" class="field-divided" /></li>
 
                             <li><label>To <span class="required">*</span></label>
-                                <input formControlName="to_date" type="date" name="field2" class="field-divided" /></li>
+                                <input formControlName="toDate" type="date" name="field2" class="field-divided" /></li>
                             <li>
                                 <label>Reason <span class="required">*</span></label>
                                 <input formControlName="notes" type="email" name="field3" class="field-long" />
@@ -58,7 +58,7 @@
                               <td>
                                 <div class="d-flex align-items-center">
                                   <div class="ms-3">
-                                    <p class="fw-bold mb-1">{{ log.asset_name }}</p>
+                                    <p class="fw-bold mb-1">{{ log.assetName }}</p>
                                   </div>
                                 </div>
                               </td>
@@ -66,7 +66,7 @@
                               <td>
                                 <div class="d-flex align-items-center">
                                     <div class="ms-3">
-                                      <p class="fw-bold mb-1">{{ log.from_date }}</p>
+                                      <p class="fw-bold mb-1">{{ log.fromDate }}</p>
                                     </div>
                                   </div>
                               </td>
@@ -74,7 +74,7 @@
                               <td>
                                 <div class="d-flex align-items-center">
                                     <div class="ms-3">
-                                      <p class="fw-bold mb-1">{{ log.to_date }}</p>
+                                      <p class="fw-bold mb-1">{{ log.toDate }}</p>
                                     </div>
                                   </div>
                                 </td>
@@ -82,7 +82,7 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="ms-3">
-                                        <p class="fw-bold mb-1">{{ log.log_status }}</p>
+                                        <p class="fw-bold mb-1">{{ log.logStatus }}</p>
                                     </div>
                                     </div>
                                 </td>

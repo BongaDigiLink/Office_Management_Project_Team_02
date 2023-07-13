@@ -42,9 +42,9 @@ export class UserassetsComponent implements OnInit{
   }
 
   logAssetForm = new FormGroup({
-    asset_name: new FormControl('', Validators.required),
-    from_date: new FormControl('', Validators.required),
-    to_date: new FormControl('', Validators.required),
+    assetName: new FormControl('', Validators.required),
+    fromDate: new FormControl('', Validators.required),
+    toDate: new FormControl('', Validators.required),
     notes: new FormControl('', [Validators.required])
   })
 

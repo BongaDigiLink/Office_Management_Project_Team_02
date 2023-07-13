@@ -1,25 +1,25 @@
 export class LogAsset
 {
         id?:number;
-        admin_user?: string;
-        candidate_name?: string;
-        asset_name?: string;
-        from_date?: string;
-        to_date?: string;
+        adminUser?: string;
+        candidateName?: string;
+        assetName?: string;
+        fromDate?: string;
+        toDate?: string;
         notes?: string;
-        log_status?: string;
+        logStatus?: string;
         reason?: string;
 }
 
 export class logdtoAsset 
 {
     constructor(
-        candidate_name : string,
-        asset_name: string,
-        from_date: string,
-        to_date: string,
+        candidateName : string,
+        assetName: string,
+        fromDate: string,
+        toDate: string,
         notes: string,
-        log_status: string,
+        logStatus: string,
         reason: string,
     ){}
 }

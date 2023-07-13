@@ -8,19 +8,19 @@ import java.util.Date;
 public class AssetLogDTO
 {
 
-    String asset_name;
-    Date from_date;
-    Date to_date;
+    String assetName;
+    Date fromDate;
+    Date toDate;
     String notes; //Notes from user, reason for asset log.
 
-    String log_status; //Approved or Declined
+    String logStatus; //Approved or Declined
     String reason; //Reason for approval or decline of asset log
-    Integer candidate_id; //user making the log
-    String candidate_name; //name of the user making the log
+    Integer candidateId; //user making the log
+    String candidateName; //name of the user making the log
 
     //For admin accept or decline
     int id;
-    String admin_user;
+    String adminUser;
 //    candidate_name?: string;
 //    asset_name?: string;
 //    from_date?: string;

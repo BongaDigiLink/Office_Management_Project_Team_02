@@ -52,8 +52,8 @@ export class AssetComponent implements OnInit{
     this.adminService.editAssetRequest( 
       {
       "id": id,
-      "admin_user": this.authService.getEmail(),
-      "log_status": "approved",
+      "adminUser": this.authService.getEmail(),
+      "logStatus": "approved",
       "reason": "Digilink has authorised your request. Be safe! ;)"
     }).subscribe( (return_) => {
       console.log(return_)
@@ -64,8 +64,8 @@ export class AssetComponent implements OnInit{
    {
     this.adminService.editAssetRequest(
       {"id":id,
-      "admin_user":this.authService.getEmail(),
-    "log_status":"declined",
+      "adminUser":this.authService.getEmail(),
+    "logStatus":"declined",
     "reason":""
   }).subscribe( (return_) => {
     console.log(return_)

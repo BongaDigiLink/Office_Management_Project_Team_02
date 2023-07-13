@@ -41,14 +41,14 @@ public class AssetLoggerService
             AssetLogDTO assetLogDTO = new AssetLogDTO();
              if(assetLog.getLogStatus().equals("Pending"))
              {
-                 assetLogDTO.setAsset_name(assetLog.getAssetName());
+                 assetLogDTO.setAssetName(assetLog.getAssetName());
                  assetLogDTO.setId(assetLog.getId());
-                 assetLogDTO.setLog_status(assetLog.getLogStatus());
+                 assetLogDTO.setLogStatus(assetLog.getLogStatus());
                  assetLogDTO.setNotes(assetLog.getNotes());
-                 assetLogDTO.setCandidate_name(assetLog.getCandidateName());
-                 assetLogDTO.setFrom_date(assetLog.getFromDate());
-                 assetLogDTO.setTo_date(assetLog.getToDate());
-                 assetLogDTO.setCandidate_id(assetLog.getCandidateId());
+                 assetLogDTO.setCandidateName(assetLog.getCandidateName());
+                 assetLogDTO.setFromDate(assetLog.getFromDate());
+                 assetLogDTO.setToDate(assetLog.getToDate());
+                 assetLogDTO.setCandidateId(assetLog.getCandidateId());
 
                  list.add(assetLogDTO);
              }
@@ -95,7 +95,7 @@ public class AssetLoggerService
             SiteUser user =  userRepository.findById(assetLog.getCandidateId()).get();
             System.out.println(user);
 
-            assetLog.setLogStatus(updateLog.getLog_status());
+            assetLog.setLogStatus(updateLog.getLogStatus());
             assetLoggerRepository.save(assetLog);
             return true;
         }
