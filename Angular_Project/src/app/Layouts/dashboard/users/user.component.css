@@ -18,7 +18,7 @@ body {
   }
   
   .box {
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
     background: rgba(255,255,255,0.2);
     padding: 35px;
@@ -35,7 +35,7 @@ body {
   }
   .button {
     font-size: 1em;
-    padding: 10px;
+    padding: 1px;
     color: #fff;
     border: 2px solid #06D85F;
     border-radius: 20px/50px;
