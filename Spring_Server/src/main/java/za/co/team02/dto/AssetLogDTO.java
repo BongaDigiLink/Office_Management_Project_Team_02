@@ -29,4 +29,5 @@ public class AssetLogDTO
 //    log_status?: string;
 //    reason?: string;
 
+//
 }

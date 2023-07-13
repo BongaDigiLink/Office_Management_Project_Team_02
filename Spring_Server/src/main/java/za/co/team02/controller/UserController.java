@@ -5,10 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import za.co.team02.dto.DashBoardData;
-import za.co.team02.dto.EventDTO;
-import za.co.team02.dto.EventTypeDTO;
-import za.co.team02.dto.UserDTO;
+import za.co.team02.dto.*;
 import za.co.team02.model.*;
 import za.co.team02.service.*;
 
@@ -97,24 +94,30 @@ public class UserController
         }
     }
 
-    @PostMapping("/asset-register/{email}")
-    public ResponseEntity<?> createAssetLog(@PathVariable("email") String email,
-                                @RequestBody AssetLog loggedAsset)
-    {
-        try
-        {
-            if(assetLoggerService.createNewAssetLog(email, loggedAsset))
-            {
-                return new ResponseEntity<>("Success", HttpStatus.OK);
-            };
-            return new ResponseEntity<>("failed", HttpStatus.NO_CONTENT);
-        }
-        catch (Exception e)
-        {
-            return null;
-        }
-    }
+//    @PostMapping("/asset-register/{email}")
+//    public ResponseEntity<?> createAssetLog(@PathVariable("email") String email,
+//                                @RequestBody AssetLogDTO loggedAssetDTO)
+//    {
+//        try
+//        {
+//            if(assetLoggerService.createNewAssetLog(email, loggedAssetDTO)!=null)
+//            {
+//                return new ResponseEntity<>("Success", HttpStatus.OK);
+//            };
+//            return new ResponseEntity<>("failed", HttpStatus.NO_CONTENT);
+//        }
+//        catch (Exception e)
+//        {
+//            return null;
+//        }
+//    }
 
+    @PostMapping("/asset-register/{email}")
+    public AssetLogDTO createAssetLog(@PathVariable("email") String email,
+                                            @RequestBody AssetLogDTO loggedAssetDTO)
+    {
+        return assetLoggerService.createNewAssetLog(email, loggedAssetDTO);
+    }
 
     @GetMapping("/get-my-asset-log/{email}")
     public ResponseEntity<List<AssetLog>> getMyAssetLogs(@PathVariable("email") String userEmail)

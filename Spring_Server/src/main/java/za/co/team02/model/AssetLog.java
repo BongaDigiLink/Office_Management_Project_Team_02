@@ -17,6 +17,12 @@ public class AssetLog {
     @Column(name = "id")
     private int id;
 
+    @Column(name = "candidate_id")
+    private Integer candidateId;
+
+    @Column(name = "candidate_name")
+    private String candidateName;
+
     @Column(name = "asset_name")
     private String assetName;
 
@@ -26,18 +32,12 @@ public class AssetLog {
     @Column(name = "to_date")
     private Date toDate;
 
-    @Column(name = "notes")
-    private String notes;
-
     @Column(name = "log_status") //approved or declined
     private String logStatus;
 
+    @Column(name = "notes")
+    private String notes;
+
     @Column(name = "reason") //response message from admin for (approval or decline) status
     private String reason;
-
-    @Column(name = "candidate_id")
-    private Integer candidateId;
-
-    @Column(name = "candidate_name")
-    private String candidateName;
 }

@@ -32,7 +32,7 @@ export class UserService
    */
   assetRegister(email: string | undefined, logDetails: logdtoAsset)
   {
-    return this.http.post<any>(`${this.apiURL}/asset-register/${email}`, logDetails);
+    return this.http.post<LogAsset>(`${this.apiURL}/asset-register/${email}`, logDetails);
   }
 
   /**

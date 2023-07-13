@@ -53,7 +53,6 @@ export class UserassetsComponent implements OnInit{
   {
     this.userService.assetRegister(this.authservice.getEmail(), this.logAssetForm.value).subscribe( (return_status) => {
 
-      console.log(return_status.status)
       console.log("Status At the top!")
 
       if(return_status != null)
